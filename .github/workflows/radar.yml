@@ -41,27 +41,54 @@ jobs:
           python radar.py
 
       - name: Save radar memory
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          BRANCH: ${{ github.ref_name }}
         run: |
-          echo "Checking radar memory..."
+          echo "===== RADAR MEMORY BEFORE SAVE ====="
+          cat seen_tokens.json
+          echo "====================================="
 
-          if [ ! -f seen_tokens.json ]; then
-            echo "seen_tokens.json does not exist."
+          export SHA=$(curl -s \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$REPO/contents/seen_tokens.json?ref=$BRANCH" \
+            | python -c "import sys,json; d=json.load(sys.stdin); print(d.get('sha',''))")
+
+          if [ -z "$SHA" ]; then
+            echo "❌ Could not find seen_tokens.json on GitHub."
             exit 1
           fi
 
-          echo "Memory file:"
-          cat seen_tokens.json
+          echo "Existing file SHA found."
 
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          python - <<'PY' > /tmp/payload.json
+          import os
+          import json
+          import base64
 
-          git add -f seen_tokens.json
+          with open("seen_tokens.json", "rb") as f:
+              content = base64.b64encode(f.read()).decode()
 
-          if git diff --cached --quiet; then
-            echo "No memory changes to save."
-          else
-            git commit -m "Update radar memory"
-            git push origin HEAD:${{ github.ref_name }}
-          fi
+          payload = {
+              "message": "Update radar memory",
+              "content": content,
+              "sha": os.environ["SHA"],
+              "branch": os.environ["BRANCH"]
+          }
 
-          echo "Radar memory save step completed."
+          print(json.dumps(payload))
+          PY
+
+          echo "Saving radar memory to GitHub..."
+
+          curl -f -X PUT \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            -H "Content-Type: application/json" \
+            "https://api.github.com/repos/$REPO/contents/seen_tokens.json" \
+            --data-binary @/tmp/payload.json
+
+          echo ""
+          echo "✅ RADAR MEMORY SAVED SUCCESSFULLY."
