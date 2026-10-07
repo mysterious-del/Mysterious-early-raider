@@ -1,306 +1,413 @@
 import os
+import json
+import time
 import requests
 from datetime import datetime, timezone
 
-BOT_TOKEN = os.environ["BOT_TOKEN"]
-CHAT_ID = os.environ["CHAT_ID"]
+# ============================================================
+# MYSTERIOUS EARLY RADAR
+# ============================================================
 
-DEX_PROFILES_URL = "https://api.dexscreener.com/token-profiles/latest/v1"
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+CHAT_ID = os.getenv("CHAT_ID")
+
+SEEN_FILE = "seen_tokens.json"
 
 MAX_ALERTS_PER_RUN = 10
 MIN_SCORE = 35
 
-CHAIN_NAMES = {
-    "solana": "Solana",
-    "ethereum": "Ethereum",
-    "bsc": "BNB Chain",
-    "base": "Base",
-    "arbitrum": "Arbitrum",
-    "polygon": "Polygon",
-    "avax": "Avalanche",
-}
+DEX_PROFILES_URL = "https://api.dexscreener.com/token-profiles/latest/v1"
 
+
+# ============================================================
+# MEMORY
+# ============================================================
+
+def load_seen():
+    try:
+        if not os.path.exists(SEEN_FILE):
+            return set()
+
+        with open(SEEN_FILE, "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        if not isinstance(data, list):
+            return set()
+
+        return set(data)
+
+    except Exception as e:
+        print(f"⚠️ Could not load radar memory: {e}")
+        return set()
+
+
+def save_seen(seen):
+    try:
+        with open(SEEN_FILE, "w", encoding="utf-8") as f:
+            json.dump(sorted(list(seen)), f, indent=2)
+
+        print(f"💾 Radar memory saved locally: {len(seen)} tokens")
+
+    except Exception as e:
+        print(f"❌ Could not save radar memory: {e}")
+
+
+# ============================================================
+# TELEGRAM
+# ============================================================
 
 def telegram(message):
+    if not BOT_TOKEN or not CHAT_ID:
+        print("❌ BOT_TOKEN or CHAT_ID is missing")
+        return False
+
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
 
-    response = requests.post(
-        url,
-        json={
-            "chat_id": CHAT_ID,
-            "text": message,
-            "disable_web_page_preview": False,
-        },
-        timeout=20,
-    )
+    payload = {
+        "chat_id": CHAT_ID,
+        "text": message,
+        "disable_web_page_preview": False
+    }
 
-    response.raise_for_status()
-
-
-def get_latest_profiles():
-    response = requests.get(
-        DEX_PROFILES_URL,
-        timeout=20,
-    )
-
-    response.raise_for_status()
-
-    data = response.json()
-
-    if isinstance(data, list):
-        return data
-
-    return []
-
-
-def get_token_data(chain, address):
-    url = (
-        f"https://api.dexscreener.com/"
-        f"token-pairs/v1/{chain}/{address}"
-    )
-
-    response = requests.get(
-        url,
-        timeout=20,
-    )
-
-    if response.status_code != 200:
-        return []
-
-    data = response.json()
-
-    if isinstance(data, list):
-        return data
-
-    return []
-
-
-def calculate_score(profile, pairs):
-    score = 0
-    reasons = []
-
-    chain = profile.get("chainId", "").lower()
-    description = (
-        profile.get("description") or ""
-    ).lower()
-
-    # New profile signal
-    score += 10
-    reasons.append("recent token profile")
-
-    # Chain signal
-    if chain in ["solana", "base", "bsc"]:
-        score += 10
-        reasons.append(
-            f"{CHAIN_NAMES.get(chain, chain)} project"
+    try:
+        response = requests.post(
+            url,
+            json=payload,
+            timeout=20
         )
 
-    # Description signal
-    project_words = [
+        if response.status_code == 200:
+            return True
+
+        print(
+            f"❌ Telegram error {response.status_code}: "
+            f"{response.text[:300]}"
+        )
+
+    except Exception as e:
+        print(f"❌ Telegram request failed: {e}")
+
+    return False
+
+
+# ============================================================
+# DEXSCREENER
+# ============================================================
+
+def get_latest_profiles():
+    try:
+        response = requests.get(
+            DEX_PROFILES_URL,
+            timeout=20
+        )
+
+        response.raise_for_status()
+
+        data = response.json()
+
+        if not isinstance(data, list):
+            return []
+
+        return data
+
+    except Exception as e:
+        print(f"❌ Failed to get latest token profiles: {e}")
+        return []
+
+
+def get_token_pairs(chain, address):
+    url = f"https://api.dexscreener.com/token-pairs/v1/{chain}/{address}"
+
+    try:
+        response = requests.get(
+            url,
+            timeout=20
+        )
+
+        if response.status_code != 200:
+            return []
+
+        data = response.json()
+
+        if isinstance(data, list):
+            return data
+
+        return []
+
+    except Exception as e:
+        print(f"⚠️ Pair lookup failed for {address}: {e}")
+        return []
+
+
+# ============================================================
+# SCORING
+# ============================================================
+
+def calculate_score(profile, pair):
+    score = 0
+
+    chain = str(
+        profile.get("chainId")
+        or pair.get("chainId")
+        or ""
+    ).lower()
+
+    address = (
+        profile.get("tokenAddress")
+        or pair.get("baseToken", {}).get("address")
+        or ""
+    )
+
+    name = (
+        profile.get("name")
+        or pair.get("baseToken", {}).get("name")
+        or ""
+    )
+
+    symbol = (
+        profile.get("symbol")
+        or pair.get("baseToken", {}).get("symbol")
+        or ""
+    )
+
+    text = f"{name} {symbol}".lower()
+
+    # --------------------------------------------------------
+    # Chain
+    # --------------------------------------------------------
+
+    if chain == "solana":
+        score += 15
+
+    elif chain in ["base", "bsc", "ethereum"]:
+        score += 10
+
+    # --------------------------------------------------------
+    # Memecoin / project keywords
+    # --------------------------------------------------------
+
+    keywords = [
         "meme",
-        "memecoin",
-        "community",
-        "launch",
-        "fair launch",
-        "stealth",
+        "coin",
+        "dog",
+        "cat",
+        "pepe",
+        "frog",
         "ai",
-        "agent",
-        "culture",
-        "viral",
+        "inu",
+        "wojak",
+        "chad",
+        "moon",
+        "pump",
+        "based",
+        "elon",
+        "trump"
     ]
 
-    if any(word in description for word in project_words):
+    if any(keyword in text for keyword in keywords):
+        score += 15
+
+    # --------------------------------------------------------
+    # Liquidity
+    # --------------------------------------------------------
+
+    liquidity = pair.get("liquidity") or {}
+    liquidity_usd = liquidity.get("usd") or 0
+
+    try:
+        liquidity_usd = float(liquidity_usd)
+    except:
+        liquidity_usd = 0
+
+    if liquidity_usd <= 10000:
+        score += 20
+
+    elif liquidity_usd <= 25000:
         score += 10
-        reasons.append("project/memecoin language")
 
-    if not pairs:
-        score += 5
-        reasons.append("very early / limited market data")
+    # --------------------------------------------------------
+    # Volume
+    # --------------------------------------------------------
 
-        return score, reasons
+    volume = pair.get("volume") or {}
 
-    # Examine available pairs
-    best_pair = pairs[0]
+    volume_24h = volume.get("h24") or 0
 
-    liquidity = (
-        best_pair.get("liquidity") or {}
-    ).get("usd") or 0
+    try:
+        volume_24h = float(volume_24h)
+    except:
+        volume_24h = 0
 
-    volume = (
-        best_pair.get("volume") or {}
-    ).get("h24") or 0
+    if volume_24h <= 5000:
+        score += 15
 
-    txns = best_pair.get("txns") or {}
+    elif volume_24h <= 20000:
+        score += 8
+
+    # --------------------------------------------------------
+    # Transactions
+    # --------------------------------------------------------
+
+    txns = pair.get("txns") or {}
     h24 = txns.get("h24") or {}
 
     buys = h24.get("buys") or 0
     sells = h24.get("sells") or 0
 
-    pair_created = best_pair.get("pairCreatedAt")
+    try:
+        buys = int(buys)
+    except:
+        buys = 0
 
-    # Low liquidity = potentially early
-    if liquidity and liquidity < 10000:
-        score += 20
-        reasons.append(
-            f"low liquidity (${liquidity:,.0f})"
-        )
+    try:
+        sells = int(sells)
+    except:
+        sells = 0
 
-    elif liquidity and liquidity < 25000:
-        score += 10
-        reasons.append(
-            f"small liquidity (${liquidity:,.0f})"
-        )
-
-    # Low volume = low attention
-    if volume and volume < 10000:
-        score += 10
-        reasons.append("low 24h volume")
-
-    # Small transaction count
     total_txns = buys + sells
 
-    if total_txns and total_txns < 100:
-        score += 10
-        reasons.append("low transaction activity")
+    if total_txns <= 100:
+        score += 15
 
-    # Very new pair
+    elif total_txns <= 300:
+        score += 8
+
+    # --------------------------------------------------------
+    # Pair age
+    # --------------------------------------------------------
+
+    pair_created = pair.get("pairCreatedAt")
+
     if pair_created:
         try:
-            created = datetime.fromtimestamp(
-                pair_created / 1000,
-                tz=timezone.utc,
+            created_ms = int(pair_created)
+
+            now_ms = int(
+                datetime.now(timezone.utc).timestamp() * 1000
             )
 
             age_hours = (
-                datetime.now(timezone.utc) - created
-            ).total_seconds() / 3600
+                now_ms - created_ms
+            ) / 1000 / 60 / 60
 
-            if age_hours < 1:
-                score += 25
-                reasons.append("pair less than 1 hour old")
-
-            elif age_hours < 6:
+            if age_hours <= 1:
                 score += 20
-                reasons.append("pair less than 6 hours old")
 
-            elif age_hours < 24:
+            elif age_hours <= 6:
+                score += 15
+
+            elif age_hours <= 24:
                 score += 10
-                reasons.append("pair less than 24 hours old")
+
+            elif age_hours <= 72:
+                score += 5
 
         except Exception:
             pass
 
-    return min(score, 100), reasons
+    return score
 
 
-def format_socials(profile):
-    links = profile.get("links") or []
+# ============================================================
+# MESSAGE
+# ============================================================
 
-    socials = []
-
-    for link in links:
-        url = link.get("url")
-
-        if url:
-            socials.append(url)
-
-    if not socials:
-        return "No social link found"
-
-    return "\n".join(socials[:5])
-
-
-def build_alert(profile, pairs, score, reasons):
-    chain = profile.get("chainId", "unknown")
-    address = profile.get("tokenAddress", "unknown")
-
-    chain_name = CHAIN_NAMES.get(
-        chain.lower(),
-        chain
+def build_message(profile, pair, score):
+    chain = (
+        profile.get("chainId")
+        or pair.get("chainId")
+        or "unknown"
     )
 
-    description = (
-        profile.get("description")
-        or "No description available."
+    address = (
+        profile.get("tokenAddress")
+        or pair.get("baseToken", {}).get("address")
+        or "unknown"
     )
 
-    dex_url = profile.get("url")
+    name = (
+        profile.get("name")
+        or pair.get("baseToken", {}).get("name")
+        or "Unknown"
+    )
 
-    socials = format_socials(profile)
+    symbol = (
+        profile.get("symbol")
+        or pair.get("baseToken", {}).get("symbol")
+        or "???"
+    )
 
-    best_pair = pairs[0] if pairs else {}
+    description = profile.get("description") or ""
 
-    liquidity = (
-        best_pair.get("liquidity") or {}
-    ).get("usd")
+    url = (
+        profile.get("url")
+        or pair.get("url")
+        or f"https://dexscreener.com/{chain}/{address}"
+    )
 
-    volume = (
-        best_pair.get("volume") or {}
-    ).get("h24")
+    liquidity = pair.get("liquidity") or {}
+    liquidity_usd = liquidity.get("usd") or 0
+
+    volume = pair.get("volume") or {}
+    volume_24h = volume.get("h24") or 0
+
+    txns = pair.get("txns") or {}
+    h24 = txns.get("h24") or {}
+
+    buys = h24.get("buys") or 0
+    sells = h24.get("sells") or 0
 
     message = f"""
 🥷 MYSTERIOUS EARLY RADAR
 
-🔥 EARLY TOKEN DETECTED
+🚨 EARLY PROJECT DETECTED
 
-⛓ Chain: {chain_name}
+Name: {name}
+Ticker: ${symbol}
+Chain: {chain}
 
-🎯 Early Score: {score}/100
+🎯 Radar Score: {score}
 
-🔎 WHY FLAGGED:
-{chr(10).join("• " + r for r in reasons)}
+💧 Liquidity: ${liquidity_usd:,.0f}
+📊 24H Volume: ${volume_24h:,.0f}
+🔄 24H Txns: {buys + sells}
 
-🪙 Token:
+🔗 DexScreener:
+{url}
+
+📍 Contract:
 {address}
+""".strip()
 
-💧 Liquidity:
-${liquidity:,.0f}
-""" if liquidity else f"""
-🥷 MYSTERIOUS EARLY RADAR
+    if description:
+        short_description = description[:300]
 
-🔥 EARLY TOKEN DETECTED
+        message += (
+            f"\n\n📝 Description:\n"
+            f"{short_description}"
+        )
 
-⛓ Chain: {chain_name}
+    message += (
+        "\n\n⚠️ Early radar signal, not a buy signal."
+    )
 
-🎯 Early Score: {score}/100
+    return message
 
-🔎 WHY FLAGGED:
-{chr(10).join("• " + r for r in reasons)}
 
-🪙 Token:
-{address}
-
-💧 Liquidity:
-Not available yet
-"""
-
-    if volume:
-        message += f"""
-📊 24H Volume:
-${volume:,.0f}
-"""
-
-    message += f"""
-📝 DESCRIPTION:
-{description[:500]}
-
-🌐 SOCIALS:
-{socials}
-
-🔗 DEX:
-{dex_url or "Not available"}
-
-🧠 ACTION:
-Research the project/founder manually before contacting.
-
-⚠️ This is an early-signal alert, not a buy signal.
-"""
-
-    return message.strip()
-
+# ============================================================
+# MAIN RADAR
+# ============================================================
 
 def main():
+
     print("🥷 Mysterious Early Radar started")
+
+    seen = load_seen()
+
+    print(
+        f"🧠 Loaded radar memory: "
+        f"{len(seen)} previously seen tokens"
+    )
 
     profiles = get_latest_profiles()
 
@@ -309,6 +416,7 @@ def main():
     )
 
     alerts_sent = 0
+    candidates = 0
 
     for profile in profiles:
 
@@ -321,28 +429,71 @@ def main():
         if not chain or not address:
             continue
 
-        pairs = get_token_data(
+        token_id = f"{chain}:{address}"
+
+        # ----------------------------------------------------
+        # DUPLICATE PROTECTION
+        # ----------------------------------------------------
+
+        if token_id in seen:
+            continue
+
+        candidates += 1
+
+        # ----------------------------------------------------
+        # Get trading pair
+        # ----------------------------------------------------
+
+        pairs = get_token_pairs(
             chain,
             address
         )
 
-        score, reasons = calculate_score(
-            profile,
-            pairs
-        )
-
-        if score < MIN_SCORE:
+        if not pairs:
+            # Remember that we already processed it
+            seen.add(token_id)
             continue
 
-        message = build_alert(
+        # Pick first available pair
+        pair = pairs[0]
+
+        # ----------------------------------------------------
+        # Score
+        # ----------------------------------------------------
+
+        score = calculate_score(
             profile,
-            pairs,
-            score,
-            reasons
+            pair
         )
 
-        try:
-            telegram(message)
+        print(
+            f"🔎 Candidate: "
+            f"{address} | Score {score}"
+        )
+
+        # ----------------------------------------------------
+        # Low score
+        # ----------------------------------------------------
+
+        if score < MIN_SCORE:
+
+            seen.add(token_id)
+
+            continue
+
+        # ----------------------------------------------------
+        # Alert
+        # ----------------------------------------------------
+
+        message = build_message(
+            profile,
+            pair,
+            score
+        )
+
+        sent = telegram(message)
+
+        if sent:
 
             alerts_sent += 1
 
@@ -351,16 +502,57 @@ def main():
                 f"{address} | Score {score}"
             )
 
-        except Exception as error:
+            # IMPORTANT:
+            # Mark only after successful Telegram alert.
+            seen.add(token_id)
+
+        else:
+
             print(
-                f"Telegram error: {error}"
+                f"⚠️ Alert failed: "
+                f"{address}"
             )
+
+        # Small delay to avoid hammering APIs
+        time.sleep(0.5)
+
+    # --------------------------------------------------------
+    # DEBUG MEMORY CHECK
+    # --------------------------------------------------------
+
+    print(
+        f"📊 New candidates processed: {candidates}"
+    )
+
+    print(
+        f"📊 Alerts sent this run: {alerts_sent}"
+    )
+
+    print(
+        f"🧠 DEBUG: seen tokens before save = "
+        f"{len(seen)}"
+    )
+
+    print(
+        f"🧠 DEBUG: seen sample = "
+        f"{list(seen)[:10]}"
+    )
+
+    # --------------------------------------------------------
+    # SAVE MEMORY
+    # --------------------------------------------------------
+
+    save_seen(seen)
 
     print(
         f"✅ Radar scan completed. "
         f"Alerts sent: {alerts_sent}"
     )
 
+
+# ============================================================
+# START
+# ============================================================
 
 if __name__ == "__main__":
     main()
