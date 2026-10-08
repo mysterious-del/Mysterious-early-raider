@@ -34,6 +34,8 @@ jobs:
           pip install requests
 
       - name: Run Token Research
+        env:
+          HELIUS_API_KEY: ${{ secrets.HELIUS_API_KEY }}
         run: |
           python research.py \
             "${{ inputs.chain }}" \
