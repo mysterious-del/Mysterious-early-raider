@@ -182,82 +182,224 @@ def helius_request(method, params):
         )
         return None
 
-# ============================================================
-# DEXSCREENER MARKET DATA — IMPROVED LIQUIDITY DETECTION
-# ============================================================
-
 def get_market_data(chain, mint):
-
     print("\n📡 Checking market data...")
 
-    url = (
+    dex_pairs = []
+    gecko_pools = []
+
+    # --------------------------------------------------------
+    # 1. PRIMARY SOURCE: DEXSCREENER
+    # --------------------------------------------------------
+    dex_url = (
         f"{DEXSCREENER_BASE}"
-        f"/token-pairs/v1/"
-        f"{chain}/{mint}"
+        f"/token-pairs/v1/{chain}/{mint}"
     )
 
-    data = request_json("GET", url)
+    data = request_json("GET", dex_url)
 
-    if not isinstance(data, list) or not data:
-        print("⚠️ No DexScreener pairs returned.")
-        return None
+    if isinstance(data, list):
+        dex_pairs = [
+            p for p in data
+            if isinstance(p, dict)
+        ]
 
-    pairs = [
-        pair for pair in data
-        if isinstance(pair, dict)
-    ]
+    print(f"🔎 DexScreener pairs discovered: {len(dex_pairs)}")
 
-    if not pairs:
-        print("⚠️ No valid trading pairs found.")
-        return None
+    # --------------------------------------------------------
+    # 2. FALLBACK SOURCE: GECKOTERMINAL
+    # --------------------------------------------------------
+    gecko_liquidity = None
+    gecko_volume = None
+    gecko_market_cap = None
+    gecko_fdv = None
+    gecko_pool_address = None
+    gecko_pool_created_at = None
+    gecko_name = None
+    gecko_symbol = None
+    gecko_dex = None
+    gecko_url = None
 
-    # Prefer pairs that report liquidity.
-    # Among those, choose the pair with the most liquidity.
-    # If liquidity is unavailable, compare reported volume.
-    def pair_rank(pair):
+    if chain.lower() in ("solana", "sol"):
+        network = "solana"
+    else:
+        network = chain.lower()
 
+    gecko_url_api = (
+        "https://api.geckoterminal.com/api/v2/"
+        f"networks/{network}/tokens/{mint}/pools?page=1"
+    )
+
+    try:
+        response = requests.get(
+            gecko_url_api,
+            headers={
+                "Accept": "application/json;version=20230302"
+            },
+            timeout=12,
+        )
+
+        if response.status_code == 200:
+            gecko_json = response.json()
+
+            if isinstance(gecko_json, dict):
+                items = gecko_json.get("data", [])
+
+                if isinstance(items, list):
+                    gecko_pools = [
+                        item for item in items
+                        if isinstance(item, dict)
+                    ]
+
+        elif response.status_code == 429:
+            print("⚠️ GeckoTerminal rate limit reached.")
+
+        else:
+            print(
+                "ℹ️ GeckoTerminal response: "
+                f"HTTP {response.status_code}"
+            )
+
+    except (requests.RequestException, ValueError) as exc:
+        print(f"ℹ️ GeckoTerminal unavailable: {exc}")
+
+    # Rank pools by reported liquidity, then 24h volume.
+    def gecko_rank(pool):
+        attrs = pool.get("attributes") or {}
+
+        reserve = safe_float(
+            attrs.get("reserve_in_usd")
+        )
+
+        volume_data = attrs.get("volume_usd") or {}
+        volume_24h = safe_float(
+            volume_data.get("h24")
+        )
+
+        return (
+            reserve is not None,
+            reserve or 0,
+            volume_24h or 0,
+        )
+
+    gecko_pools.sort(
+        key=gecko_rank,
+        reverse=True,
+    )
+
+    if gecko_pools:
+        best_pool = gecko_pools[0]
+        attrs = best_pool.get("attributes") or {}
+
+        raw_reserve = attrs.get("reserve_in_usd")
+
+        if raw_reserve is not None:
+            try:
+                gecko_liquidity = float(raw_reserve)
+            except (TypeError, ValueError):
+                pass
+
+        volume_data = attrs.get("volume_usd") or {}
+        raw_volume = volume_data.get("h24")
+
+        if raw_volume is not None:
+            try:
+                gecko_volume = float(raw_volume)
+            except (TypeError, ValueError):
+                pass
+
+        gecko_market_cap = attrs.get("market_cap_usd")
+        gecko_fdv = attrs.get("fdv_usd")
+        gecko_pool_address = attrs.get("address")
+        gecko_pool_created_at = attrs.get("pool_created_at")
+        gecko_name = attrs.get("name")
+        gecko_dex = attrs.get("dex_id")
+
+        if gecko_pool_address:
+            gecko_url = (
+                "https://www.geckoterminal.com/"
+                f"{network}/pools/{gecko_pool_address}"
+            )
+
+        print(
+            "🦎 GeckoTerminal pools discovered: "
+            f"{len(gecko_pools)}"
+        )
+
+    else:
+        print("ℹ️ GeckoTerminal returned no pools.")
+
+    # --------------------------------------------------------
+    # 3. SELECT THE BEST DEXSCREENER PAIR
+    # --------------------------------------------------------
+    def dex_rank(pair):
         liquidity = pair.get("liquidity") or {}
         volume = pair.get("volume") or {}
 
-        liquidity_usd = liquidity.get("usd")
-        volume_24h = volume.get("h24")
+        raw_liquidity = liquidity.get("usd")
+        raw_volume = volume.get("h24")
 
-        has_liquidity = liquidity_usd is not None
+        created = pair.get("pairCreatedAt") or 0
 
         return (
-            has_liquidity,
-            safe_float(liquidity_usd),
-            safe_float(volume_24h),
-            safe_float(pair.get("pairCreatedAt")),
+            raw_liquidity is not None,
+            safe_float(raw_liquidity) or 0,
+            safe_float(raw_volume) or 0,
+            safe_float(created) or 0,
         )
 
-    pairs.sort(key=pair_rank, reverse=True)
+    dex_pairs.sort(
+        key=dex_rank,
+        reverse=True,
+    )
 
-    pair = pairs[0]
+    pair = dex_pairs[0] if dex_pairs else {}
 
     liquidity_data = pair.get("liquidity") or {}
-    volume = pair.get("volume") or {}
+    raw_dex_liquidity = liquidity_data.get("usd")
+
+    dex_liquidity = None
+
+    if raw_dex_liquidity is not None:
+        try:
+            dex_liquidity = float(raw_dex_liquidity)
+        except (TypeError, ValueError):
+            pass
+
+    # Prefer DexScreener liquidity when reported.
+    # Otherwise use GeckoTerminal's pool reserve.
+    liquidity_usd = (
+        dex_liquidity
+        if dex_liquidity is not None
+        else gecko_liquidity
+    )
+
+    volume_data = pair.get("volume") or {}
+    raw_dex_volume = volume_data.get("h24")
+
+    volume_24h = (
+        raw_dex_volume
+        if raw_dex_volume is not None
+        else gecko_volume
+    )
+
     txns = pair.get("txns") or {}
     h24 = txns.get("h24") or {}
 
-    # Keep unavailable liquidity distinct from reported zero.
-    liquidity_usd = None
-    raw_liquidity = liquidity_data.get("usd")
+    buys = int(h24.get("buys") or 0)
+    sells = int(h24.get("sells") or 0)
 
-    if raw_liquidity is not None:
-        try:
-            liquidity_usd = float(raw_liquidity)
-        except (TypeError, ValueError):
-            liquidity_usd = None
-
-    buys = int(safe_float(h24.get("buys")))
-    sells = int(safe_float(h24.get("sells")))
-    total_txns = buys + sells
-
+    # Market cap and FDV are different metrics.
     market_cap = pair.get("marketCap")
 
     if market_cap is None:
+        market_cap = gecko_market_cap
+
+    if market_cap is None:
         market_cap = pair.get("fdv")
+
+    if market_cap is None:
+        market_cap = gecko_fdv
 
     pair_created_at = pair.get("pairCreatedAt")
     age_hours = None
@@ -266,7 +408,7 @@ def get_market_data(chain, mint):
         try:
             created = datetime.fromtimestamp(
                 float(pair_created_at) / 1000,
-                tz=timezone.utc
+                tz=timezone.utc,
             )
 
             age_hours = (
@@ -276,53 +418,118 @@ def get_market_data(chain, mint):
             if age_hours < 0:
                 age_hours = None
 
-        except (TypeError, ValueError, OSError, OverflowError):
-            age_hours = None
+        except (TypeError, ValueError, OSError):
+            pass
 
-    # Collect unique pool/pair addresses.
-    pool_addresses = list({
-        str(item.get("pairAddress"))
-        for item in pairs
-        if item.get("pairAddress")
-    })
+    # If DexScreener has no creation timestamp, try GeckoTerminal.
+    if age_hours is None and gecko_pool_created_at:
+        try:
+            created_text = str(gecko_pool_created_at)
 
-    print(f"🔎 Pairs discovered: {len(pairs)}")
+            if created_text.endswith("Z"):
+                created_text = (
+                    created_text[:-1] + "+00:00"
+                )
+
+            created = datetime.fromisoformat(
+                created_text
+            )
+
+            if created.tzinfo is None:
+                created = created.replace(
+                    tzinfo=timezone.utc
+                )
+
+            age_hours = (
+                now_utc() - created.astimezone(
+                    timezone.utc
+                )
+            ).total_seconds() / 3600
+
+            if age_hours < 0:
+                age_hours = None
+
+        except (TypeError, ValueError, OSError):
+            pass
+
+    pool_addresses = {
+        str(p.get("pairAddress"))
+        for p in dex_pairs
+        if p.get("pairAddress")
+    }
+
+    if gecko_pool_address:
+        pool_addresses.add(str(gecko_pool_address))
+
+    # Prefer token metadata from DexScreener when available.
+    base_token = pair.get("baseToken") or {}
+
+    name = (
+        base_token.get("name")
+        or gecko_name
+        or "Unknown"
+    )
+
+    symbol = (
+        base_token.get("symbol")
+        or "UNKNOWN"
+    )
+
+    pair_address = (
+        pair.get("pairAddress")
+        or gecko_pool_address
+    )
+
+    dex_name = (
+        pair.get("dexId")
+        or gecko_dex
+    )
+
+    pair_url = (
+        pair.get("url")
+        or gecko_url
+    )
 
     if liquidity_usd is None:
-        print(
-            "⚠️ Selected pair liquidity was not "
-            "reported by DexScreener."
-        )
+        print("⚠️ Liquidity could not be verified.")
     else:
+        source = (
+            "DexScreener"
+            if dex_liquidity is not None
+            else "GeckoTerminal"
+        )
+
         print(
-            f"💧 Selected pair liquidity: "
-            f"{fmt_usd(liquidity_usd)}"
+            f"💧 Liquidity: {fmt_usd(liquidity_usd)} "
+            f"(source: {source})"
         )
 
     return {
         "pair": pair,
-        "pairs": pairs,
-        "pair_address": pair.get("pairAddress"),
-        "pool_addresses": pool_addresses,
-
-        "name": (
-            pair.get("baseToken") or {}
-        ).get("name") or "Unknown",
-
-        "symbol": (
-            pair.get("baseToken") or {}
-        ).get("symbol") or "UNKNOWN",
-
+        "pairs": dex_pairs,
+        "pair_address": pair_address,
+        "pool_addresses": list(pool_addresses),
+        "name": name,
+        "symbol": symbol,
         "market_cap": market_cap,
         "liquidity_usd": liquidity_usd,
-        "volume_24h": volume.get("h24"),
+        "volume_24h": volume_24h,
         "buys": buys,
         "sells": sells,
-        "total_txns": total_txns,
+        "total_txns": buys + sells,
         "pair_created_at": pair_created_at,
         "age_hours": age_hours,
-        "dex": pair.get("dexId"),
-        "url": pair.get("url"),
+        "dex": dex_name,
+        "url": pair_url,
+        "liquidity_source": (
+            "DexScreener"
+            if dex_liquidity is not None
+            else (
+                "GeckoTerminal"
+                if gecko_liquidity is not None
+                else None
+            )
+        ),
     }
 
 
