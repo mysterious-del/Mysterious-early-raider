@@ -182,16 +182,13 @@ def helius_request(method, params):
         )
         return None
 
-
 # ============================================================
-# DEXSCREENER MARKET DATA
+# DEXSCREENER MARKET DATA — IMPROVED LIQUIDITY DETECTION
 # ============================================================
 
 def get_market_data(chain, mint):
 
-    print(
-        "\n📡 Checking market data..."
-    )
+    print("\n📡 Checking market data...")
 
     url = (
         f"{DEXSCREENER_BASE}"
@@ -199,128 +196,126 @@ def get_market_data(chain, mint):
         f"{chain}/{mint}"
     )
 
-    data = request_json(
-        "GET",
-        url
-    )
+    data = request_json("GET", url)
 
-    if not isinstance(data, list):
+    if not isinstance(data, list) or not data:
+        print("⚠️ No DexScreener pairs returned.")
         return None
 
-    if not data:
+    pairs = [
+        pair for pair in data
+        if isinstance(pair, dict)
+    ]
+
+    if not pairs:
+        print("⚠️ No valid trading pairs found.")
         return None
 
-    pairs = data
+    # Prefer pairs that report liquidity.
+    # Among those, choose the pair with the most liquidity.
+    # If liquidity is unavailable, compare reported volume.
+    def pair_rank(pair):
 
-    pairs_sorted = sorted(
-        pairs,
-        key=lambda p: safe_float(
-            p.get("pairCreatedAt")
-        ),
-        reverse=True
-    )
+        liquidity = pair.get("liquidity") or {}
+        volume = pair.get("volume") or {}
 
-    pair = pairs_sorted[0]
+        liquidity_usd = liquidity.get("usd")
+        volume_24h = volume.get("h24")
 
-    liquidity = (
-        pair.get("liquidity")
-        or {}
-    )
+        has_liquidity = liquidity_usd is not None
 
-    volume = (
-        pair.get("volume")
-        or {}
-    )
+        return (
+            has_liquidity,
+            safe_float(liquidity_usd),
+            safe_float(volume_24h),
+            safe_float(pair.get("pairCreatedAt")),
+        )
 
-    txns = (
-        pair.get("txns")
-        or {}
-    )
+    pairs.sort(key=pair_rank, reverse=True)
 
-    h24 = (
-        txns.get("h24")
-        or {}
-    )
+    pair = pairs[0]
 
-    buys = int(
-        h24.get("buys") or 0
-    )
+    liquidity_data = pair.get("liquidity") or {}
+    volume = pair.get("volume") or {}
+    txns = pair.get("txns") or {}
+    h24 = txns.get("h24") or {}
 
-    sells = int(
-        h24.get("sells") or 0
-    )
+    # Keep unavailable liquidity distinct from reported zero.
+    liquidity_usd = None
+    raw_liquidity = liquidity_data.get("usd")
 
-    total_txns = (
-        buys + sells
-    )
+    if raw_liquidity is not None:
+        try:
+            liquidity_usd = float(raw_liquidity)
+        except (TypeError, ValueError):
+            liquidity_usd = None
 
-    market_cap = (
-        pair.get("marketCap")
-    )
+    buys = int(safe_float(h24.get("buys")))
+    sells = int(safe_float(h24.get("sells")))
+    total_txns = buys + sells
+
+    market_cap = pair.get("marketCap")
 
     if market_cap is None:
-        market_cap = pair.get(
-            "fdv"
-        )
+        market_cap = pair.get("fdv")
 
-    pair_created_at = (
-        pair.get("pairCreatedAt")
-    )
-
+    pair_created_at = pair.get("pairCreatedAt")
     age_hours = None
 
-    if pair_created_at:
-
-        created = datetime.fromtimestamp(
-            pair_created_at / 1000,
-            tz=timezone.utc
-        )
-
-        age_hours = (
-            now_utc() - created
-        ).total_seconds() / 3600
-
-    pool_addresses = []
-
-    for p in pairs:
-
-        address = p.get(
-            "pairAddress"
-        )
-
-        if address:
-            pool_addresses.append(
-                address
+    if pair_created_at is not None:
+        try:
+            created = datetime.fromtimestamp(
+                float(pair_created_at) / 1000,
+                tz=timezone.utc
             )
+
+            age_hours = (
+                now_utc() - created
+            ).total_seconds() / 3600
+
+            if age_hours < 0:
+                age_hours = None
+
+        except (TypeError, ValueError, OSError, OverflowError):
+            age_hours = None
+
+    # Collect unique pool/pair addresses.
+    pool_addresses = list({
+        str(item.get("pairAddress"))
+        for item in pairs
+        if item.get("pairAddress")
+    })
+
+    print(f"🔎 Pairs discovered: {len(pairs)}")
+
+    if liquidity_usd is None:
+        print(
+            "⚠️ Selected pair liquidity was not "
+            "reported by DexScreener."
+        )
+    else:
+        print(
+            f"💧 Selected pair liquidity: "
+            f"{fmt_usd(liquidity_usd)}"
+        )
 
     return {
         "pair": pair,
         "pairs": pairs,
-        "pair_address": pair.get(
-            "pairAddress"
-        ),
+        "pair_address": pair.get("pairAddress"),
         "pool_addresses": pool_addresses,
+
         "name": (
-            pair.get(
-                "baseToken",
-                {}
-            ).get("name")
-            or "Unknown"
-        ),
+            pair.get("baseToken") or {}
+        ).get("name") or "Unknown",
+
         "symbol": (
-            pair.get(
-                "baseToken",
-                {}
-            ).get("symbol")
-            or "UNKNOWN"
-        ),
+            pair.get("baseToken") or {}
+        ).get("symbol") or "UNKNOWN",
+
         "market_cap": market_cap,
-        "liquidity_usd": (
-            liquidity.get("usd")
-        ),
-        "volume_24h": (
-            volume.get("h24")
-        ),
+        "liquidity_usd": liquidity_usd,
+        "volume_24h": volume.get("h24"),
         "buys": buys,
         "sells": sells,
         "total_txns": total_txns,
@@ -329,6 +324,7 @@ def get_market_data(chain, mint):
         "dex": pair.get("dexId"),
         "url": pair.get("url"),
     }
+
 
 
 # ============================================================
