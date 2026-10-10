@@ -2957,7 +2957,7 @@ def main():
     # FINAL VERDICT
     # --------------------------------------------------------
 
-    security = "CLEAN"
+        security = "AUTHORITY CHECKS PASSED"
 
     if (
         mint_info.get(
@@ -2968,7 +2968,7 @@ def main():
         ) is not None
     ):
 
-        security = "REVIEW"
+        security = "AUTHORITY REVIEW"
 
     if (
         holder_data.get(
