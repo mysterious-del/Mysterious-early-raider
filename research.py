@@ -2700,9 +2700,19 @@ def main():
             f"{holder_data.get('top1_pct', 0):.2f}%"
         )
 
+                decimals = mint_info.get(
+            "decimals",
+            0
+        )
+
+        token_balance = (
+            real_holders[0][1]
+            / (10 ** decimals)
+        )
+
         print(
             f"🪙 Balance: "
-            f"{fmt_number(real_holders[0][1])}"
+            f"{fmt_number(token_balance)}"
         )
 
     # --------------------------------------------------------
