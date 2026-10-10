@@ -1973,40 +1973,6 @@ def get_verdict(
     market
 ):
 
-    age_hours = market.get(
-        "age_hours"
-    )
-
-    txns = int(
-        market.get(
-            "total_txns"
-        )
-        or 0
-    )
-
-    market_cap = safe_float(
-        market.get(
-            "market_cap"
-        )
-    )
-
-    volume = safe_float(
-        market.get(
-            "volume_24h"
-        )
-    )
-
-    if (
-        txns > 1500
-        or volume > 100000
-        or market_cap > 10000
-        or (
-            age_hours is not None
-            and age_hours > 24
-        )
-    ):
-        return "🔴 IGNORE"
-
     if score >= 70:
         return "🟢 WATCH"
 
