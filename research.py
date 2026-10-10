@@ -3039,9 +3039,23 @@ def main():
         )
     )
 
+        pool_status = pool_origin.get(
+        "status",
+        "UNKNOWN"
+    )
+
+    if pool_status == "FOUND":
+        pool_label = "ORIGIN CANDIDATE FOUND"
+
+    elif pool_status == "NO_CLEAR_FUNDING":
+        pool_label = "NO CLEAR FUNDING FOUND"
+
+    else:
+        pool_label = "UNVERIFIED"
+
     print(
         f"🏊 Pool Origin: "
-        f"{pool_origin.get('status', 'UNKNOWN')}"
+        f"{pool_label}"
     )
 
     print(
