@@ -2175,20 +2175,15 @@ def print_creator_report(
     mint_info
 ):
 
-    print(
-        "\n👤 CREATOR / DEPLOYER"
-    )
+    print("\n👤 CREATOR / DEPLOYER")
 
     if not creator:
-
-        print(
-            "🧑 Likely Creator: "
-            "Unavailable"
-        )
+        print("🧑 Likely Creator: Unavailable")
 
         return {
             "creator": None,
             "creator_supply_pct": 0,
+            "token_activity": "Unknown",
             "risk": "UNKNOWN",
         }
 
@@ -2198,22 +2193,14 @@ def print_creator_report(
     )
 
     raw_supply = safe_float(
-        mint_info.get(
-            "raw_supply"
-        )
+        mint_info.get("raw_supply")
     )
 
     creator_pct = 0
 
-    if (
-        balance is not None
-        and raw_supply > 0
-    ):
-
+    if balance is not None and raw_supply > 0:
         creator_pct = (
-            balance
-            / raw_supply
-            * 100
+            balance / raw_supply * 100
         )
 
     sol_balance = get_sol_balance(
@@ -2224,36 +2211,49 @@ def print_creator_report(
         creator
     )
 
-    risk = "LOW"
+    token_activity = history.get(
+        "token_activity"
+    )
 
-    if creator_pct >= 20:
+    if token_activity is None:
+        token_activity = "Unknown"
+
+    activity_text = str(
+        token_activity
+    ).strip()
+
+    # Unknown activity must not be treated as low risk.
+    if activity_text.lower() in (
+        "",
+        "unknown",
+        "unavailable",
+        "not checked",
+        "none",
+    ):
+        risk = "UNVERIFIED"
+
+    elif creator_pct >= 20:
         risk = "HIGH"
 
     elif creator_pct >= 5:
         risk = "MEDIUM"
 
+    else:
+        risk = "LOW"
+
     print(
-        f"🧑 Likely Creator: "
-        f"{creator}"
+        f"🧑 Likely Creator: {creator}"
     )
 
     if sol_balance is None:
-
-        print(
-            "💰 Creator SOL: "
-            "Unavailable"
-        )
-
+        print("💰 Creator SOL: Unavailable")
     else:
-
         print(
-            f"💰 Creator SOL: "
-            f"{sol_balance:.4f} SOL"
+            f"💰 Creator SOL: {sol_balance:.4f} SOL"
         )
 
     print(
-        f"📊 Creator Supply: "
-        f"{creator_pct:.2f}%"
+        f"📊 Creator Supply: {creator_pct:.2f}%"
     )
 
     print(
@@ -2263,17 +2263,17 @@ def print_creator_report(
 
     print(
         f"🪙 Creator Token Activity: "
-        f"{history.get('token_activity', 'Unknown')}"
+        f"{activity_text}"
     )
 
     print(
-        f"🧠 Creator Risk: "
-        f"{risk}"
+        f"🧠 Creator Risk: {risk}"
     )
 
     return {
         "creator": creator,
         "creator_supply_pct": creator_pct,
+        "token_activity": activity_text,
         "risk": risk,
     }
 
