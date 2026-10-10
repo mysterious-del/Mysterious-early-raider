@@ -1838,20 +1838,21 @@ def calculate_score(
         if 1000 <= market_cap <= 2000:
             score += 20
 
-        elif 2000 < market_cap <= 4000:
+        elif market_cap <= 4000 and market_cap > 2000:
             score += 15
 
-        elif 4000 < market_cap <= 7000:
+        elif market_cap <= 7000 and market_cap > 4000:
             score += 10
 
-        elif 7000 < market_cap <= 10000:
+        elif market_cap <= 10000 and market_cap > 7000:
             score += 5
 
     # --------------------------------------------------------
     # PAIR AGE
+    # Newness is context, not proof of quality.
     # --------------------------------------------------------
 
-    if age_hours is not None:
+    if age_hours is not None and age_hours >= 0:
 
         if age_hours <= 0.5:
             score += 15
@@ -1867,11 +1868,10 @@ def calculate_score(
 
     # --------------------------------------------------------
     # TRADING ACTIVITY
-    # Missing data earns no points.
-    # Low activity earns no bonus.
+    # Low activity earns no points.
     # --------------------------------------------------------
 
-    if volume is not None:
+    if volume is not None and volume >= 0:
 
         if volume >= 10000:
             score += 15
@@ -1882,7 +1882,7 @@ def calculate_score(
         elif volume >= 500:
             score += 5
 
-    if txns is not None:
+    if txns is not None and txns >= 0:
 
         if txns >= 100:
             score += 10
@@ -1901,6 +1901,13 @@ def calculate_score(
     top1 = holders.get("top1_pct", 0)
     top10 = holders.get("top10_pct", 0)
 
+    holder_count = int(
+        safe_float(holder_count)
+    )
+
+    top1 = safe_float(top1)
+    top10 = safe_float(top10)
+
     if holder_count >= 50:
         score += 10
 
@@ -1912,22 +1919,31 @@ def calculate_score(
 
     if holder_count > 0:
 
-        if top1 >= 30:
-            score -= 15
+        # Concentration in the largest detected holder
+        if top1 >= 50:
+            score -= 25
+
+        elif top1 >= 30:
+            score -= 20
 
         elif top1 >= 20:
-            score -= 10
+            score -= 12
 
         elif top1 >= 10:
             score -= 5
 
-        if top10 >= 60:
+        # Concentration among the largest ten holders
+        if top10 >= 80:
+            score -= 20
+
+        elif top10 >= 60:
             score -= 15
 
         elif top10 >= 40:
             score -= 8
 
     else:
+        # No detected holders is uncertainty, not proof of safety.
         score -= 10
 
     # --------------------------------------------------------
@@ -1945,7 +1961,7 @@ def calculate_score(
         score -= 10
 
     return max(0, min(100, score))
-
+ 
 
 
 # ============================================================
