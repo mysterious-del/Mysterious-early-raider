@@ -2810,94 +2810,148 @@ def main():
     else:
         print("• No positive signals identified")
 
-    # --------------------------------------------------------
+      # --------------------------------------------------------
     # WARNINGS
     # --------------------------------------------------------
 
     warnings = []
 
-    liquidity = market.get(
-        "liquidity_usd"
+    liquidity = market.get("liquidity_usd")
+    volume = safe_float(market.get("volume_24h"))
+    txns = int(market.get("total_txns") or 0)
+
+    holder_count = int(
+        holder_data.get("holder_count") or 0
     )
 
+    top1_pct = safe_float(
+        holder_data.get("top1_pct")
+    )
+
+    top5_pct = safe_float(
+        holder_data.get("top5_pct")
+    )
+
+    top10_pct = safe_float(
+        holder_data.get("top10_pct")
+    )
+
+    age_hours = market.get("age_hours")
+
+    # Liquidity
     if liquidity is None:
-
         warnings.append(
-            "liquidity unavailable"
+            "Liquidity data unavailable"
         )
-
-    elif safe_float(
-        liquidity
-    ) < 1000:
-
+    elif safe_float(liquidity) < 1000:
         warnings.append(
-            "very low liquidity"
+            "Very low liquidity: under $1,000"
         )
 
-    if holder_data.get(
-        "holder_count",
-        0
-    ) == 0:
-
+    # Trading activity
+    if volume < 100:
         warnings.append(
-            "no real holders yet; "
-            "supply is currently "
-            "in pool/LP"
+            "Extremely low 24-hour volume: under $100"
+        )
+    elif volume < 500:
+        warnings.append(
+            "Very low 24-hour volume: under $500"
         )
 
-    if (
-        pool_origin.get(
-            "creator_link"
+    if txns == 0:
+        warnings.append(
+            "No transactions recorded in the reported period"
         )
-        is True
+    elif txns < 5:
+        warnings.append(
+            "Extremely low trading activity: fewer than 5 transactions"
+        )
+    elif txns < 20:
+        warnings.append(
+            "Low trading activity: fewer than 20 transactions"
+        )
+
+    # Holder distribution
+    if holder_count == 0:
+        warnings.append(
+            "No real holders detected; holder data may be incomplete"
+        )
+    elif holder_count < 10:
+        warnings.append(
+            "Very small detected holder base: fewer than 10 holders"
+        )
+
+    if top1_pct >= 30:
+        warnings.append(
+            f"High top-holder concentration: {top1_pct:.2f}%"
+        )
+    elif top1_pct >= 20:
+        warnings.append(
+            f"Elevated top-holder concentration: {top1_pct:.2f}%"
+        )
+
+    if top10_pct >= 60:
+        warnings.append(
+            f"High top-10 holder concentration: {top10_pct:.2f}%"
+        )
+
+    # Creator information
+    creator_activity = str(
+        creator_data.get("creator_token_activity") or "Unknown"
+    ).strip().lower()
+
+    if creator_activity in (
+        "unknown",
+        "none",
+        "unavailable",
+        "not checked",
+        ""
     ):
-
         warnings.append(
-            "creator directly linked "
-            "to initial pool funding"
+            "Creator token activity is unknown or unverified"
         )
 
-    if (
-        creator_data.get(
-            "creator_supply_pct",
-            0
-        ) >= 20
-    ):
-
-        warnings.append(
-            "creator holds "
-            "significant supply"
-        )
-
-    if (
-        pool_origin.get(
-            "status"
-        )
-        == "UNKNOWN"
-    ):
-
-        warnings.append(
-            "pool token origin "
-            "could not be verified"
-        )
-
-    print(
-        "\n🚩 WARNINGS"
+    creator_supply = safe_float(
+        creator_data.get("creator_supply_pct")
     )
 
-    if warnings:
+    if creator_supply >= 20:
+        warnings.append(
+            "Creator holds significant detected token supply"
+        )
 
-        for item in warnings:
+    # Pool origin
+    creator_link = pool_origin.get("creator_link")
 
-            print(
-                f"• {item}"
+    if creator_link is True:
+        warnings.append(
+            "Creator directly linked to initial pool funding"
+        )
+
+    if pool_origin.get("status") == "UNKNOWN":
+        warnings.append(
+            "Pool token origin could not be verified"
+        )
+
+    if pool_origin.get("trace_method") == "raw fallback":
+        warnings.append(
+            "Pool origin uses fallback tracing; results may be incomplete"
+        )
+
+    # Pair age: context, not proof of risk
+    if age_hours is not None and safe_float(age_hours) > 24 * 30:
+        if volume < 500 or txns < 20:
+            warnings.append(
+                "Older pair with very low recent activity; check whether it is inactive"
             )
 
-    else:
+    print("\n🚩 WARNINGS")
 
-        print(
-            "• None identified"
-        )
+    if warnings:
+        for item in warnings:
+            print(f"• {item}")
+    else:
+        print("• No configured warning conditions triggered")
 
     # --------------------------------------------------------
     # FINAL VERDICT
