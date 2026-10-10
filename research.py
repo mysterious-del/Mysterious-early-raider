@@ -1795,7 +1795,6 @@ def get_wallet_history(wallet):
             "Unknown",
     }
 
-
 # ============================================================
 # SCORING
 # ============================================================
@@ -1805,126 +1804,148 @@ def calculate_score(
     holders,
     mint_info
 ):
-
     score = 0
 
-    market_cap = safe_float(
-        market.get(
-            "market_cap"
-        )
+    market_cap = market.get("market_cap")
+    age_hours = market.get("age_hours")
+    volume_raw = market.get("volume_24h")
+    txns_raw = market.get("total_txns")
+
+    market_cap = (
+        safe_float(market_cap)
+        if market_cap is not None
+        else None
     )
 
-    age_hours = market.get(
-        "age_hours"
+    volume = (
+        safe_float(volume_raw)
+        if volume_raw is not None
+        else None
     )
 
-    volume = safe_float(
-        market.get(
-            "volume_24h"
-        )
+    txns = (
+        int(txns_raw)
+        if txns_raw is not None
+        else None
     )
 
-    txns = int(
-        market.get(
-            "total_txns"
-        )
-        or 0
-    )
+    # --------------------------------------------------------
+    # MARKET CAP
+    # --------------------------------------------------------
 
-    if 1000 <= market_cap <= 2000:
-        score += 25
+    if market_cap is not None:
 
-    elif 2000 < market_cap <= 4000:
-        score += 20
+        if 1000 <= market_cap <= 2000:
+            score += 20
 
-    elif 4000 < market_cap <= 7000:
-        score += 15
+        elif 2000 < market_cap <= 4000:
+            score += 15
 
-    elif 7000 < market_cap <= 10000:
-        score += 10
+        elif 4000 < market_cap <= 7000:
+            score += 10
+
+        elif 7000 < market_cap <= 10000:
+            score += 5
+
+    # --------------------------------------------------------
+    # PAIR AGE
+    # --------------------------------------------------------
 
     if age_hours is not None:
 
         if age_hours <= 0.5:
-            score += 25
+            score += 15
 
         elif age_hours <= 1:
-            score += 20
+            score += 12
 
         elif age_hours <= 6:
+            score += 8
+
+        elif age_hours <= 24:
+            score += 3
+
+    # --------------------------------------------------------
+    # TRADING ACTIVITY
+    # Missing data earns no points.
+    # Low activity earns no bonus.
+    # --------------------------------------------------------
+
+    if volume is not None:
+
+        if volume >= 10000:
+            score += 15
+
+        elif volume >= 3000:
             score += 10
 
-    if volume <= 500:
-        score += 20
+        elif volume >= 500:
+            score += 5
 
-    elif volume <= 3000:
-        score += 12
+    if txns is not None:
 
-    if txns <= 20:
-        score += 15
+        if txns >= 100:
+            score += 10
 
-    elif txns <= 60:
+        elif txns >= 40:
+            score += 7
+
+        elif txns >= 15:
+            score += 3
+
+    # --------------------------------------------------------
+    # HOLDER DISTRIBUTION
+    # --------------------------------------------------------
+
+    holder_count = holders.get("holder_count", 0)
+    top1 = holders.get("top1_pct", 0)
+    top10 = holders.get("top10_pct", 0)
+
+    if holder_count >= 50:
         score += 10
 
-    holder_count = holders.get(
-        "holder_count",
-        0
-    )
+    elif holder_count >= 20:
+        score += 7
 
-    top1 = holders.get(
-        "top1_pct",
-        0
-    )
-
-    top10 = holders.get(
-        "top10_pct",
-        0
-    )
+    elif holder_count >= 10:
+        score += 3
 
     if holder_count > 0:
 
-        if holder_count < 20:
+        if top1 >= 30:
+            score -= 15
+
+        elif top1 >= 20:
             score -= 10
 
-        if 10 <= top1 < 20:
+        elif top1 >= 10:
             score -= 5
 
-        elif 20 <= top1 < 30:
-            score -= 10
+        if top10 >= 60:
+            score -= 15
 
-        elif top1 >= 30:
-            score -= 20
+        elif top10 >= 40:
+            score -= 8
 
-        if 40 <= top10 < 60:
-            score -= 10
+    else:
+        score -= 10
 
-        elif top10 >= 60:
-            score -= 20
+    # --------------------------------------------------------
+    # TOKEN AUTHORITIES
+    # --------------------------------------------------------
 
-    if (
-        mint_info.get(
-            "mint_authority"
-        )
-        is None
-    ):
+    if mint_info.get("mint_authority") is None:
         score += 5
     else:
         score -= 10
 
-    if (
-        mint_info.get(
-            "freeze_authority"
-        )
-        is None
-    ):
+    if mint_info.get("freeze_authority") is None:
         score += 5
     else:
         score -= 10
 
-    return max(
-        0,
-        min(100, score)
-    )
+    return max(0, min(100, score))
+
 
 
 # ============================================================
