@@ -2743,153 +2743,72 @@ def main():
                 "the top real holder."
             )
 
-    # --------------------------------------------------------
+     # --------------------------------------------------------
     # POSITIVES
     # --------------------------------------------------------
 
     positives = []
 
     mc = safe_float(
-        market.get(
-            "market_cap"
-        )
+        market.get("market_cap")
     )
 
     volume = safe_float(
-        market.get(
-            "volume_24h"
-        )
+        market.get("volume_24h")
     )
 
     txns = int(
-        market.get(
-            "total_txns"
-        )
-        or 0
+        market.get("total_txns") or 0
     )
 
-    age_hours = market.get(
-        "age_hours"
-    )
+    age_hours = market.get("age_hours")
 
     if 1000 <= mc <= 2000:
-
         positives.append(
-            "very early MC"
+            "Very early market cap (high risk)"
         )
 
     elif 2000 < mc <= 4000:
-
         positives.append(
-            "early MC"
+            "Early market cap (high risk)"
         )
 
     elif 4000 < mc <= 7000:
-
         positives.append(
-            "$4K-$7K MC"
+            "Market cap between $4K and $7K"
         )
 
-    if (
-        age_hours is not None
-        and age_hours <= 1
-    ):
-
+    if mint_info.get("mint_authority") is None:
         positives.append(
-            "under 1 hour old"
+            "Mint authority revoked"
         )
 
-    elif (
-        age_hours is not None
-        and age_hours <= 6
-    ):
-
+    if mint_info.get("freeze_authority") is None:
         positives.append(
-            "under 6 hours old"
+            "Freeze authority revoked"
         )
 
-    if volume <= 500:
-
-        positives.append(
-            "very low volume"
-        )
-
-    elif volume <= 3000:
-
-        positives.append(
-            "low volume"
-        )
-
-    if txns <= 20:
-
-        positives.append(
-            "very low transaction count"
-        )
-
-    elif txns <= 60:
-
-        positives.append(
-            "low transaction count"
-        )
-
-    if mint_info.get(
-        "mint_authority"
-    ) is None:
-
-        positives.append(
-            "mint authority revoked"
-        )
-
-    if mint_info.get(
-        "freeze_authority"
-    ) is None:
-
-        positives.append(
-            "freeze authority revoked"
-        )
-
-    if (
-        creator_data.get(
-            "creator_supply_pct",
-            0
-        )
-        == 0
-    ):
-
-        positives.append(
-            "creator currently holds "
-            "no token supply"
-        )
-
-    if (
-        pool_origin.get(
-            "creator_link"
-        )
-        is False
-    ):
-
-        positives.append(
-            "creator not directly "
-            "linked to initial pool funding"
-        )
-
-    print(
-        "\n✅ POSITIVE SIGNALS"
+    creator_supply = safe_float(
+        creator_data.get("creator_supply_pct")
     )
 
-    if positives:
-
-        for item in positives:
-
-            print(
-                f"• {item}"
-            )
-
-    else:
-
-        print(
-            "• None identified"
+    if creator_supply == 0:
+        positives.append(
+            "Creator currently holds no detected token supply"
         )
+
+    if pool_origin.get("creator_link") is False:
+        positives.append(
+            "No direct creator-to-pool funding link detected"
+        )
+
+    print("\n✅ POSITIVE SIGNALS")
+
+    if positives:
+        for item in positives:
+            print(f"• {item}")
+    else:
+        print("• No positive signals identified")
 
     # --------------------------------------------------------
     # WARNINGS
