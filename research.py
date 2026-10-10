@@ -2654,7 +2654,7 @@ def main():
     )
 
     # --------------------------------------------------------
-    # TOP HOLDER
+    #     # TOP HOLDER
     # --------------------------------------------------------
 
     print(
@@ -2700,7 +2700,7 @@ def main():
             f"{holder_data.get('top1_pct', 0):.2f}%"
         )
 
-                decimals = mint_info.get(
+        decimals = mint_info.get(
             "decimals",
             0
         )
