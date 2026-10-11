@@ -1829,11 +1829,14 @@ def calculate_score(
         score += points
 
         sign = "+" if points > 0 else ""
+
         breakdown.append({
             "label": label,
             "points": points,
             "detail": detail,
-            "display": f"{label}: {sign}{points} ({detail})"
+            "display": (
+                f"{label}: {sign}{points} ({detail})"
+            )
         })
 
     # --------------------------------------------------------
@@ -1844,6 +1847,7 @@ def calculate_score(
     age_raw = market.get("age_hours")
     volume_raw = market.get("volume_24h")
     txns_raw = market.get("total_txns")
+    liquidity_raw = market.get("liquidity_usd")
 
     market_cap = (
         safe_float(market_cap_raw)
@@ -1870,6 +1874,11 @@ def calculate_score(
         if txns_value is not None else None
     )
 
+    liquidity = (
+        safe_float(liquidity_raw)
+        if liquidity_raw is not None else None
+    )
+
     # --------------------------------------------------------
     # MARKET CAP
     # --------------------------------------------------------
@@ -1880,17 +1889,21 @@ def calculate_score(
     elif 1000 <= market_cap <= 2000:
         add_factor("Market cap", 20, f"${market_cap:,.0f}")
 
-    elif 2000 < market_cap <= 4000:
+    elif market_cap <= 4000 and market_cap > 2000:
         add_factor("Market cap", 15, f"${market_cap:,.0f}")
 
-    elif 4000 < market_cap <= 7000:
+    elif market_cap <= 7000 and market_cap > 4000:
         add_factor("Market cap", 10, f"${market_cap:,.0f}")
 
-    elif 7000 < market_cap <= 10000:
+    elif market_cap <= 10000 and market_cap > 7000:
         add_factor("Market cap", 5, f"${market_cap:,.0f}")
 
     else:
-        add_factor("Market cap", 0, f"${market_cap:,.0f}; outside target bands")
+        add_factor(
+            "Market cap",
+            0,
+            f"${market_cap:,.0f}; outside target bands"
+        )
 
     # --------------------------------------------------------
     # PAIR AGE
@@ -1912,7 +1925,11 @@ def calculate_score(
         add_factor("Pair age", 3, f"{age_hours:.1f} hours")
 
     else:
-        add_factor("Pair age", 0, f"{age_hours:.1f} hours; older pair")
+        add_factor(
+            "Pair age",
+            0,
+            f"{age_hours:.1f} hours; older pair"
+        )
 
     # --------------------------------------------------------
     # TRADING ACTIVITY
@@ -1931,7 +1948,11 @@ def calculate_score(
         add_factor("24h volume", 5, f"${volume:,.2f}")
 
     else:
-        add_factor("24h volume", 0, f"${volume:,.2f}; low activity")
+        add_factor(
+            "24h volume",
+            0,
+            f"${volume:,.2f}; low activity"
+        )
 
     if txns is None or txns < 0:
         add_factor("Transactions", 0, "unavailable")
@@ -1946,7 +1967,46 @@ def calculate_score(
         add_factor("Transactions", 3, str(txns))
 
     else:
-        add_factor("Transactions", 0, f"{txns}; limited activity")
+        add_factor(
+            "Transactions",
+            0,
+            f"{txns}; limited activity"
+        )
+
+    # --------------------------------------------------------
+    # LIQUIDITY
+    # --------------------------------------------------------
+
+    if liquidity is None or liquidity < 0:
+        add_factor("Liquidity", 0, "unavailable")
+
+    elif liquidity < 1000:
+        add_factor(
+            "Liquidity",
+            -10,
+            f"${liquidity:,.2f}; very low"
+        )
+
+    elif liquidity < 3000:
+        add_factor(
+            "Liquidity",
+            -5,
+            f"${liquidity:,.2f}; low"
+        )
+
+    elif liquidity >= 10000:
+        add_factor(
+            "Liquidity",
+            5,
+            f"${liquidity:,.2f}"
+        )
+
+    else:
+        add_factor(
+            "Liquidity",
+            0,
+            f"${liquidity:,.2f}"
+        )
 
     # --------------------------------------------------------
     # HOLDER DISTRIBUTION
@@ -1975,52 +2035,112 @@ def calculate_score(
         add_factor("Holder count", -5, "unverified")
 
     elif holder_count >= 50:
-        add_factor("Holder count", 10, f"{holder_count} detected holders")
+        add_factor(
+            "Holder count",
+            10,
+            f"{holder_count} detected holders"
+        )
 
     elif holder_count >= 20:
-        add_factor("Holder count", 7, f"{holder_count} detected holders")
+        add_factor(
+            "Holder count",
+            7,
+            f"{holder_count} detected holders"
+        )
 
     elif holder_count >= 10:
-        add_factor("Holder count", 3, f"{holder_count} detected holders")
+        add_factor(
+            "Holder count",
+            3,
+            f"{holder_count} detected holders"
+        )
 
     elif holder_count == 0:
         add_factor("Holder count", -10, "zero detected holders")
 
     else:
-        add_factor("Holder count", 0, f"{holder_count} detected holders")
+        add_factor(
+            "Holder count",
+            0,
+            f"{holder_count} detected holders"
+        )
 
     if top1 is None:
-        add_factor("Top holder concentration", -3, "unverified")
+        add_factor(
+            "Top holder concentration",
+            -3,
+            "unverified"
+        )
 
     elif top1 >= 50:
-        add_factor("Top holder concentration", -25, f"{top1:.2f}%")
+        add_factor(
+            "Top holder concentration",
+            -25,
+            f"{top1:.2f}%"
+        )
 
     elif top1 >= 30:
-        add_factor("Top holder concentration", -20, f"{top1:.2f}%")
+        add_factor(
+            "Top holder concentration",
+            -20,
+            f"{top1:.2f}%"
+        )
 
     elif top1 >= 20:
-        add_factor("Top holder concentration", -12, f"{top1:.2f}%")
+        add_factor(
+            "Top holder concentration",
+            -12,
+            f"{top1:.2f}%"
+        )
 
     elif top1 >= 10:
-        add_factor("Top holder concentration", -5, f"{top1:.2f}%")
+        add_factor(
+            "Top holder concentration",
+            -5,
+            f"{top1:.2f}%"
+        )
 
     else:
-        add_factor("Top holder concentration", 0, f"{top1:.2f}%")
+        add_factor(
+            "Top holder concentration",
+            0,
+            f"{top1:.2f}%"
+        )
 
     if top10 is None:
-        add_factor("Top 10 concentration", -3, "unverified")
+        add_factor(
+            "Top 10 concentration",
+            -3,
+            "unverified"
+        )
 
     elif top10 >= 80:
-        add_factor("Top 10 concentration", -20, f"{top10:.2f}%")
+        add_factor(
+            "Top 10 concentration",
+            -20,
+            f"{top10:.2f}%"
+        )
 
     elif top10 >= 60:
-        add_factor("Top 10 concentration", -15, f"{top10:.2f}%")
+        add_factor(
+            "Top 10 concentration",
+            -15,
+            f"{top10:.2f}%"
+        )
 
     elif top10 >= 40:
-        add_factor("Top 10 concentration", -8, f"{top10:.2f}%")
+        add_factor(
+            "Top 10 concentration",
+            -8,
+            f"{top10:.2f}%"
+        )
 
     else:
-        add_factor("Top 10 concentration", 0, f"{top10:.2f}%")
+        add_factor(
+            "Top 10 concentration",
+            0,
+            f"{top10:.2f}%"
+        )
 
     # --------------------------------------------------------
     # TOKEN AUTHORITIES
@@ -2037,12 +2157,92 @@ def calculate_score(
         add_factor("Freeze authority", -10, "active")
 
     # --------------------------------------------------------
+    # CREATOR RISK
+    # --------------------------------------------------------
+
+    creator_data = market.get("_creator_data", {})
+
+    creator_risk = str(
+        creator_data.get("risk", "UNKNOWN")
+    ).upper()
+
+    if creator_risk == "HIGH":
+        add_factor(
+            "Creator risk",
+            -15,
+            "high-risk indicators detected"
+        )
+
+    elif creator_risk == "MEDIUM":
+        add_factor(
+            "Creator risk",
+            -7,
+            "some risk indicators detected"
+        )
+
+    elif creator_risk == "LOW":
+        add_factor(
+            "Creator risk",
+            0,
+            "no high-risk indicator from current checks"
+        )
+
+    else:
+        add_factor(
+            "Creator risk",
+            -3,
+            "unverified; insufficient evidence"
+        )
+
+    # --------------------------------------------------------
+    # POOL ORIGIN
+    # --------------------------------------------------------
+
+    pool_origin = market.get("_pool_origin_data", {})
+
+    creator_link = pool_origin.get("creator_link")
+    trace_method = str(
+        pool_origin.get("method", "unknown")
+    ).lower()
+
+    events_checked = safe_float(
+        pool_origin.get("events_checked", 0)
+    )
+
+    if creator_link is True:
+        add_factor(
+            "Creator-to-pool link",
+            -3,
+            "direct link detected; not proof of wrongdoing"
+        )
+
+    elif creator_link is False:
+        add_factor(
+            "Creator-to-pool link",
+            0,
+            "no direct link detected"
+        )
+
+    else:
+        add_factor(
+            "Creator-to-pool link",
+            -1,
+            "unknown"
+        )
+
+    if trace_method == "raw fallback" and events_checked < 3:
+        add_factor(
+            "Pool trace confidence",
+            0,
+            "limited raw-history evidence"
+        )
+
+    # --------------------------------------------------------
     # FINAL SCORE
     # --------------------------------------------------------
 
     final_score = max(0, min(100, score))
 
-    # Store the breakdown for the report.
     market["_score_breakdown"] = breakdown
     market["_score_raw"] = score
     market["_score_final"] = final_score
