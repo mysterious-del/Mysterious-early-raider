@@ -2927,18 +2927,19 @@ def main():
         mint_info
     )
 
-    creator_data = (
-        print_creator_report(
-            creator,
-            mint,
-            mint_info
-        )
-    )
+    creator_data = print_creator_report(
+    creator,
+    mint,
+    mint_info
+)
 
-    print_pool_report(
-        pool_origin,
-        market
-    )
+market["_creator_data"] = creator_data
+market["_pool_origin_data"] = pool_origin
+
+print_pool_report(
+    pool_origin,
+    market
+)
 
     # --------------------------------------------------------
     #     # TOP HOLDER
