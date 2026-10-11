@@ -2867,7 +2867,7 @@ def main():
 
     
 
-       # --------------------------------------------------------
+     # --------------------------------------------------------
     # REPORTS
     # --------------------------------------------------------
 
@@ -2883,7 +2883,7 @@ def main():
         mint_info
     )
 
-        creator_data = print_creator_report(
+    creator_data = print_creator_report(
         creator,
         mint,
         mint_info
