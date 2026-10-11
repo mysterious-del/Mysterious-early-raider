@@ -1806,14 +1806,24 @@ def calculate_score(
 ):
     score = 0
 
-    market_cap = market.get("market_cap")
-    age_hours = market.get("age_hours")
+    # --------------------------------------------------------
+    # MARKET DATA
+    # --------------------------------------------------------
+
+    market_cap_raw = market.get("market_cap")
+    age_raw = market.get("age_hours")
     volume_raw = market.get("volume_24h")
     txns_raw = market.get("total_txns")
 
     market_cap = (
-        safe_float(market_cap)
-        if market_cap is not None
+        safe_float(market_cap_raw)
+        if market_cap_raw is not None
+        else None
+    )
+
+    age_hours = (
+        safe_float(age_raw)
+        if age_raw is not None
         else None
     )
 
@@ -1823,33 +1833,41 @@ def calculate_score(
         else None
     )
 
-    txns = (
-        int(txns_raw)
+    txns_value = (
+        safe_float(txns_raw)
         if txns_raw is not None
+        else None
+    )
+
+    txns = (
+        int(txns_value)
+        if txns_value is not None
         else None
     )
 
     # --------------------------------------------------------
     # MARKET CAP
+    # Rewards the early-stage range this radar targets.
+    # Low market cap does NOT mean low risk.
     # --------------------------------------------------------
 
-    if market_cap is not None:
+    if market_cap is not None and market_cap >= 0:
 
         if 1000 <= market_cap <= 2000:
             score += 20
 
-        elif market_cap <= 4000 and market_cap > 2000:
+        elif 2000 < market_cap <= 4000:
             score += 15
 
-        elif market_cap <= 7000 and market_cap > 4000:
+        elif 4000 < market_cap <= 7000:
             score += 10
 
-        elif market_cap <= 10000 and market_cap > 7000:
+        elif 7000 < market_cap <= 10000:
             score += 5
 
     # --------------------------------------------------------
     # PAIR AGE
-    # Newness is context, not proof of quality.
+    # Newness is a discovery signal, not proof of quality.
     # --------------------------------------------------------
 
     if age_hours is not None and age_hours >= 0:
@@ -1894,32 +1912,54 @@ def calculate_score(
             score += 3
 
     # --------------------------------------------------------
-    # HOLDER DISTRIBUTION
+    # HOLDER DATA
+    # Missing data is uncertainty, not proof of a scam.
     # --------------------------------------------------------
 
-    holder_count = holders.get("holder_count", 0)
-    top1 = holders.get("top1_pct", 0)
-    top10 = holders.get("top10_pct", 0)
+    holder_count_raw = holders.get("holder_count")
+    top1_raw = holders.get("top1_pct")
+    top10_raw = holders.get("top10_pct")
 
-    holder_count = int(
-        safe_float(holder_count)
+    holder_count = (
+        int(safe_float(holder_count_raw))
+        if holder_count_raw is not None
+        else None
     )
 
-    top1 = safe_float(top1)
-    top10 = safe_float(top10)
+    top1 = (
+        safe_float(top1_raw)
+        if top1_raw is not None
+        else None
+    )
 
-    if holder_count >= 50:
-        score += 10
+    top10 = (
+        safe_float(top10_raw)
+        if top10_raw is not None
+        else None
+    )
 
-    elif holder_count >= 20:
-        score += 7
+    # Reward a broader detected holder base.
+    if holder_count is not None:
 
-    elif holder_count >= 10:
-        score += 3
+        if holder_count >= 50:
+            score += 10
 
-    if holder_count > 0:
+        elif holder_count >= 20:
+            score += 7
 
-        # Concentration in the largest detected holder
+        elif holder_count >= 10:
+            score += 3
+
+        elif holder_count == 0:
+            score -= 10
+
+    else:
+        # Holder count could not be verified.
+        score -= 5
+
+    # Largest detected holder concentration.
+    if top1 is not None:
+
         if top1 >= 50:
             score -= 25
 
@@ -1932,7 +1972,13 @@ def calculate_score(
         elif top1 >= 10:
             score -= 5
 
-        # Concentration among the largest ten holders
+    else:
+        # Concentration could not be verified.
+        score -= 3
+
+    # Top-ten holder concentration.
+    if top10 is not None:
+
         if top10 >= 80:
             score -= 20
 
@@ -1943,11 +1989,12 @@ def calculate_score(
             score -= 8
 
     else:
-        # No detected holders is uncertainty, not proof of safety.
-        score -= 10
+        # Top-ten distribution could not be verified.
+        score -= 3
 
     # --------------------------------------------------------
     # TOKEN AUTHORITIES
+    # Revoked authorities are positive security signals.
     # --------------------------------------------------------
 
     if mint_info.get("mint_authority") is None:
@@ -1960,8 +2007,11 @@ def calculate_score(
     else:
         score -= 10
 
+    # --------------------------------------------------------
+    # FINAL SCORE
+    # --------------------------------------------------------
+
     return max(0, min(100, score))
- 
 
 
 # ============================================================
@@ -1972,14 +2022,13 @@ def get_verdict(
     score,
     market
 ):
-
     if score >= 70:
-        return "🟢 WATCH"
+        return "🟢 WATCHLIST CANDIDATE"
 
     if score >= 50:
-        return "🟡 CAUTION"
+        return "🟡 NEEDS FURTHER RESEARCH"
 
-    return "🔴 IGNORE"
+    return "🔴 LOW PRIORITY — SKIP FOR NOW"
 
 
 # ============================================================
