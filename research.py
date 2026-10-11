@@ -663,7 +663,16 @@ def get_holder_data(
             )
             or []
         )
+        print(
+            f"🔎 Helius holder page {page}: "
+            f"{len(accounts)} accounts"
+        )
 
+        if page == 1 and result:
+            print(
+                "🔎 Helius response fields: "
+                f"{list(result.keys())}"
+            )
         if not accounts:
             break
 
