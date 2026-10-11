@@ -1822,6 +1822,19 @@ def calculate_score(
     mint_info
 ):
     score = 0
+    breakdown = []
+
+    def add_factor(label, points, detail):
+        nonlocal score
+        score += points
+
+        sign = "+" if points > 0 else ""
+        breakdown.append({
+            "label": label,
+            "points": points,
+            "detail": detail,
+            "display": f"{label}: {sign}{points} ({detail})"
+        })
 
     # --------------------------------------------------------
     # MARKET DATA
@@ -1834,103 +1847,109 @@ def calculate_score(
 
     market_cap = (
         safe_float(market_cap_raw)
-        if market_cap_raw is not None
-        else None
+        if market_cap_raw is not None else None
     )
 
     age_hours = (
         safe_float(age_raw)
-        if age_raw is not None
-        else None
+        if age_raw is not None else None
     )
 
     volume = (
         safe_float(volume_raw)
-        if volume_raw is not None
-        else None
+        if volume_raw is not None else None
     )
 
     txns_value = (
         safe_float(txns_raw)
-        if txns_raw is not None
-        else None
+        if txns_raw is not None else None
     )
 
     txns = (
         int(txns_value)
-        if txns_value is not None
-        else None
+        if txns_value is not None else None
     )
 
     # --------------------------------------------------------
     # MARKET CAP
-    # Rewards the early-stage range this radar targets.
-    # Low market cap does NOT mean low risk.
     # --------------------------------------------------------
 
-    if market_cap is not None and market_cap >= 0:
+    if market_cap is None or market_cap < 0:
+        add_factor("Market cap", 0, "unavailable")
 
-        if 1000 <= market_cap <= 2000:
-            score += 20
+    elif 1000 <= market_cap <= 2000:
+        add_factor("Market cap", 20, f"${market_cap:,.0f}")
 
-        elif 2000 < market_cap <= 4000:
-            score += 15
+    elif 2000 < market_cap <= 4000:
+        add_factor("Market cap", 15, f"${market_cap:,.0f}")
 
-        elif 4000 < market_cap <= 7000:
-            score += 10
+    elif 4000 < market_cap <= 7000:
+        add_factor("Market cap", 10, f"${market_cap:,.0f}")
 
-        elif 7000 < market_cap <= 10000:
-            score += 5
+    elif 7000 < market_cap <= 10000:
+        add_factor("Market cap", 5, f"${market_cap:,.0f}")
+
+    else:
+        add_factor("Market cap", 0, f"${market_cap:,.0f}; outside target bands")
 
     # --------------------------------------------------------
     # PAIR AGE
-    # Newness is a discovery signal, not proof of quality.
     # --------------------------------------------------------
 
-    if age_hours is not None and age_hours >= 0:
+    if age_hours is None or age_hours < 0:
+        add_factor("Pair age", 0, "unavailable")
 
-        if age_hours <= 0.5:
-            score += 15
+    elif age_hours <= 0.5:
+        add_factor("Pair age", 15, f"{age_hours:.1f} hours")
 
-        elif age_hours <= 1:
-            score += 12
+    elif age_hours <= 1:
+        add_factor("Pair age", 12, f"{age_hours:.1f} hours")
 
-        elif age_hours <= 6:
-            score += 8
+    elif age_hours <= 6:
+        add_factor("Pair age", 8, f"{age_hours:.1f} hours")
 
-        elif age_hours <= 24:
-            score += 3
+    elif age_hours <= 24:
+        add_factor("Pair age", 3, f"{age_hours:.1f} hours")
+
+    else:
+        add_factor("Pair age", 0, f"{age_hours:.1f} hours; older pair")
 
     # --------------------------------------------------------
     # TRADING ACTIVITY
-    # Low activity earns no points.
     # --------------------------------------------------------
 
-    if volume is not None and volume >= 0:
+    if volume is None or volume < 0:
+        add_factor("24h volume", 0, "unavailable")
 
-        if volume >= 10000:
-            score += 15
+    elif volume >= 10000:
+        add_factor("24h volume", 15, f"${volume:,.2f}")
 
-        elif volume >= 3000:
-            score += 10
+    elif volume >= 3000:
+        add_factor("24h volume", 10, f"${volume:,.2f}")
 
-        elif volume >= 500:
-            score += 5
+    elif volume >= 500:
+        add_factor("24h volume", 5, f"${volume:,.2f}")
 
-    if txns is not None and txns >= 0:
+    else:
+        add_factor("24h volume", 0, f"${volume:,.2f}; low activity")
 
-        if txns >= 100:
-            score += 10
+    if txns is None or txns < 0:
+        add_factor("Transactions", 0, "unavailable")
 
-        elif txns >= 40:
-            score += 7
+    elif txns >= 100:
+        add_factor("Transactions", 10, str(txns))
 
-        elif txns >= 15:
-            score += 3
+    elif txns >= 40:
+        add_factor("Transactions", 7, str(txns))
+
+    elif txns >= 15:
+        add_factor("Transactions", 3, str(txns))
+
+    else:
+        add_factor("Transactions", 0, f"{txns}; limited activity")
 
     # --------------------------------------------------------
-    # HOLDER DATA
-    # Missing data is uncertainty, not proof of a scam.
+    # HOLDER DISTRIBUTION
     # --------------------------------------------------------
 
     holder_count_raw = holders.get("holder_count")
@@ -1939,96 +1958,96 @@ def calculate_score(
 
     holder_count = (
         int(safe_float(holder_count_raw))
-        if holder_count_raw is not None
-        else None
+        if holder_count_raw is not None else None
     )
 
     top1 = (
         safe_float(top1_raw)
-        if top1_raw is not None
-        else None
+        if top1_raw is not None else None
     )
 
     top10 = (
         safe_float(top10_raw)
-        if top10_raw is not None
-        else None
+        if top10_raw is not None else None
     )
 
-    # Reward a broader detected holder base.
-    if holder_count is not None:
+    if holder_count is None:
+        add_factor("Holder count", -5, "unverified")
 
-        if holder_count >= 50:
-            score += 10
+    elif holder_count >= 50:
+        add_factor("Holder count", 10, f"{holder_count} detected holders")
 
-        elif holder_count >= 20:
-            score += 7
+    elif holder_count >= 20:
+        add_factor("Holder count", 7, f"{holder_count} detected holders")
 
-        elif holder_count >= 10:
-            score += 3
+    elif holder_count >= 10:
+        add_factor("Holder count", 3, f"{holder_count} detected holders")
 
-        elif holder_count == 0:
-            score -= 10
-
-    else:
-        # Holder count could not be verified.
-        score -= 5
-
-    # Largest detected holder concentration.
-    if top1 is not None:
-
-        if top1 >= 50:
-            score -= 25
-
-        elif top1 >= 30:
-            score -= 20
-
-        elif top1 >= 20:
-            score -= 12
-
-        elif top1 >= 10:
-            score -= 5
+    elif holder_count == 0:
+        add_factor("Holder count", -10, "zero detected holders")
 
     else:
-        # Concentration could not be verified.
-        score -= 3
+        add_factor("Holder count", 0, f"{holder_count} detected holders")
 
-    # Top-ten holder concentration.
-    if top10 is not None:
+    if top1 is None:
+        add_factor("Top holder concentration", -3, "unverified")
 
-        if top10 >= 80:
-            score -= 20
+    elif top1 >= 50:
+        add_factor("Top holder concentration", -25, f"{top1:.2f}%")
 
-        elif top10 >= 60:
-            score -= 15
+    elif top1 >= 30:
+        add_factor("Top holder concentration", -20, f"{top1:.2f}%")
 
-        elif top10 >= 40:
-            score -= 8
+    elif top1 >= 20:
+        add_factor("Top holder concentration", -12, f"{top1:.2f}%")
+
+    elif top1 >= 10:
+        add_factor("Top holder concentration", -5, f"{top1:.2f}%")
 
     else:
-        # Top-ten distribution could not be verified.
-        score -= 3
+        add_factor("Top holder concentration", 0, f"{top1:.2f}%")
+
+    if top10 is None:
+        add_factor("Top 10 concentration", -3, "unverified")
+
+    elif top10 >= 80:
+        add_factor("Top 10 concentration", -20, f"{top10:.2f}%")
+
+    elif top10 >= 60:
+        add_factor("Top 10 concentration", -15, f"{top10:.2f}%")
+
+    elif top10 >= 40:
+        add_factor("Top 10 concentration", -8, f"{top10:.2f}%")
+
+    else:
+        add_factor("Top 10 concentration", 0, f"{top10:.2f}%")
 
     # --------------------------------------------------------
     # TOKEN AUTHORITIES
-    # Revoked authorities are positive security signals.
     # --------------------------------------------------------
 
     if mint_info.get("mint_authority") is None:
-        score += 5
+        add_factor("Mint authority", 5, "revoked")
     else:
-        score -= 10
+        add_factor("Mint authority", -10, "active")
 
     if mint_info.get("freeze_authority") is None:
-        score += 5
+        add_factor("Freeze authority", 5, "revoked")
     else:
-        score -= 10
+        add_factor("Freeze authority", -10, "active")
 
     # --------------------------------------------------------
     # FINAL SCORE
     # --------------------------------------------------------
 
-    return max(0, min(100, score))
+    final_score = max(0, min(100, score))
+
+    # Store the breakdown for the report.
+    market["_score_breakdown"] = breakdown
+    market["_score_raw"] = score
+    market["_score_final"] = final_score
+
+    return final_score
 
 
 # ============================================================
@@ -2046,7 +2065,6 @@ def get_verdict(
         return "🟡 NEEDS FURTHER RESEARCH"
 
     return "🔴 LOW PRIORITY — SKIP FOR NOW"
-
 
 # ============================================================
 # REPORTS
