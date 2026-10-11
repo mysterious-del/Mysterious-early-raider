@@ -1558,6 +1558,18 @@ def get_token_balance_deltas(
 
 def get_creation_info(mint):
 
+    unknown = {
+        "creator": None,
+        "signature": None,
+        "block_time": None,
+        "verified": False,
+        "reason": "Creation transaction not verified",
+    }
+
+    if not mint:
+        return unknown
+
+    # Fetch signatures involving the mint.
     signatures = helius_request(
         "getSignaturesForAddress",
         [
@@ -1568,33 +1580,29 @@ def get_creation_info(mint):
         ]
     )
 
-    if not signatures:
-        return {
-            "creator": None,
-            "signature": None,
-            "block_time": None,
-        }
+    if not isinstance(signatures, list) or not signatures:
+        unknown["reason"] = (
+            "No mint transaction history available"
+        )
+        return unknown
 
+    # RPC returns newest first. Sort oldest first.
     signatures = sorted(
         signatures,
-        key=lambda x: (
-            x.get("blockTime")
-            or 0
-        )
+        key=lambda item: item.get("blockTime") or 0
     )
 
+    # Inspect the earliest available transaction.
     first = signatures[0]
 
-    signature = first.get(
-        "signature"
-    )
+    signature = first.get("signature")
+    block_time = first.get("blockTime")
 
     if not signature:
-        return {
-            "creator": None,
-            "signature": None,
-            "block_time": None,
-        }
+        unknown["reason"] = (
+            "Earliest transaction has no signature"
+        )
+        return unknown
 
     transaction = helius_request(
         "getTransaction",
@@ -1608,52 +1616,66 @@ def get_creation_info(mint):
         ]
     )
 
-    if not transaction:
+    if not isinstance(transaction, dict):
         return {
-            "creator": None,
+            **unknown,
             "signature": signature,
-            "block_time": first.get(
-                "blockTime"
+            "block_time": block_time,
+            "reason": (
+                "Could not retrieve earliest transaction"
             ),
         }
 
+    # A failed transaction cannot establish creation.
+    if transaction.get("meta", {}).get("err") is not None:
+        return {
+            **unknown,
+            "signature": signature,
+            "block_time": block_time,
+            "reason": "Earliest transaction failed",
+        }
+
     message = (
-        transaction
-        .get("transaction", {})
+        transaction.get("transaction", {})
         .get("message", {})
     )
 
-    keys = (
-        message.get(
-            "accountKeys"
-        )
-        or []
-    )
+    account_keys = message.get("accountKeys") or []
 
-    creator = None
+    signers = []
 
-    for item in keys:
+    for item in account_keys:
+        if not isinstance(item, dict):
+            continue
 
-        if isinstance(
-            item,
-            dict
-        ):
+        if item.get("signer") is True:
+            pubkey = item.get("pubkey")
 
-            if item.get(
-                "signer"
-            ):
+            if pubkey:
+                signers.append(pubkey)
 
-                creator = item.get(
-                    "pubkey"
-                )
-
-                break
+    # A signer is not automatically the deployer.
+    # Do not guess when the transaction doesn't establish
+    # which signer actually created the token.
+    if len(signers) != 1:
+        return {
+            **unknown,
+            "signature": signature,
+            "block_time": block_time,
+            "reason": (
+                "Earliest transaction does not uniquely "
+                "identify a creator"
+            ),
+        }
 
     return {
-        "creator": creator,
+        "creator": signers[0],
         "signature": signature,
-        "block_time": first.get(
-            "blockTime"
+        "block_time": block_time,
+        "verified": False,
+        "reason": (
+            "Earliest available mint signer found; "
+            "actual deployer not independently verified"
         ),
     }
 
