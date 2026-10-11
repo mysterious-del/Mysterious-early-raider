@@ -2953,77 +2953,41 @@ def main():
     else:
         print("• No configured warning conditions triggered")
 
-    # --------------------------------------------------------
+        # --------------------------------------------------------
     # FINAL VERDICT
     # --------------------------------------------------------
 
-        security = "AUTHORITY CHECKS PASSED"
+    security = "AUTHORITY CHECKS PASSED"
 
     if (
-        mint_info.get(
-            "mint_authority"
-        ) is not None
-        or mint_info.get(
-            "freeze_authority"
-        ) is not None
+        mint_info.get("mint_authority") is not None
+        or mint_info.get("freeze_authority") is not None
     ):
-
         security = "AUTHORITY REVIEW"
 
-    if (
-        holder_data.get(
-            "holder_count",
-            0
-        )
-        == 0
-    ):
-
+    if holder_data.get("holder_count", 0) == 0:
         holder_risk = (
             "POOL CONCENTRATED / "
             "NO REAL HOLDERS YET"
         )
-
     else:
-
-        top1 = holder_data.get(
-            "top1_pct",
-            0
-        )
-
-        top10 = holder_data.get(
-            "top10_pct",
-            0
-        )
+        top1 = holder_data.get("top1_pct", 0)
+        top10 = holder_data.get("top10_pct", 0)
 
         if top1 >= 30:
-
             holder_risk = "HIGH"
-
         elif top1 >= 20:
-
             holder_risk = "MEDIUM"
-
         elif top10 >= 60:
-
             holder_risk = "HIGH"
-
         else:
-
             holder_risk = "LOW"
 
-    print(
-        "\n🧠 RESEARCH VERDICT"
-    )
+    print("\n🧠 RESEARCH VERDICT")
 
-    print(
-        f"🔐 Security: "
-        f"{security}"
-    )
+    print(f"🔐 Security: {security}")
 
-    print(
-        f"👥 Holder Risk: "
-        f"{holder_risk}"
-    )
+    print(f"👥 Holder Risk: {holder_risk}")
 
     print(
         f"👤 Creator Risk: "
@@ -3039,33 +3003,23 @@ def main():
         )
     )
 
-        pool_status = pool_origin.get(
+    pool_status = pool_origin.get(
         "status",
         "UNKNOWN"
     )
 
     if pool_status == "FOUND":
         pool_label = "ORIGIN CANDIDATE FOUND"
-
     elif pool_status == "NO_CLEAR_FUNDING":
         pool_label = "NO CLEAR FUNDING FOUND"
-
     else:
         pool_label = "UNVERIFIED"
 
-    print(
-        f"🏊 Pool Origin: "
-        f"{pool_label}"
-    )
+    print(f"🏊 Pool Origin: {pool_label}")
 
-    print(
-        f"🚦 FINAL: "
-        f"{verdict}"
-    )
+    print(f"🚦 FINAL: {verdict}")
 
-    print(
-        "\n🥷 RESEARCH COMPLETED"
-    )
+    print("\n🥷 RESEARCH COMPLETED")
 
 
 if __name__ == "__main__":
