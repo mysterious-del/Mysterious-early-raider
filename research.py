@@ -2865,51 +2865,7 @@ def main():
         creator
     )
 
-       # --------------------------------------------------------
-    # SCORE
-    # --------------------------------------------------------
-
-    score = calculate_score(
-        market,
-        holder_data,
-        mint_info
-    )
-
-    verdict = get_verdict(
-        score,
-        market
-    )
-
-    print(
-        f"\n🎯 Research Score: "
-        f"{score}/100"
-    )
-
-    print(
-        f"🚦 Verdict: "
-        f"{verdict}"
-    )
-
-    # --------------------------------------------------------
-    # SCORE BREAKDOWN
-    # --------------------------------------------------------
-
-    breakdown = market.get(
-        "_score_breakdown",
-        []
-    )
-
-    print("\n📊 SCORE BREAKDOWN")
-
-    if breakdown:
-        for item in breakdown:
-            print(
-                f"  {item['display']}"
-            )
-    else:
-        print(
-            "  ⚠️ No score breakdown available."
-        )
+    
 
        # --------------------------------------------------------
     # REPORTS
