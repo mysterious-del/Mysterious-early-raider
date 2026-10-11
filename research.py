@@ -678,7 +678,15 @@ def get_holder_data(
 
     holders = {}
     pool_accounts = []
+    print(
+        f"🔎 Token accounts fetched: "
+        f"{len(all_accounts)}"
+    )
 
+    print(
+        f"🏊 Excluded pool addresses: "
+        f"{len(excluded)}"
+    )
     for account in all_accounts:
 
         owner = account.get(
