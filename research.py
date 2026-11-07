@@ -3351,6 +3351,731 @@ def main():
 
     print("\n🥷 RESEARCH COMPLETED")
 
+# ============================================================
+# MYSTERIOUS EARLY RADAR — DATA-QUALITY PATCH
+# Paste this block immediately BEFORE:
+# if __name__ == "__main__":
+#     main()
+#
+# This overrides selected functions above without changing
+# your Helius key, endpoints, or GitHub Actions workflows.
+# ============================================================
+
+def _number_or_none(value):
+    """Return a finite number, or None when the source is missing/invalid."""
+    if value is None or isinstance(value, bool):
+        return None
+    try:
+        number = float(value)
+        if number != number or number in (float("inf"), float("-inf")):
+            return None
+        return number
+    except (TypeError, ValueError, OverflowError):
+        return None
+
+
+def _format_pct(value):
+    return "Unavailable" if value is None else f"{value:.2f}%"
+
+
+def get_market_data(chain, mint):
+    print("\n📡 Checking market data...")
+    dex_pairs = []
+    gecko_pools = []
+
+    dex_url = f"{DEXSCREENER_BASE}/token-pairs/v1/{chain}/{mint}"
+    data = request_json("GET", dex_url)
+    if isinstance(data, list):
+        dex_pairs = [p for p in data if isinstance(p, dict)]
+    print(f"🔎 DexScreener pairs discovered: {len(dex_pairs)}")
+
+    network = "solana" if chain.lower() in ("solana", "sol") else chain.lower()
+    gecko_url_api = (
+        "https://api.geckoterminal.com/api/v2/"
+        f"networks/{network}/tokens/{mint}/pools?page=1"
+    )
+    try:
+        response = requests.get(
+            gecko_url_api,
+            headers={"Accept": "application/json;version=20230302"},
+            timeout=12,
+        )
+        if response.status_code == 200:
+            payload = response.json()
+            if isinstance(payload, dict) and isinstance(payload.get("data"), list):
+                gecko_pools = [
+                    item for item in payload["data"]
+                    if isinstance(item, dict)
+                ]
+        elif response.status_code == 429:
+            print("⚠️ GeckoTerminal rate limit reached.")
+        else:
+            print(f"ℹ️ GeckoTerminal response: HTTP {response.status_code}")
+    except (requests.RequestException, ValueError) as exc:
+        print(f"ℹ️ GeckoTerminal unavailable: {exc}")
+
+    def gecko_rank(pool):
+        attrs = pool.get("attributes") or {}
+        reserve = _number_or_none(attrs.get("reserve_in_usd"))
+        volume_obj = attrs.get("volume_usd") or {}
+        volume = _number_or_none(volume_obj.get("h24"))
+        return (reserve is not None, reserve or 0, volume or 0)
+
+    gecko_pools.sort(key=gecko_rank, reverse=True)
+    gp = gecko_pools[0].get("attributes") or {} if gecko_pools else {}
+
+    gecko_liquidity = _number_or_none(gp.get("reserve_in_usd"))
+    gecko_volume_obj = gp.get("volume_usd") or {}
+    gecko_volume = _number_or_none(gecko_volume_obj.get("h24"))
+    gecko_market_cap = _number_or_none(gp.get("market_cap_usd"))
+    gecko_fdv = _number_or_none(gp.get("fdv_usd"))
+    gecko_pool_address = gp.get("address")
+    gecko_created = gp.get("pool_created_at")
+
+    def dex_rank(pair):
+        liq = _number_or_none((pair.get("liquidity") or {}).get("usd"))
+        vol = _number_or_none((pair.get("volume") or {}).get("h24"))
+        created = _number_or_none(pair.get("pairCreatedAt"))
+        return (liq is not None, liq or 0, vol or 0, created or 0)
+
+    dex_pairs.sort(key=dex_rank, reverse=True)
+    pair = dex_pairs[0] if dex_pairs else {}
+    dex_liquidity = _number_or_none((pair.get("liquidity") or {}).get("usd"))
+    dex_volume = _number_or_none((pair.get("volume") or {}).get("h24"))
+
+    liquidity = dex_liquidity if dex_liquidity is not None else gecko_liquidity
+    volume = dex_volume if dex_volume is not None else gecko_volume
+
+    txns = (pair.get("txns") or {}).get("h24") or {}
+    buys = _number_or_none(txns.get("buys"))
+    sells = _number_or_none(txns.get("sells"))
+    # Missing pair/transaction data is unknown, not verified zero.
+    total_txns = (
+        int(buys + sells)
+        if buys is not None and sells is not None
+        else None
+    )
+
+    market_cap = _number_or_none(pair.get("marketCap"))
+    if market_cap is None:
+        market_cap = gecko_market_cap
+    fdv = _number_or_none(pair.get("fdv"))
+    if fdv is None:
+        fdv = gecko_fdv
+
+    age_hours = None
+    pair_created = pair.get("pairCreatedAt")
+    if pair_created is not None:
+        try:
+            created_dt = datetime.fromtimestamp(
+                float(pair_created) / 1000, tz=timezone.utc
+            )
+            age_hours = (now_utc() - created_dt).total_seconds() / 3600
+            if age_hours < 0:
+                age_hours = None
+        except (TypeError, ValueError, OSError, OverflowError):
+            pass
+
+    if age_hours is None and gecko_created:
+        try:
+            text_created = str(gecko_created)
+            if text_created.endswith("Z"):
+                text_created = text_created[:-1] + "+00:00"
+            created_dt = datetime.fromisoformat(text_created)
+            if created_dt.tzinfo is None:
+                created_dt = created_dt.replace(tzinfo=timezone.utc)
+            age_hours = (
+                now_utc() - created_dt.astimezone(timezone.utc)
+            ).total_seconds() / 3600
+            if age_hours < 0:
+                age_hours = None
+        except (TypeError, ValueError, OSError):
+            pass
+
+    pool_addresses = {
+        str(p.get("pairAddress"))
+        for p in dex_pairs if p.get("pairAddress")
+    }
+    if gecko_pool_address:
+        pool_addresses.add(str(gecko_pool_address))
+
+    base = pair.get("baseToken") or {}
+    name = base.get("name") or "Unknown"
+    symbol = base.get("symbol") or "UNKNOWN"
+    pair_address = pair.get("pairAddress") or gecko_pool_address
+    dex_name = pair.get("dexId") or (gp.get("dex_id") if gp else None)
+    pair_url = pair.get("url")
+    if not pair_url and gecko_pool_address:
+        pair_url = f"https://www.geckoterminal.com/{network}/pools/{gecko_pool_address}"
+
+    print(f"🔎 GeckoTerminal pools discovered: {len(gecko_pools)}")
+    print(
+        f"💧 Liquidity: {fmt_usd(liquidity)}"
+        if liquidity is not None else "⚠️ Liquidity could not be verified."
+    )
+
+    return {
+        "pair": pair, "pairs": dex_pairs, "pair_address": pair_address,
+        "pool_addresses": list(pool_addresses), "name": name, "symbol": symbol,
+        "market_cap": market_cap, "fdv": fdv,
+        "liquidity_usd": liquidity, "volume_24h": volume,
+        "buys": int(buys) if buys is not None else None,
+        "sells": int(sells) if sells is not None else None,
+        "total_txns": total_txns, "pair_created_at": pair_created,
+        "age_hours": age_hours, "dex": dex_name, "url": pair_url,
+        "liquidity_source": (
+            "DexScreener" if dex_liquidity is not None
+            else "GeckoTerminal" if gecko_liquidity is not None else None
+        ),
+    }
+
+
+def get_mint_info(mint):
+    unavailable = {
+        "available": False, "decimals": None, "raw_supply": None,
+        "human_supply": None, "mint_authority": None,
+        "freeze_authority": None,
+    }
+    result = helius_request(
+        "getAccountInfo", [mint, {"encoding": "jsonParsed"}]
+    )
+    if not isinstance(result, dict):
+        return unavailable
+    value = result.get("value")
+    if not isinstance(value, dict):
+        return unavailable
+    parsed = ((value.get("data") or {}).get("parsed") or {})
+    info = parsed.get("info") or {}
+    if not isinstance(info, dict) or "decimals" not in info or "supply" not in info:
+        return unavailable
+    try:
+        decimals = int(info["decimals"])
+        raw_supply = int(info["supply"])
+        if decimals < 0 or raw_supply < 0:
+            return unavailable
+        human_supply = raw_supply / (10 ** decimals)
+    except (TypeError, ValueError, OverflowError):
+        return unavailable
+    return {
+        "available": True, "decimals": decimals, "raw_supply": raw_supply,
+        "human_supply": human_supply,
+        "mint_authority": info.get("mintAuthority"),
+        "freeze_authority": info.get("freezeAuthority"),
+    }
+
+
+def get_holder_data(mint, excluded_addresses=None, mint_info=None):
+    excluded = {str(x).lower() for x in (excluded_addresses or []) if x}
+    all_accounts = []
+    expected_total = None
+    page = 1
+    page_limit = 1000
+    failed = False
+
+    while page <= 10:
+        result = helius_request(
+            "getTokenAccounts",
+            {"mint": mint, "page": page, "limit": page_limit, "displayOptions": {}},
+        )
+        if not isinstance(result, dict):
+            failed = True
+            break
+        if page == 1:
+            expected_total = _number_or_none(result.get("total"))
+        accounts = result.get("token_accounts") or []
+        if not isinstance(accounts, list):
+            failed = True
+            break
+        print(f"🔎 Helius holder page {page}: {len(accounts)} accounts")
+        all_accounts.extend(a for a in accounts if isinstance(a, dict))
+        if len(accounts) < page_limit:
+            break
+        page += 1
+
+    fetched = len(all_accounts)
+    capped = page > 10 and (expected_total is None or expected_total > fetched)
+    if expected_total is not None:
+        complete = fetched >= expected_total and not failed
+        status = "COMPLETE" if complete else "INCOMPLETE"
+    else:
+        complete = False
+        status = "UNKNOWN — Helius total not supplied"
+    if failed:
+        status = "INCOMPLETE — one or more pages unavailable"
+    if capped:
+        status = "INCOMPLETE — pagination cap reached"
+
+    holders = {}
+    pool_accounts = []
+    excluded_count = 0
+    for account in all_accounts:
+        owner = account.get("owner")
+        address = account.get("address")
+        amount = _number_or_none(account.get("amount"))
+        if amount is None or amount <= 0:
+            continue
+        # Pool/pair address matching is a heuristic, not proof of LP ownership.
+        if (owner and str(owner).lower() in excluded) or (
+            address and str(address).lower() in excluded
+        ):
+            excluded_count += 1
+            pool_accounts.append({
+                "token_account": address, "owner": owner, "amount": amount,
+                "classification": "possible pool account; heuristic match",
+            })
+            continue
+        if owner:
+            holders[owner] = holders.get(owner, 0) + amount
+
+    sorted_holders = sorted(holders.items(), key=lambda x: x[1], reverse=True)
+    total_real = sum(holders.values())
+    total_pool = sum(x["amount"] for x in pool_accounts)
+
+    raw_supply = None
+    if isinstance(mint_info, dict) and mint_info.get("available") is True:
+        raw_supply = _number_or_none(mint_info.get("raw_supply"))
+    denominator = raw_supply
+    if denominator is None and complete and not excluded:
+        denominator = total_real + total_pool
+
+    def pct(amount):
+        if denominator is None or denominator <= 0:
+            return None
+        return amount / denominator * 100
+
+    top1 = pct(sorted_holders[0][1]) if sorted_holders else (
+        0.0 if complete and denominator else None
+    )
+    top5 = pct(sum(x[1] for x in sorted_holders[:5])) if sorted_holders else (
+        0.0 if complete and denominator else None
+    )
+    top10 = pct(sum(x[1] for x in sorted_holders[:10])) if sorted_holders else (
+        0.0 if complete and denominator else None
+    )
+
+    print(f"🔎 Token accounts fetched: {fetched}")
+    print(f"🏊 Known pool-address matches (heuristic): {excluded_count}")
+    print(f"📋 Holder data status: {status}")
+
+    return {
+        "holders": sorted_holders, "holder_count": len(sorted_holders),
+        "top1_pct": top1, "top5_pct": top5, "top10_pct": top10,
+        "pool_balance_raw": total_pool, "pool_pct": pct(total_pool),
+        "pool_accounts": pool_accounts, "total_supply_raw": denominator,
+        "all_accounts": all_accounts, "data_complete": complete,
+        "data_status": status, "expected_accounts": expected_total,
+        "fetched_accounts": fetched, "excluded_account_count": excluded_count,
+    }
+
+
+def get_pool_token_accounts(pool_addresses, holder_data):
+    pool_lower = {str(x).lower() for x in pool_addresses if x}
+    results = []
+    for account in holder_data.get("all_accounts", []):
+        owner = account.get("owner")
+        address = account.get("address")
+        owner_match = bool(owner and str(owner).lower() in pool_lower)
+        address_match = bool(address and str(address).lower() in pool_lower)
+        if not (owner_match or address_match):
+            continue
+        amount = _number_or_none(account.get("amount"))
+        if amount is None:
+            continue
+        results.append({
+            "token_account": address, "owner": owner,
+            "amount_raw": amount,
+            "match_type": "owner or address heuristic",
+        })
+    return results
+
+
+def get_token_balance_deltas(transaction, mint):
+    if not transaction:
+        return []
+    meta = transaction.get("meta") or {}
+    pre = meta.get("preTokenBalances") or []
+    post = meta.get("postTokenBalances") or []
+    message = (transaction.get("transaction") or {}).get("message") or {}
+    keys = message.get("accountKeys") or []
+    account_keys = []
+    for item in keys:
+        if isinstance(item, str):
+            account_keys.append(item)
+        elif isinstance(item, dict):
+            account_keys.append(item.get("pubkey"))
+
+    before, after = {}, {}
+    for collection, destination in ((pre, before), (post, after)):
+        for item in collection:
+            if item.get("mint") != mint:
+                continue
+            index = item.get("accountIndex")
+            ui = item.get("uiTokenAmount") or {}
+            raw = _number_or_none(ui.get("amount"))
+            decimals = _number_or_none(ui.get("decimals"))
+            if raw is None or decimals is None:
+                continue
+            destination[index] = {
+                "owner": item.get("owner"),
+                "amount": raw / (10 ** int(decimals)),
+            }
+
+    changes = []
+    for index in set(before) | set(after):
+        b, a = before.get(index, {}), after.get(index, {})
+        # If an existing side is missing, it is a true zero only for a
+        # newly created or closed token account in this transaction.
+        delta = a.get("amount", 0.0) - b.get("amount", 0.0)
+        if abs(delta) < 1e-12:
+            continue
+        account = (
+            account_keys[index]
+            if isinstance(index, int) and 0 <= index < len(account_keys)
+            else None
+        )
+        changes.append({
+            "account": account, "owner": a.get("owner") or b.get("owner"),
+            "before": b.get("amount", 0.0),
+            "after": a.get("amount", 0.0), "delta": delta,
+        })
+    return changes
+
+
+def calculate_score(market, holders, mint_info):
+    score = 0
+    breakdown = []
+
+    def add(label, points, detail):
+        nonlocal score
+        score += points
+        sign = "+" if points > 0 else ""
+        breakdown.append({
+            "label": label, "points": points, "detail": detail,
+            "display": f"{label}: {sign}{points} ({detail})",
+        })
+
+    mc = _number_or_none(market.get("market_cap"))
+    age = _number_or_none(market.get("age_hours"))
+    vol = _number_or_none(market.get("volume_24h"))
+    txns = _number_or_none(market.get("total_txns"))
+    liq = _number_or_none(market.get("liquidity_usd"))
+
+    if mc is None:
+        add("Market cap", 0, "unavailable; FDV not substituted")
+    elif 1000 <= mc <= 2000:
+        add("Market cap", 20, f"${mc:,.0f}")
+    elif mc <= 4000 and mc > 2000:
+        add("Market cap", 15, f"${mc:,.0f}")
+    elif mc <= 7000 and mc > 4000:
+        add("Market cap", 10, f"${mc:,.0f}")
+    elif mc <= 10000 and mc > 7000:
+        add("Market cap", 5, f"${mc:,.0f}")
+    else:
+        add("Market cap", 0, f"${mc:,.0f}; outside target bands")
+
+    if age is None:
+        add("Pair age", 0, "unavailable")
+    elif age <= 0.5:
+        add("Pair age", 15, f"{age:.1f} hours")
+    elif age <= 1:
+        add("Pair age", 12, f"{age:.1f} hours")
+    elif age <= 6:
+        add("Pair age", 8, f"{age:.1f} hours")
+    elif age <= 24:
+        add("Pair age", 3, f"{age:.1f} hours")
+    else:
+        add("Pair age", 0, f"{age:.1f} hours; older pair")
+
+    if vol is None:
+        add("24h volume", 0, "unavailable")
+    elif vol >= 10000:
+        add("24h volume", 15, f"${vol:,.2f}")
+    elif vol >= 3000:
+        add("24h volume", 10, f"${vol:,.2f}")
+    elif vol >= 500:
+        add("24h volume", 5, f"${vol:,.2f}")
+    else:
+        add("24h volume", 0, f"${vol:,.2f}; low activity")
+
+    if txns is None:
+        add("Transactions", 0, "unavailable")
+    elif txns >= 100:
+        add("Transactions", 10, str(int(txns)))
+    elif txns >= 40:
+        add("Transactions", 7, str(int(txns)))
+    elif txns >= 15:
+        add("Transactions", 3, str(int(txns)))
+    else:
+        add("Transactions", 0, f"{int(txns)}; limited activity")
+
+    if liq is None:
+        add("Liquidity", 0, "unavailable")
+    elif liq < 1000:
+        add("Liquidity", -10, f"${liq:,.2f}; very low")
+    elif liq < 3000:
+        add("Liquidity", -5, f"${liq:,.2f}; low")
+    elif liq >= 10000:
+        add("Liquidity", 5, f"${liq:,.2f}")
+    else:
+        add("Liquidity", 0, f"${liq:,.2f}")
+
+    complete = holders.get("data_complete") is True
+    count = holders.get("holder_count")
+    top1 = _number_or_none(holders.get("top1_pct"))
+    top10 = _number_or_none(holders.get("top10_pct"))
+
+    if count is None or (count == 0 and not complete):
+        add("Holder count", 0, "unverified/incomplete")
+    elif count >= 50:
+        add("Holder count", 10, f"{count} detected holders")
+    elif count >= 20:
+        add("Holder count", 7, f"{count} detected holders")
+    elif count >= 10:
+        add("Holder count", 3, f"{count} detected holders")
+    elif count == 0:
+        add("Holder count", -10, "zero holders in complete account result")
+    else:
+        add("Holder count", 0, f"{count} detected holders")
+
+    if top1 is None:
+        add("Top holder concentration", 0, "unavailable")
+    elif top1 >= 50:
+        add("Top holder concentration", -25, f"{top1:.2f}%")
+    elif top1 >= 30:
+        add("Top holder concentration", -20, f"{top1:.2f}%")
+    elif top1 >= 20:
+        add("Top holder concentration", -12, f"{top1:.2f}%")
+    elif top1 >= 10:
+        add("Top holder concentration", -5, f"{top1:.2f}%")
+    else:
+        add("Top holder concentration", 0, f"{top1:.2f}%")
+
+    if top10 is None:
+        add("Top 10 concentration", 0, "unavailable")
+    elif top10 >= 80:
+        add("Top 10 concentration", -20, f"{top10:.2f}%")
+    elif top10 >= 60:
+        add("Top 10 concentration", -15, f"{top10:.2f}%")
+    elif top10 >= 40:
+        add("Top 10 concentration", -8, f"{top10:.2f}%")
+    else:
+        add("Top 10 concentration", 0, f"{top10:.2f}%")
+
+    if mint_info.get("available") is not True:
+        add("Mint authority", 0, "check unavailable")
+        add("Freeze authority", 0, "check unavailable")
+    else:
+        if mint_info.get("mint_authority") is None:
+            add("Mint authority", 5, "revoked")
+        else:
+            add("Mint authority", -10, "active")
+        if mint_info.get("freeze_authority") is None:
+            add("Freeze authority", 5, "revoked")
+        else:
+            add("Freeze authority", -10, "active")
+
+    creator = market.get("_creator_data") or {}
+    risk = str(creator.get("risk", "UNKNOWN")).upper()
+    if risk == "HIGH":
+        add("Creator risk", -15, "high-risk indicators detected")
+    elif risk == "MEDIUM":
+        add("Creator risk", -7, "some risk indicators detected")
+    elif risk == "LOW":
+        add("Creator risk", 0, "no high-risk indicator from current checks")
+    else:
+        add("Creator risk", 0, "unverified")
+
+    origin = market.get("_pool_origin_data") or {}
+    link = origin.get("creator_link")
+    if link is True:
+        add("Creator-to-pool link", -3, "direct link candidate; not proof of wrongdoing")
+    elif link is False:
+        add("Creator-to-pool link", 0, "no direct link detected in checked data")
+    else:
+        add("Creator-to-pool link", 0, "unknown")
+
+    final = max(0, min(100, score))
+    market["_score_breakdown"] = breakdown
+    market["_score_raw"] = score
+    market["_score_final"] = final
+    return final
+
+
+def print_market_report(market):
+    print("\n💰 MARKET DATA")
+    print(f"💰 Market Cap: {fmt_usd(market.get('market_cap'))}")
+    print(f"📐 FDV: {fmt_usd(market.get('fdv'))}")
+    print(f"💧 Liquidity: {fmt_usd(market.get('liquidity_usd'))}")
+    age = market.get("age_hours")
+    print(f"⏱ Pair Age: {age:.1f} hours" if age is not None else "⏱ Pair Age: Unavailable")
+    print(f"📊 24H Volume: {fmt_usd(market.get('volume_24h'))}")
+    for label, key in (("🟢 Buys", "buys"), ("🔴 Sells", "sells"), ("🔄 Total Txns", "total_txns")):
+        value = market.get(key)
+        print(f"{label}: {value if value is not None else 'Unavailable'}")
+
+
+def print_holder_report(holders):
+    print("\n👥 HOLDER DISTRIBUTION")
+    print(f"📋 Data status: {holders.get('data_status', 'Unknown')}")
+    print(f"📥 Accounts fetched: {holders.get('fetched_accounts', 'Unknown')}")
+    print(f"📥 Expected accounts: {holders.get('expected_accounts', 'Unknown')}")
+    print(f"👤 Real holders detected: {holders.get('holder_count', 'Unknown')}")
+    print(f"🏊 Possible pool share: {_format_pct(holders.get('pool_pct'))}")
+    rows = holders.get("holders") or []
+    if not rows:
+        print("🥇 Top Real Holder: Unavailable")
+        return
+    print(f"🥇 Top Real Holder: {short_address(rows[0][0])} ({_format_pct(holders.get('top1_pct'))})")
+    print(f"🥈 Top 5 Real Holders: {_format_pct(holders.get('top5_pct'))}")
+    print(f"🥉 Top 10 Real Holders: {_format_pct(holders.get('top10_pct'))}")
+
+
+def print_security_report(mint_info):
+    print("\n🔐 TOKEN SECURITY")
+    print(f"🔢 Supply: {fmt_number(mint_info.get('human_supply'))}")
+    if mint_info.get("available") is not True:
+        print("🪙 Mint Authority: CHECK UNAVAILABLE")
+        print("❄️ Freeze Authority: CHECK UNAVAILABLE")
+        return
+    print("🪙 Mint Authority: " + ("🟢 REVOKED" if mint_info.get("mint_authority") is None else "🔴 ACTIVE"))
+    print("❄️ Freeze Authority: " + ("🟢 REVOKED" if mint_info.get("freeze_authority") is None else "🔴 ACTIVE"))
+
+
+def print_creator_report(creator, mint, mint_info):
+    print("\n👤 CREATOR / DEPLOYER")
+    if not creator:
+        print("🧑 Likely Creator: Unavailable")
+        return {
+            "creator": None, "creator_supply_pct": None,
+            "token_activity": "Unknown", "risk": "UNKNOWN",
+        }
+
+    balance = get_wallet_token_balance(creator, mint)
+    raw_supply = _number_or_none(mint_info.get("raw_supply"))
+    creator_pct = (
+        balance / raw_supply * 100
+        if balance is not None and raw_supply is not None and raw_supply > 0
+        else None
+    )
+    sol_balance = get_sol_balance(creator)
+    history = get_wallet_history(creator)
+    activity = str(history.get("token_activity") or "Unknown")
+    activity_unknown = activity.strip().lower() in (
+        "", "unknown", "unavailable", "not checked"
+    )
+
+    if activity_unknown or creator_pct is None:
+        risk = "UNVERIFIED"
+    elif creator_pct >= 20:
+        risk = "HIGH"
+    elif creator_pct >= 5:
+        risk = "MEDIUM"
+    else:
+        risk = "LOW"
+
+    print(f"🧑 Likely Creator (unverified): {creator}")
+    print(f"💰 Creator SOL: {sol_balance:.4f} SOL" if sol_balance is not None else "💰 Creator SOL: Unavailable")
+    print(f"📊 Creator Supply: {_format_pct(creator_pct)}")
+    print(f"📜 Creator Recent Txns: {history.get('count', 'Unknown')}")
+    print(f"🪙 Creator Token Activity: {activity}")
+    print(f"🧠 Creator Risk: {risk}")
+    return {
+        "creator": creator, "creator_supply_pct": creator_pct,
+        "token_activity": activity, "risk": risk,
+    }
+
+
+def trace_pool_origin(mint, pool_token_accounts, creator):
+    print("\n🏊 Tracing pool token origin...")
+    if not pool_token_accounts:
+        return {
+            "status": "UNKNOWN", "method": "none",
+            "pool_token_account": None, "pool_owner": None,
+            "source": None, "source_type": None, "amount": None,
+            "signature": None, "block_time": None,
+            "creator_link": None, "events_checked": 0,
+            "confidence": "none",
+        }
+
+    targets = sorted(
+        pool_token_accounts,
+        key=lambda x: _number_or_none(x.get("amount_raw")) or 0,
+        reverse=True,
+    )
+    target = targets[0]
+    token_account = target.get("token_account")
+    pool_owner = target.get("owner")
+
+    # The Helius transfer method is not assumed to be supported.
+    # Raw history can only identify a candidate, never prove origin.
+    signatures = helius_request(
+        "getSignaturesForAddress", [token_account, {"limit": 100}]
+    ) if token_account else None
+    if not isinstance(signatures, list) or not signatures:
+        return {
+            "status": "UNKNOWN", "method": "raw fallback",
+            "pool_token_account": token_account, "pool_owner": pool_owner,
+            "source": None, "source_type": None, "amount": None,
+            "signature": None, "block_time": None,
+            "creator_link": None, "events_checked": 0,
+            "confidence": "none",
+        }
+
+    signatures = sorted(signatures, key=lambda x: x.get("blockTime") or 0)
+    checked = 0
+    for sig_info in signatures:
+        signature = sig_info.get("signature")
+        if not signature:
+            continue
+        tx = helius_request(
+            "getTransaction",
+            [signature, {
+                "encoding": "jsonParsed", "commitment": "confirmed",
+                "maxSupportedTransactionVersion": 0,
+            }],
+        )
+        if not isinstance(tx, dict):
+            continue
+        checked += 1
+        deltas = get_token_balance_deltas(tx, mint)
+        incoming = [
+            d for d in deltas
+            if d.get("delta", 0) > 0
+            and (
+                (token_account and d.get("account") == token_account)
+                or (pool_owner and d.get("owner") == pool_owner)
+            )
+        ]
+        if not incoming:
+            continue
+        outgoing = [d for d in deltas if d.get("delta", 0) < 0]
+        source_row = max(outgoing, key=lambda x: abs(x["delta"])) if outgoing else None
+        source = source_row.get("owner") if source_row else None
+        creator_link = (
+            source.lower() == creator.lower()
+            if source and creator else None
+        )
+        return {
+            "status": "CANDIDATE", "method": "raw fallback",
+            "pool_token_account": token_account, "pool_owner": pool_owner,
+            "source": source,
+            "source_type": "CREATOR" if creator_link is True else (
+                "OTHER WALLET" if source else "MINT / PROGRAM / UNKNOWN"
+            ),
+            "amount": abs(source_row["delta"]) if source_row else incoming[0]["delta"],
+            "signature": signature, "block_time": tx.get("blockTime"),
+            "creator_link": creator_link, "destination": token_account,
+            "events_checked": checked, "confidence": "candidate",
+        }
+
+    return {
+        "status": "NO_CLEAR_FUNDING", "method": "raw fallback",
+        "pool_token_account": token_account, "pool_owner": pool_owner,
+        "source": None, "source_type": None, "amount": None,
+        "signature": None, "block_time": None,
+        "creator_link": None, "events_checked": checked,
+        "confidence": "limited",
+    }
 
 if __name__ == "__main__":
     main()
