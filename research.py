@@ -2832,11 +2832,10 @@ def main():
     )
 
     holder_data = get_holder_data(
-        mint,
-        market.get(
-            "pool_addresses",
-            []
-        )
+    mint,
+    market.get("pool_addresses", []),
+    mint_info
+)
     )
 
     # --------------------------------------------------------
