@@ -2836,7 +2836,6 @@ def main():
     market.get("pool_addresses", []),
     mint_info
 )
-    )
 
     # --------------------------------------------------------
     # SECURITY
