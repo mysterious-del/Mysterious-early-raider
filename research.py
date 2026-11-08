@@ -2732,55 +2732,241 @@ def print_pool_report(
 # ============================================================
 
 def main():
+    import sys
 
     if len(sys.argv) < 3:
-
-        print(
-            "Usage: python research.py "
-            "<chain> <contract>"
-        )
-
+        print("Usage: python research.py <chain> <contract>")
         sys.exit(1)
 
-    chain = (
-        sys.argv[1]
-        .strip()
-        .lower()
-    )
+    chain = sys.argv[1].strip().lower()
+    mint = sys.argv[2].strip()
+    if mint.lower().startswith("contract:"):
+        mint = mint.split(":", 1)[1].strip()
 
-    mint = (
-        sys.argv[2]
-        .strip()
-    )
-
-    if mint.lower().startswith(
-        "contract:"
-    ):
-
-        mint = mint.split(
-            ":",
-            1
-        )[1].strip()
-
-    print(
-        "🥷 MYSTERIOUS TOKEN CHECKER"
-    )
-
-    print(
-        f"⛓ Chain: {chain}"
-    )
-
-    print(
-        f"📍 Contract: {mint}"
-    )
-
+    print("🥷 MYSTERIOUS TOKEN CHECKER")
+    print(f"⛓ Chain: {chain}")
+    print(f"📍 Contract: {mint}")
     if chain not in SUPPORTED_CHAINS:
+        print("❌ Unsupported chain.")
+        sys.exit(1)
 
-        print(
-            "❌ Unsupported chain."
+    market = get_market_data(chain, mint)
+    if not market:
+        print("\n❌ Could not retrieve market data.")
+        sys.exit(1)
+
+    symbol = str(market.get("symbol") or "UNKNOWN").lstrip("$")
+    print(f"\n🪙 {market.get('name') or 'Unknown'} (${symbol})")
+
+    mint_info = get_mint_info(mint)
+    print("\n🔎 Checking holder distribution...")
+    holder_data = get_holder_data(mint, market.get("pool_addresses", []), mint_info)
+
+    print("🔐 Checking token security...")
+    print("👤 Tracing likely creator / deployer...")
+    creation = get_creation_info(mint) or {}
+    creator = creation.get("creator")
+
+    pool_token_accounts = get_pool_token_accounts(market.get("pool_addresses", []), holder_data)
+    pool_origin = trace_pool_origin(mint, pool_token_accounts, creator)
+
+    print_market_report(market)
+    print_holder_report(holder_data)
+    print_security_report(mint_info)
+    creator_data = print_creator_report(creator, mint, mint_info)
+    market["_creator_data"] = creator_data
+    market["_pool_origin_data"] = pool_origin
+    print_pool_report(pool_origin, market)
+
+    score = calculate_score(market, holder_data, mint_info)
+    verdict = get_verdict(score, market)
+    print(f"\n🎯 Research Score: {score}/100")
+    print(f"🚦 Verdict: {verdict}")
+
+    breakdown = market.get("_score_breakdown", [])
+    print("\n📊 SCORE BREAKDOWN")
+    if breakdown:
+        for item in breakdown:
+            print(f"  {item['display']}")
+    else:
+        print("  ⚠️ No score breakdown available.")
+
+    real_holders = holder_data.get("holders") or []
+    print("\n🐋 TOP REAL HOLDER ANALYSIS")
+    if not real_holders:
+        print("ℹ️ No verified real top holder available.")
+    else:
+        top_wallet, raw_balance = real_holders[0]
+        print(f"🐋 Wallet: {top_wallet}")
+        top1 = holder_data.get("top1_pct")
+        print(f"📊 Supply: {top1:.2f}%" if top1 is not None else "📊 Supply: Unavailable")
+        decimals = mint_info.get("decimals") if mint_info.get("available") is True else None
+        if decimals is not None:
+            print(f"🪙 Balance: {fmt_number(raw_balance / (10 ** decimals))}")
+        else:
+            print("🪙 Balance: Raw balance available; decimals unverified.")
+
+    print("\n🔗 WALLET RELATIONSHIP")
+    if not creator:
+        print("ℹ️ Creator relationship could not be determined.")
+    elif not real_holders:
+        print("ℹ️ Creator/top-holder relationship cannot be determined.")
+    elif real_holders[0][0].lower() == creator.lower():
+        print("🚩 Creator is currently the top real holder.")
+    else:
+        print("🟢 Creator is not the top real holder.")
+
+    positives = []
+    mc = safe_float(market.get("market_cap"))
+    if mc is not None:
+        if 1000 <= mc <= 2000:
+            positives.append("Very early market cap (high risk)")
+        elif 2000 < mc <= 4000:
+            positives.append("Early market cap (high risk)")
+        elif 4000 < mc <= 7000:
+            positives.append("Market cap between $4K and $7K")
+
+    if mint_info.get("available") is True:
+        if mint_info.get("mint_authority") is None:
+            positives.append("Mint authority revoked")
+        if mint_info.get("freeze_authority") is None:
+            positives.append("Freeze authority revoked")
+
+    creator_supply = creator_data.get("creator_supply_pct")
+    if creator_data.get("balance_checked") is True and creator_supply == 0:
+        positives.append("Creator holds 0% detected supply (balance check completed)")
+    if pool_origin.get("creator_link") is False:
+        positives.append("No direct creator-to-pool funding link detected in checked data")
+
+    print("\n✅ POSITIVE SIGNALS")
+    if positives:
+        for item in positives:
+            print(f"• {item}")
+    else:
+        print("• No verified positive signals identified")
+
+    warnings = []
+    liquidity = market.get("liquidity_usd")
+    volume = safe_float(market.get("volume_24h"))
+    txns = market.get("total_txns")
+    holder_count = holder_data.get("holder_count")
+    top1 = holder_data.get("top1_pct")
+    top10 = holder_data.get("top10_pct")
+    age_hours = market.get("age_hours")
+
+    if liquidity is None:
+        warnings.append("Liquidity data unavailable")
+    elif safe_float(liquidity) < 1000:
+        warnings.append("Very low liquidity: under $1,000")
+
+    if volume is None:
+        warnings.append("24-hour volume data unavailable")
+    elif volume < 100:
+        warnings.append("Extremely low 24-hour volume: under $100")
+    elif volume < 500:
+        warnings.append("Very low 24-hour volume: under $500")
+
+    if txns is None:
+        warnings.append("Transaction count unavailable")
+    elif txns == 0:
+        warnings.append("No transactions recorded in the reported period")
+    elif txns < 5:
+        warnings.append("Extremely low trading activity: fewer than 5 transactions")
+    elif txns < 20:
+        warnings.append("Low trading activity: fewer than 20 transactions")
+
+    if holder_data.get("data_complete") is not True:
+        warnings.append("Holder results are incomplete or not fully verified")
+    if holder_count == 0:
+        warnings.append("No real holders detected in the returned holder data")
+    elif isinstance(holder_count, int) and holder_count < 10:
+        warnings.append("Very small detected holder base: fewer than 10 holders")
+
+    if top1 is not None:
+        if top1 >= 30:
+            warnings.append(f"Severe top-holder concentration: {top1:.2f}%")
+        elif top1 >= 20:
+            warnings.append(f"High top-holder concentration: {top1:.2f}%")
+        elif top1 >= 10:
+            warnings.append(f"Elevated top-holder concentration: {top1:.2f}%")
+
+    if top10 is not None:
+        if top10 >= 80:
+            warnings.append(f"Severe top-10 concentration: {top10:.2f}%")
+        elif top10 >= 60:
+            warnings.append(f"High top-10 concentration: {top10:.2f}%")
+        elif top10 >= 40:
+            warnings.append(f"Elevated top-10 concentration: {top10:.2f}%")
+
+    pool_pct = holder_data.get("pool_pct")
+    if pool_pct is not None and pool_pct >= 50:
+        warnings.append(
+            f"Possible pool share is high ({pool_pct:.2f}%); "
+            "pool-address matching is heuristic and needs manual verification"
         )
 
-        sys.exit(1)
+    activity = str(creator_data.get("token_activity") or "Unknown").strip().lower()
+    if activity in ("unknown", "none", "unavailable", "not checked", ""):
+        warnings.append("Creator token activity is unknown or unverified")
+    if creator_data.get("balance_checked") is not True:
+        warnings.append("Creator token balance could not be independently verified")
+    elif creator_supply is not None and creator_supply >= 20:
+        warnings.append("Creator holds significant detected token supply")
+
+    if pool_origin.get("creator_link") is True:
+        warnings.append("Creator linked to a candidate initial pool funding transfer; review manually")
+    elif pool_origin.get("creator_link") is None:
+        warnings.append("Creator-to-pool funding relationship is unknown")
+    if pool_origin.get("status") == "UNKNOWN":
+        warnings.append("Pool token origin could not be verified")
+    if pool_origin.get("trace_method") == "raw fallback" or pool_origin.get("method") == "raw fallback":
+        warnings.append("Pool origin uses fallback tracing; results may be incomplete")
+
+    if age_hours is not None and age_hours > 24 * 30 and (
+        (volume is not None and volume < 500) or (txns is not None and txns < 20)
+    ):
+        warnings.append("Older selected pair with very low recent activity; this does not establish token creation age")
+
+    print("\n🚩 WARNINGS")
+    if warnings:
+        for item in warnings:
+            print(f"• {item}")
+    else:
+        print("• No configured warning conditions triggered")
+
+    # Unknown or incomplete holder data must never be labelled low risk.
+    if holder_data.get("data_complete") is not True or top1 is None or top10 is None:
+        holder_risk = "UNVERIFIED"
+    elif top1 >= 30 or top10 >= 60:
+        holder_risk = "HIGH"
+    elif top1 >= 10 or top10 >= 40:
+        holder_risk = "ELEVATED"
+    else:
+        holder_risk = "LOWER CONCENTRATION OBSERVED"
+
+    if mint_info.get("available") is not True:
+        security = "CHECK UNAVAILABLE"
+    elif mint_info.get("mint_authority") is None and mint_info.get("freeze_authority") is None:
+        security = "AUTHORITY CHECKS PASSED"
+    else:
+        security = "AUTHORITY REVIEW REQUIRED"
+
+    print("\n🧠 RESEARCH VERDICT")
+    print(f"🔐 Security: {security}")
+    print(f"👥 Holder Risk: {holder_risk}")
+    print(f"👤 Creator Risk: {creator_data.get('risk', 'UNKNOWN')}")
+    print(f"🐋 Top Holder Risk: {'ANALYZED' if real_holders else 'UNAVAILABLE'}")
+
+    status = pool_origin.get("status", "UNKNOWN")
+    if status == "FOUND":
+        pool_label = "ORIGIN CANDIDATE FOUND — VERIFY"
+    elif status == "NO_CLEAR_FUNDING":
+        pool_label = "NO CLEAR FUNDING FOUND IN CHECKED DATA"
+    else:
+        pool_label = "UNVERIFIED"
+    print(f"🏊 Pool Origin: {pool_label}")
+    print(f"🚦 FINAL: {verdict}")
+    print("\n🥷 RESEARCH COMPLETED")
 
     # --------------------------------------------------------
     # MARKET
