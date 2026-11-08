@@ -3905,11 +3905,13 @@ def print_market_report(market):
     print(f"📐 FDV: {fmt_usd(market.get('fdv'))}")
     print(f"💧 Liquidity: {fmt_usd(market.get('liquidity_usd'))}")
     age = market.get("age_hours")
-    print(f"⏱ Pair Age: {age:.1f} hours" if age is not None else "⏱ Pair Age: Unavailable")
+    print(f"⏱ Selected pair age: {age:.1f} hours" if age is not None else "⏱ Selected pair age: Unavailable")
+    print("ℹ️ Pair age does not establish the token's actual creation age.")
     print(f"📊 24H Volume: {fmt_usd(market.get('volume_24h'))}")
     for label, key in (("🟢 Buys", "buys"), ("🔴 Sells", "sells"), ("🔄 Total Txns", "total_txns")):
         value = market.get(key)
         print(f"{label}: {value if value is not None else 'Unavailable'}")
+
 
 
 def print_holder_report(holders):
@@ -3930,11 +3932,12 @@ def print_holder_report(holders):
 
 def print_security_report(mint_info):
     print("\n🔐 TOKEN SECURITY")
-    print(f"🔢 Supply: {fmt_number(mint_info.get('human_supply'))}")
     if mint_info.get("available") is not True:
+        print("🔢 Supply: CHECK UNAVAILABLE")
         print("🪙 Mint Authority: CHECK UNAVAILABLE")
         print("❄️ Freeze Authority: CHECK UNAVAILABLE")
         return
+    print(f"🔢 Supply: {fmt_number(mint_info.get('human_supply'))}")
     print("🪙 Mint Authority: " + ("🟢 REVOKED" if mint_info.get("mint_authority") is None else "🔴 ACTIVE"))
     print("❄️ Freeze Authority: " + ("🟢 REVOKED" if mint_info.get("freeze_authority") is None else "🔴 ACTIVE"))
 
@@ -3945,24 +3948,27 @@ def print_creator_report(creator, mint, mint_info):
         print("🧑 Likely Creator: Unavailable")
         return {
             "creator": None, "creator_supply_pct": None,
-            "token_activity": "Unknown", "risk": "UNKNOWN",
+            "balance_checked": False, "token_activity": "Unknown",
+            "creator_token_activity": "Unknown", "risk": "UNKNOWN",
         }
 
     balance = get_wallet_token_balance(creator, mint)
-    raw_supply = _number_or_none(mint_info.get("raw_supply"))
-    creator_pct = (
-        balance / raw_supply * 100
-        if balance is not None and raw_supply is not None and raw_supply > 0
-        else None
+    raw_supply = mint_info.get("raw_supply") if mint_info.get("available") is True else None
+    balance_checked = (
+        isinstance(balance, (int, float))
+        and not isinstance(balance, bool)
+        and raw_supply is not None
+        and float(raw_supply) > 0
+        and float(balance) >= 0
     )
-    sol_balance = get_sol_balance(creator)
-    history = get_wallet_history(creator)
-    activity = str(history.get("token_activity") or "Unknown")
-    activity_unknown = activity.strip().lower() in (
-        "", "unknown", "unavailable", "not checked"
-    )
+    creator_pct = float(balance) / float(raw_supply) * 100 if balance_checked else None
 
-    if activity_unknown or creator_pct is None:
+    sol_balance = get_sol_balance(creator)
+    history = get_wallet_history(creator) or {}
+    activity = str(history.get("token_activity") or "Unknown")
+    unknown = activity.strip().lower() in ("", "unknown", "unavailable", "not checked", "none")
+
+    if unknown or creator_pct is None:
         risk = "UNVERIFIED"
     elif creator_pct >= 20:
         risk = "HIGH"
@@ -3973,13 +3979,14 @@ def print_creator_report(creator, mint, mint_info):
 
     print(f"🧑 Likely Creator (unverified): {creator}")
     print(f"💰 Creator SOL: {sol_balance:.4f} SOL" if sol_balance is not None else "💰 Creator SOL: Unavailable")
-    print(f"📊 Creator Supply: {_format_pct(creator_pct)}")
+    print(f"📊 Creator Supply: {creator_pct:.2f}%" if creator_pct is not None else "📊 Creator Supply: Unverified")
     print(f"📜 Creator Recent Txns: {history.get('count', 'Unknown')}")
     print(f"🪙 Creator Token Activity: {activity}")
     print(f"🧠 Creator Risk: {risk}")
     return {
         "creator": creator, "creator_supply_pct": creator_pct,
-        "token_activity": activity, "risk": risk,
+        "balance_checked": balance_checked, "token_activity": activity,
+        "creator_token_activity": activity, "risk": risk,
     }
 
 
