@@ -422,14 +422,16 @@
     "source": "GitHub",
     "first_seen_at": "2026-11-24T15:56:18.986130+00:00",
     "score": 64,
-    "delivery_state": "PENDING"
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-24T15:58:04.212708+00:00"
   },
   "1845ee26e46ce60acd7cb94d": {
     "url": "https://github.com/medellin87/auto-trade-solana",
     "source": "GitHub",
     "first_seen_at": "2026-11-24T15:56:18.986130+00:00",
     "score": 64,
-    "delivery_state": "PENDING"
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-24T15:58:04.423990+00:00"
   },
   "565911db7b407182c8e9ebd3": {
     "url": "https://github.com/medellin87/auto-trade-solana",
@@ -519,6 +521,166 @@
     "url": "https://github.com/medellin87/auto-trade-solana",
     "source": "GitHub",
     "first_seen_at": "2026-11-24T15:56:18.986130+00:00",
+    "score": 56,
+    "delivery_state": "PENDING"
+  },
+  "68097b0319730392073b2b00": {
+    "url": "https://github.com/wafermap/wafermap-cli",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T15:58:02.359530+00:00",
+    "score": 76,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-24T15:58:02.897029+00:00"
+  },
+  "b65787a8b0bd0d8cd2c8ea84": {
+    "url": "https://github.com/wafermap/wafermap-cli",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T15:58:02.359530+00:00",
+    "score": 72,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-24T15:58:03.169495+00:00"
+  },
+  "19f1b273042c181f02b9be68": {
+    "url": "https://github.com/wafermap/wafermap-cli",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T15:58:02.359530+00:00",
+    "score": 72,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-24T15:58:03.345726+00:00"
+  },
+  "ad25870804c33458b36044b8": {
+    "url": "https://github.com/wafermap/wafermap-cli",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T15:58:02.359530+00:00",
+    "score": 72,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-24T15:58:03.513303+00:00"
+  },
+  "ffb0ff73eca00c6cf0ca95c4": {
+    "url": "https://github.com/wafermap/wafermap-cli",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T15:58:02.359530+00:00",
+    "score": 72,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-24T15:58:03.689240+00:00"
+  },
+  "3b4164c6e50554cf292ad4ca": {
+    "url": "https://github.com/wafermap/wafermap-cli",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T15:58:02.359530+00:00",
+    "score": 68,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-24T15:58:03.959567+00:00"
+  },
+  "2a4779ae1669852e7f4842fc": {
+    "url": "https://github.com/wafermap/wafermap-cli",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T15:58:02.359530+00:00",
+    "score": 64,
+    "delivery_state": "PENDING"
+  },
+  "4ae391be597dd0d49896d73f": {
+    "url": "https://github.com/wafermap/wafermap-cli",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T15:58:02.359530+00:00",
+    "score": 64,
+    "delivery_state": "PENDING"
+  },
+  "58c87d3fd9a1fa67327290d2": {
+    "url": "https://github.com/wafermap/wafermap-cli",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T15:58:02.359530+00:00",
+    "score": 64,
+    "delivery_state": "PENDING"
+  },
+  "caa2ac6ab12a6506b8686b21": {
+    "url": "https://github.com/wafermap/wafermap-cli",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T15:58:02.359530+00:00",
+    "score": 64,
+    "delivery_state": "PENDING"
+  },
+  "818ac07d5b42c978c928a065": {
+    "url": "https://github.com/wafermap/wafermap-cli",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T15:58:02.359530+00:00",
+    "score": 64,
+    "delivery_state": "PENDING"
+  },
+  "a29b6487f11275c785a40390": {
+    "url": "https://github.com/wafermap/wafermap-cli",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T15:58:02.359530+00:00",
+    "score": 64,
+    "delivery_state": "PENDING"
+  },
+  "0f0f7b7959f2802c08ec3a76": {
+    "url": "https://github.com/wafermap/wafermap-cli",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T15:58:02.359530+00:00",
+    "score": 64,
+    "delivery_state": "PENDING"
+  },
+  "765b6847d999c7232996ac5a": {
+    "url": "https://github.com/wafermap/wafermap-cli",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T15:58:02.359530+00:00",
+    "score": 64,
+    "delivery_state": "PENDING"
+  },
+  "7cbc3f1b27f9e21935fd55cd": {
+    "url": "https://github.com/wafermap/wafermap-cli",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T15:58:02.359530+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "490832e9fc88aca2d7e6df7c": {
+    "url": "https://github.com/wafermap/wafermap-cli",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T15:58:02.359530+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "8d27a3793b3b812bc74c4825": {
+    "url": "https://github.com/wafermap/wafermap-cli",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T15:58:02.359530+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "15c1742ae865b43da8d22628": {
+    "url": "https://github.com/wafermap/wafermap-cli",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T15:58:02.359530+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "1ed43c2f57b2e25bcd070d53": {
+    "url": "https://github.com/wafermap/wafermap-cli",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T15:58:02.359530+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "bb1978386426c5169f8c0e86": {
+    "url": "https://github.com/wafermap/wafermap-cli",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T15:58:02.359530+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "66c8cf3b9a65c9e8620a9f8c": {
+    "url": "https://github.com/wafermap/wafermap-cli",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T15:58:02.359530+00:00",
+    "score": 56,
+    "delivery_state": "PENDING"
+  },
+  "bf493fd3267919b4e8548f82": {
+    "url": "https://github.com/wafermap/wafermap-cli",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T15:58:02.359530+00:00",
     "score": 56,
     "delivery_state": "PENDING"
   }
