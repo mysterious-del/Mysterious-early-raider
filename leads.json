@@ -1307,5 +1307,630 @@
     "id": "077af3b12af1568033764ed6",
     "first_seen_at": "2026-11-24T12:22:01.773110+00:00",
     "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@EzeLich",
+    "url": "https://github.com/medellin87/auto-trade-solana",
+    "title": "EzeLich/paygate-usdt",
+    "evidence": "Non-custodial USDT/USDC payment gateway (Polygon, BSC, Base, Arbitrum, ETH, Solana) with hosted checkout invoices, HMAC-SHA256 webhooks, FastAPI x402 v2 paywall, Telegram VIP bot, and MCP server.",
+    "published_at": "2026-11-24T15:30:49+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 76,
+    "reasons": [
+      "Solana relevance",
+      "project: protocol",
+      "Published within 24 hours",
+      "Product/build signals: protocol, payments, payment",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "2d98bfce40066728d01f80cc",
+    "first_seen_at": "2026-11-24T15:56:18.986130+00:00",
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-24T15:56:19.372336+00:00"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@zColdWater",
+    "url": "https://github.com/medellin87/auto-trade-solana",
+    "title": "zColdWater/vibeshield-solana",
+    "evidence": "Zero-dependency Solana Mainnet pre-launch security scanner for SPL Token-2022 extensions, BPF Upgradeable Program authorities, Solana Actions/Blinks, and x402 Solana Pay treasuries",
+    "published_at": "2026-11-24T15:46:14+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 72,
+    "reasons": [
+      "Solana relevance",
+      "pre-launch: pre-launch",
+      "Published within 24 hours",
+      "Product/build signals: mainnet",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "a4c313dd70d5a91f77a444f9",
+    "first_seen_at": "2026-11-24T15:56:18.986130+00:00",
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-24T15:56:19.520418+00:00"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@Ashutosh0x",
+    "url": "https://github.com/medellin87/auto-trade-solana",
+    "title": "Ashutosh0x/mobilecloud-platform",
+    "evidence": "Autonomous Smartphone Edge Cloud, Tri-Modal Terminal Gateway, and Institutional Proof-of-Reserve Protocol",
+    "published_at": "2026-11-24T15:26:27+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 72,
+    "reasons": [
+      "Solana relevance",
+      "project: protocol",
+      "Published within 24 hours",
+      "Product/build signals: protocol, platform",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "02dfc2d24e32b67170b92239",
+    "first_seen_at": "2026-11-24T15:56:18.986130+00:00",
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-24T15:56:19.659588+00:00"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@sonnyman2014",
+    "url": "https://github.com/medellin87/auto-trade-solana",
+    "title": "sonnyman2014/rentandrugshield",
+    "evidence": "Solana ATA Rent Recovery (Keep 95% Net SOL) & 9-Layer Pre-Buy Anti-Rug Shield — Live Client-Side Web3 Scanner",
+    "published_at": "2026-11-24T15:09:43+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 72,
+    "reasons": [
+      "Solana relevance",
+      "project: protocol",
+      "Published within 24 hours",
+      "Product/build signals: protocol, defi",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "f869b254a7b57f7a9057084d",
+    "first_seen_at": "2026-11-24T15:56:18.986130+00:00",
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-24T15:56:19.815348+00:00"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@marcusantonius88",
+    "url": "https://github.com/medellin87/auto-trade-solana",
+    "title": "marcusantonius88/health-factor-monitor",
+    "evidence": "Monitor DeFi Health Factors from multiple lending protocols in one place. Supports Aave on Ethereum and Kamino on Solana, with a modular architecture for future integrations.",
+    "published_at": "2026-11-24T15:32:33+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 72,
+    "reasons": [
+      "Solana relevance",
+      "project: protocol",
+      "Published within 24 hours",
+      "Product/build signals: protocol, defi, lending",
+      "Repository updated within 3 days",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "30ba7012b32333412b44ea89",
+    "first_seen_at": "2026-11-24T15:56:18.986130+00:00",
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-24T15:56:19.974160+00:00"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@Dennis90097",
+    "url": "https://github.com/medellin87/auto-trade-solana",
+    "title": "Dennis90097/trust-wallet-metamask-seed-recovery-2026",
+    "evidence": "Trust Wallet, MetaMask, Phantom & Exodus Seed Phrase Recovery & Multi-Chain Balance Checker",
+    "published_at": "2026-11-24T15:35:43+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 68,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: app, wallet, defi",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "29989543cffc293fc3a4e987",
+    "first_seen_at": "2026-11-24T15:56:18.986130+00:00",
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-24T15:56:20.144162+00:00"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@annoris",
+    "url": "https://github.com/medellin87/auto-trade-solana",
+    "title": "annoris/kineta",
+    "evidence": "⚡ Locked-60fps GSAP + Lenis editorial web showcase, variable font proximity physics, 3D ScrollTrigger stacks & native Solana Pay Web3 checkout — built with zero build-step overhead.",
+    "published_at": "2026-11-24T15:56:09+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 1,
+      "forks": 0
+    },
+    "score": 64,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: payments, payment",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "da4404c2d061c03aaff0c672",
+    "first_seen_at": "2026-11-24T15:56:18.986130+00:00",
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-24T15:56:20.286505+00:00"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@itsxwang",
+    "url": "https://github.com/medellin87/auto-trade-solana",
+    "title": "itsxwang/cash-register",
+    "evidence": "Static crypto-only storefront: BTC/ETH/SOL checkout with keyless on-chain auto-confirmation (mempool.space, Solana RPC, Blockscout). Live: https://itsxwang.github.io/cash-register/",
+    "published_at": "2026-11-24T15:50:12+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 64,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: payments, payment",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "b1b709d78324a690b3b91c54",
+    "first_seen_at": "2026-11-24T15:56:18.986130+00:00",
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-24T15:56:20.424638+00:00"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@dangermouse77",
+    "url": "https://github.com/medellin87/auto-trade-solana",
+    "title": "dangermouse77/wGRC-bridge",
+    "evidence": "Bridge for wGRC tokens on Solana - wrapped gridcoins",
+    "published_at": "2026-11-24T15:34:29+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 64,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: app, bridge",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "6bdf16821743d646d609a02b",
+    "first_seen_at": "2026-11-24T15:56:18.986130+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@agent402-dev",
+    "url": "https://github.com/medellin87/auto-trade-solana",
+    "title": "agent402-dev/agent402-toolkit",
+    "evidence": "Open-source x402 toolkit for Solana AI agents: payments, token checks, and Agent402 Bond.",
+    "published_at": "2026-11-24T15:45:10+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 64,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: payments, payment",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "1845ee26e46ce60acd7cb94d",
+    "first_seen_at": "2026-11-24T15:56:18.986130+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@MaksimGalatin",
+    "url": "https://github.com/medellin87/auto-trade-solana",
+    "title": "MaksimGalatin/padam-nocturne",
+    "evidence": "Local sovereign SQLite AI agent memory & 4-ring Agentic Shield: stops prompt-injection, MCP rug-pulls & key leaks ($0 cloud telemetry). MCP + Studio + Android. PADAM License 1.0",
+    "published_at": "2026-11-24T15:41:37+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 1
+    },
+    "score": 64,
+    "reasons": [
+      "Solana relevance",
+      "project: protocol",
+      "Published within 24 hours",
+      "Product/build signals: protocol",
+      "Repository updated within 3 days",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "565911db7b407182c8e9ebd3",
+    "first_seen_at": "2026-11-24T15:56:18.986130+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@Axiom-Trade",
+    "url": "https://github.com/medellin87/auto-trade-solana",
+    "title": "Axiom-Trade/.github",
+    "evidence": "Axiom Trade is a next-generation decentralized exchange on Solana. It combines deep liquidity, lightning-fast execution, and minimal fees to create the ultimate trading experience. Users can swap SPL tokens, provide liquidity, and access DeFi opportunities in a secure, transparent, and user-friendly way.",
+    "published_at": "2026-11-24T15:40:37+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 1,
+      "forks": 0
+    },
+    "score": 64,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: defi, exchange, users",
+      "Repository updated within 3 days",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "376f5187d6b91e0ffd7b7a26",
+    "first_seen_at": "2026-11-24T15:56:18.986130+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@Axiom-Trade",
+    "url": "https://github.com/medellin87/auto-trade-solana",
+    "title": "Axiom-Trade/Axiom-Trade-Sol",
+    "evidence": "Axiom Trade is a next-generation decentralized exchange on Solana. It combines deep liquidity, lightning-fast execution, and minimal fees to create the ultimate trading experience. Users can swap SPL tokens, provide liquidity, and access DeFi opportunities in a secure, transparent, and user-friendly way.",
+    "published_at": "2026-11-24T15:40:33+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 64,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: defi, exchange, users",
+      "Repository updated within 3 days",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "38dfd93e3fb58f60c4c9a3a5",
+    "first_seen_at": "2026-11-24T15:56:18.986130+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@wafermap",
+    "url": "https://github.com/medellin87/auto-trade-solana",
+    "title": "wafermap/wafermap-cli",
+    "evidence": "CLI, SDK and MCP server for Wafermap: an encrypted local x402 wallet that lets AI agents pay per call, with hard per-payment and daily caps. USDC on Solana, Base, Arbitrum, Polygon; USDG on Robinhood Chain.",
+    "published_at": "2026-11-24T15:32:09+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 1,
+      "forks": 1
+    },
+    "score": 64,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: wallet, payments, payment, sdk",
+      "Repository updated within 3 days",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "f799d73985bcede63e329e31",
+    "first_seen_at": "2026-11-24T15:56:18.986130+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@annoris",
+    "url": "https://github.com/medellin87/auto-trade-solana",
+    "title": "annoris/tabvento",
+    "evidence": "AI Browser Automation Dashboard for ChatGPT, Claude, Gemini, DeepSeek & Ollama — Give your browser a mission. Local-first Browser Use UI with BYOK & SQLite history.",
+    "published_at": "2026-11-24T15:55:55+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 1,
+      "forks": 0
+    },
+    "score": 60,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: dashboard",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "c5bef322a797d42b63f7031d",
+    "first_seen_at": "2026-11-24T15:56:18.986130+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@annoris",
+    "url": "https://github.com/medellin87/auto-trade-solana",
+    "title": "annoris/aetheris",
+    "evidence": "Local-first AI Agents & Automation Platform for Claude, ChatGPT, Cursor, Gemini & Ollama — 77 AI agents, 328 skills, MCP manager, prompt workbench & workflow builder.",
+    "published_at": "2026-11-24T15:55:49+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 1,
+      "forks": 0
+    },
+    "score": 60,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: platform",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "8c65735d40ccf9bbb1e640cb",
+    "first_seen_at": "2026-11-24T15:56:18.986130+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@amirhosseinqorraie76-ai",
+    "url": "https://github.com/medellin87/auto-trade-solana",
+    "title": "amirhosseinqorraie76-ai/dex-hunter-v2",
+    "evidence": "Free Solana DEX Hunter Telegram Bot",
+    "published_at": "2026-11-24T15:20:56+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 1,
+      "forks": 0
+    },
+    "score": 60,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: dex",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "91d607c358a9d376317bfe96",
+    "first_seen_at": "2026-11-24T15:56:18.986130+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@abaadi931",
+    "url": "https://github.com/medellin87/auto-trade-solana",
+    "title": "abaadi931/sol-desk",
+    "evidence": "View-only live dashboard of a paper-trading Solana desk (no real funds).",
+    "published_at": "2026-11-24T15:55:53+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 60,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: dashboard",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "3c2d9998e3ace1727e187e9e",
+    "first_seen_at": "2026-11-24T15:56:18.986130+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@Claim-Free-Sol",
+    "url": "https://github.com/medellin87/auto-trade-solana",
+    "title": "Claim-Free-Sol/Claim-Free-Sol",
+    "evidence": "Claim Free Sol is a Solana burner that lets you burn unwanted tokens or NFTs and reclaim rent in SOL. Any wallet that has traded on Pumpfun, letsBONK, or Jupiter is eligible to claim free Sol instantly. Fast, secure, and rewarding for active Solana users.",
+    "published_at": "2026-11-24T15:34:08+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 60,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: wallet, users",
+      "Repository updated within 3 days",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "28b08bef0e75fbfc3041e8e6",
+    "first_seen_at": "2026-11-24T15:56:18.986130+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@Claim-Free-Sol",
+    "url": "https://github.com/medellin87/auto-trade-solana",
+    "title": "Claim-Free-Sol/.github",
+    "evidence": "Claim Free Sol is a Solana burner that lets you burn unwanted tokens or NFTs and reclaim rent in SOL. Any wallet that has traded on Pumpfun, letsBONK, or Jupiter is eligible to claim free Sol instantly. Fast, secure, and rewarding for active Solana users.",
+    "published_at": "2026-11-24T15:34:04+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 1,
+      "forks": 0
+    },
+    "score": 60,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: wallet, users",
+      "Repository updated within 3 days",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "8b2196382cf4082b57a17fb0",
+    "first_seen_at": "2026-11-24T15:56:18.986130+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@allowit-hq",
+    "url": "https://github.com/medellin87/auto-trade-solana",
+    "title": "allowit-hq/allowit-contracts-solana",
+    "evidence": "Native Rust policy evaluator and custody vault for Solana: daily limits, explicit tuning, and approved transfers",
+    "published_at": "2026-11-24T15:49:38+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 1,
+      "forks": 0
+    },
+    "score": 56,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: app",
+      "Repository updated within 3 days",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "a2028c3a645ea3b81a2f7cab",
+    "first_seen_at": "2026-11-24T15:56:18.986130+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@SerDiuK",
+    "url": "https://github.com/medellin87/auto-trade-solana",
+    "title": "SerDiuK/ROAM-Platform",
+    "evidence": "AI-powered emergency dispatch on Solana: every dispatch event is an on-chain transaction signed by the responder's Solana Mobile Seeker. EasyA Consensus Hackathon, Miami, May 2026.",
+    "published_at": "2026-11-24T15:35:45+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 56,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: platform",
+      "Repository updated within 3 days",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "d4b9348b0737c64393373c2a",
+    "first_seen_at": "2026-11-24T15:56:18.986130+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@medellin87",
+    "url": "https://github.com/medellin87/auto-trade-solana",
+    "title": "medellin87/auto-trade-solana",
+    "evidence": "Paper (simulated) Solana bot dashboard",
+    "published_at": "2026-11-24T15:53:12+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 56,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: dashboard",
+      "Repository updated within 3 days",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "d81198e459a2bc2a54c2166a",
+    "first_seen_at": "2026-11-24T15:56:18.986130+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
   }
 ]
