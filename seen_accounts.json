@@ -438,28 +438,32 @@
     "source": "GitHub",
     "first_seen_at": "2026-11-24T15:56:18.986130+00:00",
     "score": 64,
-    "delivery_state": "PENDING"
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-24T20:53:11.764584+00:00"
   },
   "376f5187d6b91e0ffd7b7a26": {
     "url": "https://github.com/medellin87/auto-trade-solana",
     "source": "GitHub",
     "first_seen_at": "2026-11-24T15:56:18.986130+00:00",
     "score": 64,
-    "delivery_state": "PENDING"
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-24T20:53:11.956146+00:00"
   },
   "38dfd93e3fb58f60c4c9a3a5": {
     "url": "https://github.com/medellin87/auto-trade-solana",
     "source": "GitHub",
     "first_seen_at": "2026-11-24T15:56:18.986130+00:00",
     "score": 64,
-    "delivery_state": "PENDING"
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-24T20:53:12.154538+00:00"
   },
   "f799d73985bcede63e329e31": {
     "url": "https://github.com/medellin87/auto-trade-solana",
     "source": "GitHub",
     "first_seen_at": "2026-11-24T15:56:18.986130+00:00",
     "score": 64,
-    "delivery_state": "PENDING"
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-24T20:53:12.342333+00:00"
   },
   "c5bef322a797d42b63f7031d": {
     "url": "https://github.com/medellin87/auto-trade-solana",
@@ -577,7 +581,8 @@
     "source": "GitHub",
     "first_seen_at": "2026-11-24T15:58:02.359530+00:00",
     "score": 64,
-    "delivery_state": "PENDING"
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-24T20:53:13.311247+00:00"
   },
   "4ae391be597dd0d49896d73f": {
     "url": "https://github.com/wafermap/wafermap-cli",
@@ -681,6 +686,135 @@
     "url": "https://github.com/wafermap/wafermap-cli",
     "source": "GitHub",
     "first_seen_at": "2026-11-24T15:58:02.359530+00:00",
+    "score": 56,
+    "delivery_state": "PENDING"
+  },
+  "18e8559fe8c317a58da4631c": {
+    "url": "https://github.com/xebra-org/xebra",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T20:53:10.534437+00:00",
+    "score": 80,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-24T20:53:11.064178+00:00"
+  },
+  "a29f2d8ab98ead8d278debc0": {
+    "url": "https://github.com/xebra-org/xebra",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T20:53:10.534437+00:00",
+    "score": 66,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-24T20:53:11.293808+00:00"
+  },
+  "dddc44b0956ae85aac585972": {
+    "url": "https://github.com/xebra-org/xebra",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T20:53:10.534437+00:00",
+    "score": 66,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-24T20:53:11.504502+00:00"
+  },
+  "e72385891bf0969d740c950e": {
+    "url": "https://github.com/xebra-org/xebra",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T20:53:10.534437+00:00",
+    "score": 62,
+    "delivery_state": "PENDING"
+  },
+  "8bee418a5cc6245beb98bc62": {
+    "url": "https://github.com/xebra-org/xebra",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T20:53:10.534437+00:00",
+    "score": 62,
+    "delivery_state": "PENDING"
+  },
+  "37c33e5a4a6edb7f5679867f": {
+    "url": "https://github.com/xebra-org/xebra",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T20:53:10.534437+00:00",
+    "score": 62,
+    "delivery_state": "PENDING"
+  },
+  "844f107fa4e925c904690fec": {
+    "url": "https://github.com/xebra-org/xebra",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T20:53:10.534437+00:00",
+    "score": 62,
+    "delivery_state": "PENDING"
+  },
+  "d701a9d29149a308394e6cee": {
+    "url": "https://github.com/xebra-org/xebra",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T20:53:10.534437+00:00",
+    "score": 62,
+    "delivery_state": "PENDING"
+  },
+  "3b874bde231f8f89662b4b5d": {
+    "url": "https://github.com/xebra-org/xebra",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T20:53:10.534437+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "67508bb746d273c2b2deaa3a": {
+    "url": "https://github.com/xebra-org/xebra",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T20:53:10.534437+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "86c795d76d0eb5a51f3b8429": {
+    "url": "https://github.com/xebra-org/xebra",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T20:53:10.534437+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "f71baefe5d2ffd6acc2002c8": {
+    "url": "https://github.com/xebra-org/xebra",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T20:53:10.534437+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "9b5a5f1e34cab7cea072b16a": {
+    "url": "https://github.com/xebra-org/xebra",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T20:53:10.534437+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "459ee48d0bbbab28f329877a": {
+    "url": "https://github.com/xebra-org/xebra",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T20:53:10.534437+00:00",
+    "score": 58,
+    "delivery_state": "PENDING"
+  },
+  "5754d24d39fd5c3c6d522557": {
+    "url": "https://github.com/xebra-org/xebra",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T20:53:10.534437+00:00",
+    "score": 58,
+    "delivery_state": "PENDING"
+  },
+  "732f88aec8b726c145b8ff06": {
+    "url": "https://github.com/xebra-org/xebra",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T20:53:10.534437+00:00",
+    "score": 56,
+    "delivery_state": "PENDING"
+  },
+  "ca2917bf983bd5fd0de2d79a": {
+    "url": "https://github.com/xebra-org/xebra",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T20:53:10.534437+00:00",
+    "score": 56,
+    "delivery_state": "PENDING"
+  },
+  "3989a4c098c4e1dc35be1ef1": {
+    "url": "https://github.com/xebra-org/xebra",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T20:53:10.534437+00:00",
     "score": 56,
     "delivery_state": "PENDING"
   }
