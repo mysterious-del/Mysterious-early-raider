@@ -275,6 +275,7 @@ def github_solana():
         owner = (repo.get("owner") or {}).get("login")
         results.append({
             "source": "GitHub", "handle": "@" + owner if owner else None,
+"owner_url": f"https://github.com/{owner}" if owner else None,
             "url": url, "title": name,
             "evidence": description[:500],
             "published_at": (pushed or created).isoformat() if (pushed or created) else None,
