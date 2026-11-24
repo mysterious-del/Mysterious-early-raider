@@ -287,20 +287,20 @@ def github_solana():
     return results
 
 def alert(lead):
-    reasons = "\n".join("â¢ " + x for x in lead.get("reasons", [])[:5])
-    msg = (
-        "ð¥· MYSTERIOUS EARLY RADAR â SOLANA LEAD\n\n"
-        f"ð¯ Score: {lead.get('score', 0)}/100\n"
-        f"ð¤ Account/owner: {lead.get('handle') or 'Unknown'}\n"
-        f"ð Source: {lead.get('source', 'Unknown')}\n"
-        f"ð Signal: {lead.get('title', 'Untitled')}\n"
-        f"ð¥ Followers: {lead.get('followers') if lead.get('followers') is not None else 'Unavailable'}\n"
-        f"ð Engagement: {lead.get('engagement') or 'Unavailable'}\n"
-        f"ð Published/updated: {lead.get('published_at') or 'Unknown'}\n\n"
-        f"Why flagged:\n{reasons}\n\n"
-        f"ð {lead.get('url', '')}\n\n"
-        f"â ï¸ {lead.get('verification', 'Verify manually before outreach.')}"
-    )
+reasons = "\n".join("- " + x for x in lead.get("reasons", []))
+
+msg = (
+    "MYSTERIOUS EARLY RADAR - SOLANA LEAD\n\n"
+    f"Score: {lead.get('score', 0)}/100\n"
+    f"GitHub owner: {lead.get('handle') or 'Unknown'}\n"
+    f"GitHub profile: {lead.get('owner_url') or 'Not available'}\n"
+    f"Project: {lead.get('title', 'Unknown')}\n"
+    f"Evidence: {lead.get('evidence', 'None')}\n"
+    f"Repository: {lead.get('url', '')}\n"
+    f"Updated: {lead.get('published_at') or 'Unknown'}\n\n"
+    f"Signals:\n{reasons}\n\n"
+    f"Verification: {lead.get('verification', '')}"
+)
     if not BOT or not CHAT:
         print("Telegram credentials missing; lead remains pending:", lead.get("title"))
         return False
