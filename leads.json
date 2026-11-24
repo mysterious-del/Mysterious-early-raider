@@ -1,0 +1,107 @@
+[
+  {
+    "source": "GitHub",
+    "handle": "@mohammedafnaanahmed2005-dot",
+    "url": "https://github.com/mohammedafnaanahmed2005-dot/Solana",
+    "title": "mohammedafnaanahmed2005-dot/Solana",
+    "evidence": "",
+    "published_at": "2026-11-23T16:20:59+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 37,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "975239371b1bf8730ace49b5",
+    "first_seen_at": "2026-11-24T10:42:40.697471+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@solanagoldorg",
+    "url": "https://github.com/solanagoldorg/solana-gold",
+    "title": "solanagoldorg/solana-gold",
+    "evidence": "Solana Gold is an independent SVM L1 blockchain for transfers, tokens and on-chain applications.",
+    "published_at": "2026-11-23T22:25:02+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 2
+    },
+    "score": 37,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "6fe117fa162c9c440e05fb35",
+    "first_seen_at": "2026-11-24T10:42:41.058871+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@tdkrHuang",
+    "url": "https://github.com/tdkrHuang/solana-launch-forensics",
+    "title": "tdkrHuang/solana-launch-forensics",
+    "evidence": "Read-only forensics for pump.fun style token launches. Standard library only.",
+    "published_at": "2026-11-16T13:20:02+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 37,
+    "reasons": [
+      "Solana relevance",
+      "pre-launch: token launch"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "7cd0e422bcb66897d854f90d",
+    "first_seen_at": "2026-11-24T10:42:41.181900+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@dannycake",
+    "url": "https://github.com/dannycake/solana-thin",
+    "title": "dannycake/solana-thin",
+    "evidence": "Light client for Solana after Alpenglow: verify, from a small untrusted proof, that a transaction is in a block the validators finalized. Rust, no node, no trusted server. v0.1, unaudited.",
+    "published_at": "2026-11-23T19:34:32+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 37,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "dc8f740740e64d09ddde9bf2",
+    "first_seen_at": "2026-11-24T10:42:41.319809+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@sollscan",
+    "url": "https://github.com/sollscan/sollscan.github.io",
+    "title": "sollscan/sollscan.github.io",
+    "evidence": "Solscan is the leading Block Explorer and Search, API & Analytics Platform for Solana blockchain.",
+    "published_at": "2026-11-24T08:15:50+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 37,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "f714eb4da8ab5dd6166da38d",
+    "first_seen_at": "2026-11-24T10:42:41.439701+00:00",
+    "pipeline_status": "DISCOVERED"
+  }
+]

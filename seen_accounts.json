@@ -1,1 +1,32 @@
-{}
+{
+  "975239371b1bf8730ace49b5": {
+    "url": "https://github.com/mohammedafnaanahmed2005-dot/Solana",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T10:42:40.697471+00:00",
+    "score": 37
+  },
+  "6fe117fa162c9c440e05fb35": {
+    "url": "https://github.com/solanagoldorg/solana-gold",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T10:42:41.058871+00:00",
+    "score": 37
+  },
+  "7cd0e422bcb66897d854f90d": {
+    "url": "https://github.com/tdkrHuang/solana-launch-forensics",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T10:42:41.181900+00:00",
+    "score": 37
+  },
+  "dc8f740740e64d09ddde9bf2": {
+    "url": "https://github.com/dannycake/solana-thin",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T10:42:41.319809+00:00",
+    "score": 37
+  },
+  "f714eb4da8ab5dd6166da38d": {
+    "url": "https://github.com/sollscan/sollscan.github.io",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-24T10:42:41.439701+00:00",
+    "score": 37
+  }
+}
