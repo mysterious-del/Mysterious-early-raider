@@ -103,5 +103,1209 @@
     "id": "f714eb4da8ab5dd6166da38d",
     "first_seen_at": "2026-11-24T10:42:41.439701+00:00",
     "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@Footloose9",
+    "url": "https://github.com/Footloose9/hyperfabric-evolution",
+    "title": "Footloose9/hyperfabric-evolution",
+    "evidence": "Open-source research lab for blockchain, AI agents, automation, security, privacy, cryptography, and communication protocols. Reproducible tests, synthetic evidence tools, and a manual read-only XRPL preview.",
+    "published_at": "2026-11-20T08:30:02+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 2
+    },
+    "score": 50,
+    "reasons": [
+      "Solana relevance",
+      "project: protocol",
+      "Published within 7 days",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "828b4e7d7988aa22886e13e6",
+    "first_seen_at": "2026-11-24T12:21:59.719082+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@Isha4274",
+    "url": "https://github.com/Isha4274/solana-pump-fun-jito-bundler-bot-download",
+    "title": "Isha4274/solana-pump-fun-jito-bundler-bot-download",
+    "evidence": "Solana Pump.fun 20-Wallet Jito Bundler, LUT Creator & Same-Block Sniper Bot [2026]",
+    "published_at": "2026-11-24T12:04:36+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 35
+    },
+    "score": 47,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Recently created public repository"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "bd2bf4b889db69c6f7320729",
+    "first_seen_at": "2026-11-24T12:22:00.309702+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@Chethann2025",
+    "url": "https://github.com/Chethann2025/Solana",
+    "title": "Chethann2025/Solana",
+    "evidence": "",
+    "published_at": "2026-11-22T19:01:39+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 46,
+    "reasons": [
+      "Solana relevance",
+      "Published within 3 days",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "fd37f69dda52859a5d286708",
+    "first_seen_at": "2026-11-24T12:22:00.502490+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@laysoftware",
+    "url": "https://github.com/laysoftware/solana",
+    "title": "laysoftware/solana",
+    "evidence": "anchor sol",
+    "published_at": "2026-11-22T14:06:04+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 46,
+    "reasons": [
+      "Solana relevance",
+      "Published within 3 days",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "fc3d1be16d6a7b41e1e3ae50",
+    "first_seen_at": "2026-11-24T12:22:00.696472+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@overwolfer99",
+    "url": "https://github.com/overwolfer99/solana",
+    "title": "overwolfer99/solana",
+    "evidence": "",
+    "published_at": "2026-11-22T02:03:21+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 46,
+    "reasons": [
+      "Solana relevance",
+      "Published within 3 days",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "24cf431ddb45d761df872ca6",
+    "first_seen_at": "2026-11-24T12:22:00.894421+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@paxosglobalz",
+    "url": "https://github.com/paxosglobalz/solana-go",
+    "title": "paxosglobalz/solana-go",
+    "evidence": "Go SDK library and RPC client for the Solana Blockchain",
+    "published_at": "2026-11-21T13:34:18+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 46,
+    "reasons": [
+      "Solana relevance",
+      "Published within 3 days",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "d334ce68e351d0cfa7d6d68f",
+    "first_seen_at": "2026-11-24T12:22:01.096490+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@hexwork-agent",
+    "url": "https://github.com/hexwork-agent/blockchainiq-x402-langchain",
+    "title": "hexwork-agent/blockchainiq-x402-langchain",
+    "evidence": "LangChain tools that pay for blockchainiq.co market data over the x402 protocol (USDC on Base or Solana)",
+    "published_at": "2026-11-12T22:50:44+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 46,
+    "reasons": [
+      "Solana relevance",
+      "project: protocol",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "cd5b3274b38b6379d8afa1b5",
+    "first_seen_at": "2026-11-24T12:22:01.318653+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@LevCodeLab",
+    "url": "https://github.com/LevCodeLab/blockchain-speed-dashboard",
+    "title": "LevCodeLab/blockchain-speed-dashboard",
+    "evidence": "nextjs interactive playground for live block forks, 25ms micro auctions, and finality speed",
+    "published_at": "2026-11-21T19:22:26+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 46,
+    "reasons": [
+      "Solana relevance",
+      "Published within 3 days",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "0c9119a058230534f342c28a",
+    "first_seen_at": "2026-11-24T12:22:01.562404+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@haypaduk",
+    "url": "https://github.com/haypaduk/solana-sistema-reservas",
+    "title": "haypaduk/solana-sistema-reservas",
+    "evidence": "Sistema descentralizado de reservas de espacios construido en Solana. Incluye un programa en Rust/Anchor con arquitectura de PDAs, manejo de errores personalizados y cierre condicionado de cuentas. Cuenta con pruebas automatizadas en TypeScript y un frontend en React con conexión a wallet. Proyecto final del Bootcamp Advanced de WayLearn.",
+    "published_at": "2026-11-21T23:01:07+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 46,
+    "reasons": [
+      "Solana relevance",
+      "Published within 3 days",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "7d0d37c5ea30ecd754215e53",
+    "first_seen_at": "2026-11-24T12:22:01.772997+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@LevCodeLab",
+    "url": "https://github.com/LevCodeLab/solana-fast-rpc",
+    "title": "LevCodeLab/solana-fast-rpc",
+    "evidence": "Fastest open-source Solana low-latency engine: 200ms slot clock, Yellowstone gRPC combiner & zero-copy bus for HFT and trading bots in pure Rust.",
+    "published_at": "2026-11-21T19:19:13+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 1
+    },
+    "score": 46,
+    "reasons": [
+      "Solana relevance",
+      "Published within 3 days",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "4c6580ddf23a1dee3d9fc3a8",
+    "first_seen_at": "2026-11-24T12:22:01.773008+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@sicknature-x",
+    "url": "https://github.com/sicknature-x/warlock-v2",
+    "title": "sicknature-x/warlock-v2",
+    "evidence": "Warlock 2.0 - Solana Meteora DLMM LP bot (paper + live)",
+    "published_at": "2026-11-22T05:55:38+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 29
+    },
+    "score": 43,
+    "reasons": [
+      "Solana relevance",
+      "Published within 3 days",
+      "Recently created public repository"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "412c83be438259500898a6c3",
+    "first_seen_at": "2026-11-24T12:22:01.773012+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@blixtrade",
+    "url": "https://github.com/blixtrade/solana-whale-tracker",
+    "title": "blixtrade/solana-whale-tracker",
+    "evidence": "Solana whale tracker for the terminal: big buys and sells on any token, net flow, and the wallets buying or dumping the most.",
+    "published_at": "2026-11-18T23:09:41+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 42,
+    "reasons": [
+      "Solana relevance",
+      "Published within 7 days",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "f82d4f52c9896b55c9c2991a",
+    "first_seen_at": "2026-11-24T12:22:01.773014+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@blixtrade",
+    "url": "https://github.com/blixtrade/solana-memecoin-screener",
+    "title": "blixtrade/solana-memecoin-screener",
+    "evidence": "Solana memecoin screener for the terminal: trending, new and boosted tokens filtered by liquidity, market cap, volume, age and buyers.",
+    "published_at": "2026-11-18T23:07:56+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 42,
+    "reasons": [
+      "Solana relevance",
+      "Published within 7 days",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "4a743d9cdebdc5bd38307143",
+    "first_seen_at": "2026-11-24T12:22:01.773017+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@hexf11",
+    "url": "https://github.com/hexf11/ChainTrace",
+    "title": "hexf11/ChainTrace",
+    "evidence": "链序 ChainTrace · 自动查询 GMGN Solana 交易 Slot / Index，核验并标记 Jito Bundle。",
+    "published_at": "2026-11-17T14:21:29+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 1
+    },
+    "score": 42,
+    "reasons": [
+      "Solana relevance",
+      "Published within 7 days",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "e4d2eddd6bc4422ed92848d4",
+    "first_seen_at": "2026-11-24T12:22:01.773019+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@imhasnainizhar",
+    "url": "https://github.com/imhasnainizhar/solana",
+    "title": "imhasnainizhar/solana",
+    "evidence": "Solana is a Next.js e-commerce builder designed to launch minimal stores in clicks, featuring a build mode and admin dashboard.",
+    "published_at": "2026-11-19T06:08:08+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 1
+    },
+    "score": 42,
+    "reasons": [
+      "Solana relevance",
+      "Published within 7 days",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "09b22db2ac505ca1bd3df12d",
+    "first_seen_at": "2026-11-24T12:22:01.773021+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@bighneswar-mindfire",
+    "url": "https://github.com/bighneswar-mindfire/Solana",
+    "title": "bighneswar-mindfire/Solana",
+    "evidence": "",
+    "published_at": "2026-11-20T22:31:41+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 42,
+    "reasons": [
+      "Solana relevance",
+      "Published within 7 days",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "40d6a106b2b0c3c479d63b49",
+    "first_seen_at": "2026-11-24T12:22:01.773024+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@ramesjembut-terch",
+    "url": "https://github.com/ramesjembut-terch/SOLANA",
+    "title": "ramesjembut-terch/SOLANA",
+    "evidence": "",
+    "published_at": "2026-11-20T17:49:52+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 42,
+    "reasons": [
+      "Solana relevance",
+      "Published within 7 days",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "12b610112ed2a73c9295d605",
+    "first_seen_at": "2026-11-24T12:22:01.773026+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@Ole-Lewi",
+    "url": "https://github.com/Ole-Lewi/Solana",
+    "title": "Ole-Lewi/Solana",
+    "evidence": "",
+    "published_at": "2026-11-20T10:06:09+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 42,
+    "reasons": [
+      "Solana relevance",
+      "Published within 7 days",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "f025e97683ebbfeaf5299c8c",
+    "first_seen_at": "2026-11-24T12:22:01.773029+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@just3123123",
+    "url": "https://github.com/just3123123/solana",
+    "title": "just3123123/solana",
+    "evidence": "sol",
+    "published_at": "2026-11-17T15:01:12+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 42,
+    "reasons": [
+      "Solana relevance",
+      "Published within 7 days",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "84569068ff18e80360f402c3",
+    "first_seen_at": "2026-11-24T12:22:01.773031+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@blixtrade",
+    "url": "https://github.com/blixtrade/memecoin-alert-bot",
+    "title": "blixtrade/memecoin-alert-bot",
+    "evidence": "pump.fun alert bot for Telegram and Discord: new Solana memecoin launches and bonding-curve graduations, filtered and holder-checked.",
+    "published_at": "2026-11-18T23:14:58+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 42,
+    "reasons": [
+      "Solana relevance",
+      "Published within 7 days",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "24fd4c4f0dafaf09fa4f8a67",
+    "first_seen_at": "2026-11-24T12:22:01.773033+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@josephinney",
+    "url": "https://github.com/josephinney/solana-field-manual",
+    "title": "josephinney/solana-field-manual",
+    "evidence": "Short technical guides about Solana for people starting from zero",
+    "published_at": "2026-11-18T14:18:43+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 42,
+    "reasons": [
+      "Solana relevance",
+      "Published within 7 days",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "27eb5ea5cb0cfb22ee4d1ae2",
+    "first_seen_at": "2026-11-24T12:22:01.773035+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@blixtrade",
+    "url": "https://github.com/blixtrade/pump-fun-mcp",
+    "title": "blixtrade/pump-fun-mcp",
+    "evidence": "MCP server for Solana memecoin and pump.fun research: token info, rug checks, top holders, screener, whale and wallet trades for Claude, Cursor and other AI assistants.",
+    "published_at": "2026-11-18T23:16:44+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 42,
+    "reasons": [
+      "Solana relevance",
+      "Published within 7 days",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "391a1da96357c8fcaa272d36",
+    "first_seen_at": "2026-11-24T12:22:01.773038+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@blixtrade",
+    "url": "https://github.com/blixtrade/solana-rug-checker",
+    "title": "blixtrade/solana-rug-checker",
+    "evidence": "Rug pull scanner for Solana and pump.fun tokens: mint and freeze authority, holder concentration, liquidity, Token-2022 traps, with a 0-100 risk score.",
+    "published_at": "2026-11-18T23:02:39+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 42,
+    "reasons": [
+      "Solana relevance",
+      "Published within 7 days",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "7de10db3c5de7e482bbc7732",
+    "first_seen_at": "2026-11-24T12:22:01.773040+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@blixtrade",
+    "url": "https://github.com/blixtrade/solana-bubble-map",
+    "title": "blixtrade/solana-bubble-map",
+    "evidence": "Holder bubble map for any Solana or pump.fun token: top holders sized by supply share, with linked wallets grouped by shared funder.",
+    "published_at": "2026-11-18T23:00:54+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 42,
+    "reasons": [
+      "Solana relevance",
+      "Published within 7 days",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "79d68382800de9212aca8f04",
+    "first_seen_at": "2026-11-24T12:22:01.773042+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@nakaloco8",
+    "url": "https://github.com/nakaloco8/solana-bundler-launcher-react-dashboard",
+    "title": "nakaloco8/solana-bundler-launcher-react-dashboard",
+    "evidence": "React dashboard for Solana launches: multi-wallet bundle buys, Jito same-block, vanity mints, live cost breakdown.",
+    "published_at": "2026-11-19T02:17:42+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 14
+    },
+    "score": 39,
+    "reasons": [
+      "Solana relevance",
+      "Published within 7 days",
+      "Recently created public repository"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "29ef45be965189725b0d552b",
+    "first_seen_at": "2026-11-24T12:22:01.773044+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@wimsio",
+    "url": "https://github.com/wimsio/coxywallet",
+    "title": "wimsio/coxywallet",
+    "evidence": "This is a Cardano, Midnight, Bitcoin, Ethereum, Solana, XRP, Doge, Ethereum Classic and Binance Easy to Use, Secure Multichain Self-Hosted and Cross Platform Wallet.  ",
+    "published_at": "2026-11-19T15:51:19+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 8
+    },
+    "score": 39,
+    "reasons": [
+      "Solana relevance",
+      "Published within 7 days",
+      "Recently created public repository"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "dbb7a730dbeb38229e78a563",
+    "first_seen_at": "2026-11-24T12:22:01.773046+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@sicknature-x",
+    "url": "https://github.com/sicknature-x/palic-v2",
+    "title": "sicknature-x/palic-v2",
+    "evidence": "",
+    "published_at": "2026-11-20T14:27:47+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 23
+    },
+    "score": 39,
+    "reasons": [
+      "Solana relevance",
+      "Published within 7 days",
+      "Recently created public repository"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "0ac92ba11a09513376d22bf3",
+    "first_seen_at": "2026-11-24T12:22:01.773049+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@KangDanKer",
+    "url": "https://github.com/KangDanKer/bring-the-humans-02-kangdanker",
+    "title": "KangDanKer/bring-the-humans-02-kangdanker",
+    "evidence": "Bounty make fun",
+    "published_at": "2026-11-18T23:59:40+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 8
+    },
+    "score": 39,
+    "reasons": [
+      "Solana relevance",
+      "Published within 7 days",
+      "Recently created public repository"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "4bb45d3b5bdf2f173e183fe7",
+    "first_seen_at": "2026-11-24T12:22:01.773051+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@Skyzee2704",
+    "url": "https://github.com/Skyzee2704/makefun-getting-started",
+    "title": "Skyzee2704/makefun-getting-started",
+    "evidence": "Getting started with make.fun — a newcomer's guide for humans and their AI agents. Built by an AI agent for make.fun's Bring the humans again bounty, $1,000 in USDC.",
+    "published_at": "2026-11-20T04:29:48+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 10
+    },
+    "score": 39,
+    "reasons": [
+      "Solana relevance",
+      "Published within 7 days",
+      "Recently created public repository"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "013febfba71b529184d15274",
+    "first_seen_at": "2026-11-24T12:22:01.773054+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@nakaloco8",
+    "url": "https://github.com/nakaloco8/robinhood-chain-wallet-manager-dashboard",
+    "title": "nakaloco8/robinhood-chain-wallet-manager-dashboard",
+    "evidence": "Wallet manager + bundler for Robinhood Chain launches: fund, group and fire wallets from one dashboard.",
+    "published_at": "2026-11-19T02:17:50+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 14
+    },
+    "score": 39,
+    "reasons": [
+      "Solana relevance",
+      "Published within 7 days",
+      "Recently created public repository"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "06d5062f851845b9835f40ae",
+    "first_seen_at": "2026-11-24T12:22:01.773056+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@nibblescreative-afk",
+    "url": "https://github.com/nibblescreative-afk/darkseek",
+    "title": "nibblescreative-afk/darkseek",
+    "evidence": "A Web3 hide and seek game on Solana. Eight hide, two hunt, one light, and every stake is paid out by an open program onchain. This repo is the game's open part: the vault program, SDK, indexer and docs to verify stakes, fees, payouts and $DS supply.",
+    "published_at": "2026-11-20T10:06:11+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 9
+    },
+    "score": 39,
+    "reasons": [
+      "Solana relevance",
+      "Published within 7 days",
+      "Recently created public repository"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "80f4288d5d0a6d5a7d983424",
+    "first_seen_at": "2026-11-24T12:22:01.773058+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@qlufiq-collab",
+    "url": "https://github.com/qlufiq-collab/makefun-field-guide",
+    "title": "qlufiq-collab/makefun-field-guide",
+    "evidence": "A make.fun field guide: zero to your first USDC payout, with real numbers from 18 agent entries. Built by an AI agent for make.fun's “Bring the humans again” bounty, $1,000 in USDC.",
+    "published_at": "2026-11-20T07:34:52+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 7
+    },
+    "score": 39,
+    "reasons": [
+      "Solana relevance",
+      "Published within 7 days",
+      "Recently created public repository"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "6312d5b3c0ebf18d484eb6a7",
+    "first_seen_at": "2026-11-24T12:22:01.773060+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@AcruxComputer",
+    "url": "https://github.com/AcruxComputer/acrux",
+    "title": "AcruxComputer/acrux",
+    "evidence": "Solana at 50 ms. A Solana fork with New Constellation consensus.",
+    "published_at": "2026-11-16T10:15:16+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 2
+    },
+    "score": 38,
+    "reasons": [
+      "Solana relevance",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "ab960a9d343724c6b62d7937",
+    "first_seen_at": "2026-11-24T12:22:01.773062+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@ravtel-git",
+    "url": "https://github.com/ravtel-git/solana",
+    "title": "ravtel-git/solana",
+    "evidence": "devnet",
+    "published_at": "2026-11-15T17:42:10+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 38,
+    "reasons": [
+      "Solana relevance",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "f33b47ab569431f8a48f2921",
+    "first_seen_at": "2026-11-24T12:22:01.773064+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@herz06",
+    "url": "https://github.com/herz06/solana",
+    "title": "herz06/solana",
+    "evidence": "",
+    "published_at": "2026-11-10T19:11:33+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 38,
+    "reasons": [
+      "Solana relevance",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "ac0211cc549754dd36e55b31",
+    "first_seen_at": "2026-11-24T12:22:01.773066+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@trtrtwew",
+    "url": "https://github.com/trtrtwew/Solana",
+    "title": "trtrtwew/Solana",
+    "evidence": "Solana",
+    "published_at": "2026-11-10T22:43:40+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 38,
+    "reasons": [
+      "Solana relevance",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "48540f5a0760ad25b89741ed",
+    "first_seen_at": "2026-11-24T12:22:01.773069+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@jcf299-droid",
+    "url": "https://github.com/jcf299-droid/SolanaAkashBlockchainTest",
+    "title": "jcf299-droid/SolanaAkashBlockchainTest",
+    "evidence": "Testing smart contract deployment on the Solana network using computing power from Akash network. ",
+    "published_at": "2026-11-11T01:13:43+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 38,
+    "reasons": [
+      "Solana relevance",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "c787506330886305c65d2aa6",
+    "first_seen_at": "2026-11-24T12:22:01.773071+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@Yahyaoui-Dev",
+    "url": "https://github.com/Yahyaoui-Dev/solana-blockchain-tp",
+    "title": "Yahyaoui-Dev/solana-blockchain-tp",
+    "evidence": "Travaux pratiques Solana Devnet",
+    "published_at": "2026-11-11T23:00:20+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 38,
+    "reasons": [
+      "Solana relevance",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "1bebed658754f923845fb499",
+    "first_seen_at": "2026-11-24T12:22:01.773073+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@dhanvi2612",
+    "url": "https://github.com/dhanvi2612/blockchain-akash-x-solana",
+    "title": "dhanvi2612/blockchain-akash-x-solana",
+    "evidence": "blockchain akash x solana 11/10",
+    "published_at": "2026-11-11T01:13:37+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 38,
+    "reasons": [
+      "Solana relevance",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "1c16225b1beecedc6e9c9e74",
+    "first_seen_at": "2026-11-24T12:22:01.773077+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@ratnatriandriani",
+    "url": "https://github.com/ratnatriandriani/projek-solana-devnet",
+    "title": "ratnatriandriani/projek-solana-devnet",
+    "evidence": "Project praktikum keamanan data dan blockchain menggunakan Solana Devnet.",
+    "published_at": "2026-11-13T12:07:12+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 38,
+    "reasons": [
+      "Solana relevance",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "e2a963933a42d3fed52f71d9",
+    "first_seen_at": "2026-11-24T12:22:01.773079+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@TruckerDisclose",
+    "url": "https://github.com/TruckerDisclose/solana-node-notes",
+    "title": "TruckerDisclose/solana-node-notes",
+    "evidence": "Validator hobbyist notes for Solana — hardware sizing and care tasks.",
+    "published_at": "2026-11-17T06:49:40+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 38,
+    "reasons": [
+      "Solana relevance",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "71f424ac75537fef5a9e7031",
+    "first_seen_at": "2026-11-24T12:22:01.773081+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@Fibertrudeem",
+    "url": "https://github.com/Fibertrudeem/solana-node-notes",
+    "title": "Fibertrudeem/solana-node-notes",
+    "evidence": "Validator hobbyist notes for Solana — hardware sizing and care tasks.",
+    "published_at": "2026-11-17T03:58:23+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 38,
+    "reasons": [
+      "Solana relevance",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "5f02cb0340fd0327b7fe3f19",
+    "first_seen_at": "2026-11-24T12:22:01.773083+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@adamsnipes",
+    "url": "https://github.com/adamsnipes/hoodlums-portfolio",
+    "title": "adamsnipes/hoodlums-portfolio",
+    "evidence": "Wallet interfaces, transaction builders, blockchain indexing, and a browser extension.",
+    "published_at": "2026-11-12T20:37:32+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 38,
+    "reasons": [
+      "Solana relevance",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "1ff7bb2069cc830b20fb2590",
+    "first_seen_at": "2026-11-24T12:22:01.773086+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@EdisonTKPcom",
+    "url": "https://github.com/EdisonTKPcom/Awesome-Craft-Solana",
+    "title": "EdisonTKPcom/Awesome-Craft-Solana",
+    "evidence": "A curated list of verified open-source Solana clients, SDKs, frameworks, explorers and program libraries, including Agave, Anchor and solana-web3.js.",
+    "published_at": "2026-11-15T09:52:20+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0
+    },
+    "score": 38,
+    "reasons": [
+      "Solana relevance",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "475b114e7b63ba98e6878613",
+    "first_seen_at": "2026-11-24T12:22:01.773088+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@Chihyunpark1",
+    "url": "https://github.com/Chihyunpark1/slop-source",
+    "title": "Chihyunpark1/slop-source",
+    "evidence": "SLOP Source — an independent, open-source reverse-engineering reconstruction of the SLOP token and platform. Not affiliated with slop.cash.",
+    "published_at": "2026-11-11T07:00:41+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 5
+    },
+    "score": 38,
+    "reasons": [
+      "Solana relevance",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "985a3c9ca52b1d66588ae7c6",
+    "first_seen_at": "2026-11-24T12:22:01.773090+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@dropchadfun",
+    "url": "https://github.com/dropchadfun/dropchad",
+    "title": "dropchadfun/dropchad",
+    "evidence": "send crypto to anyone on X by username. every drop is proved on chain",
+    "published_at": "2026-11-14T12:34:17+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 3
+    },
+    "score": 38,
+    "reasons": [
+      "Solana relevance",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "c1180f7956353f98fcaad640",
+    "first_seen_at": "2026-11-24T12:22:01.773093+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@barestate-ai",
+    "url": "https://github.com/barestate-ai/oms",
+    "title": "barestate-ai/oms",
+    "evidence": "OMS: a local Solana coding harness",
+    "published_at": "2026-11-14T10:03:02+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 3
+    },
+    "score": 38,
+    "reasons": [
+      "Solana relevance",
+      "Recently created public repository",
+      "Low-star repository; early visibility may be limited"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "45086db25472d4c62b881a58",
+    "first_seen_at": "2026-11-24T12:22:01.773095+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@wattenhoferSOL",
+    "url": "https://github.com/wattenhoferSOL/SolanaMCP",
+    "title": "wattenhoferSOL/SolanaMCP",
+    "evidence": "Solana MCP Whitepaper \"New Constellation\"",
+    "published_at": "2026-11-14T22:47:41+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 10
+    },
+    "score": 35,
+    "reasons": [
+      "Solana relevance",
+      "Recently created public repository"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "378fb8fe92af95fedebde3c0",
+    "first_seen_at": "2026-11-24T12:22:01.773097+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@sicknature-x",
+    "url": "https://github.com/sicknature-x/Sol-Warlock-Meteora-LP-Bot",
+    "title": "sicknature-x/Sol-Warlock-Meteora-LP-Bot",
+    "evidence": "Sol Warlock: bot LP Meteora DLMM di Solana. Paper/dry run by default, kontrol lewat Telegram Mini App.",
+    "published_at": "2026-11-11T11:51:52+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 28
+    },
+    "score": 35,
+    "reasons": [
+      "Solana relevance",
+      "Recently created public repository"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "bc7a093bb071d0c84a34146e",
+    "first_seen_at": "2026-11-24T12:22:01.773100+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@donovancraig54",
+    "url": "https://github.com/donovancraig54/escrow-solana",
+    "title": "donovancraig54/escrow-solana",
+    "evidence": "An escrow program (smart contract) built for the Solana blockchain",
+    "published_at": "2026-11-12T20:36:08+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 18
+    },
+    "score": 35,
+    "reasons": [
+      "Solana relevance",
+      "Recently created public repository"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "f151d20c7e66f5e1d3f2cb54",
+    "first_seen_at": "2026-11-24T12:22:01.773102+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@Novaograge12557",
+    "url": "https://github.com/Novaograge12557/Solana-AI-resp-Agent-Multimodal",
+    "title": "Novaograge12557/Solana-AI-resp-Agent-Multimodal",
+    "evidence": "💱Solana AI Multimodal Agent🤖: This Solana AI Agent is one of Onchain AI Agent that implements DeFAI, DePIN. this Solana AI Agent also implements multimodal capabilities, multi agents.",
+    "published_at": "2026-11-14T11:36:07+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 25
+    },
+    "score": 35,
+    "reasons": [
+      "Solana relevance",
+      "Recently created public repository"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "7ec2a6fe985651f683819e27",
+    "first_seen_at": "2026-11-24T12:22:01.773104+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@zostaff",
+    "url": "https://github.com/zostaff/pumpcraft",
+    "title": "zostaff/pumpcraft",
+    "evidence": "",
+    "published_at": "2026-11-10T14:31:54+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 15
+    },
+    "score": 35,
+    "reasons": [
+      "Solana relevance",
+      "Recently created public repository"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "81a00e8bda14d4d99e5e7049",
+    "first_seen_at": "2026-11-24T12:22:01.773106+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@crtl-moneybags",
+    "url": "https://github.com/crtl-moneybags/pumpbot",
+    "title": "crtl-moneybags/pumpbot",
+    "evidence": "Automated pump.fun trading MEV and sniping bot",
+    "published_at": "2026-11-17T07:42:07+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 45
+    },
+    "score": 35,
+    "reasons": [
+      "Solana relevance",
+      "Recently created public repository"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "51271a88d6a87a7a14dbb02c",
+    "first_seen_at": "2026-11-24T12:22:01.773108+00:00",
+    "pipeline_status": "DISCOVERED"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@openensemble",
+    "url": "https://github.com/openensemble/onn-4k-pro-2026-unlock-root",
+    "title": "openensemble/onn-4k-pro-2026-unlock-root",
+    "evidence": "Guided unlock and root for the 2026 onn 4K Pro (jarvis2). Permanent Magisk 30.7 root verified on Android 14 build 15640252.",
+    "published_at": "2026-11-10T21:33:06+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 43
+    },
+    "score": 35,
+    "reasons": [
+      "Solana relevance",
+      "Recently created public repository"
+    ],
+    "verification": "Repository owner is only a candidate, not a confirmed founder.",
+    "id": "077af3b12af1568033764ed6",
+    "first_seen_at": "2026-11-24T12:22:01.773110+00:00",
+    "pipeline_status": "DISCOVERED"
   }
 ]
