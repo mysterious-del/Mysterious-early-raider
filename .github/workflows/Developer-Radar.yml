@@ -33,7 +33,7 @@ jobs:
         env:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
           LOOKBACK_DAYS: "14"
           MIN_LEAD_SCORE: "35"
           MAX_ALERTS_PER_RUN: "8"
