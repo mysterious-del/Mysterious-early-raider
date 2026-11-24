@@ -17,10 +17,12 @@ S.headers.update({"User-Agent": "MysteriousEarlyRadar/1.0 (public research)", "A
 NOW = lambda: datetime.now(timezone.utc)
 
 QUERIES = [
-    'site:x.com/ "Solana" ("launching soon" OR "coming soon" OR "pre-launch")',
-    'site:x.com/ "building on Solana" OR "Solana project"',
-    'site:x.com/ "Solana" ("community manager" OR "looking for moderators" OR "hiring")',
-    'site:x.com/ "new project" "Solana" -airdrop',
+    'site:x.com/ "building on Solana"',
+    'site:x.com/ "Solana" "launching soon"',
+    'site:x.com/ "Solana" "coming soon" project',
+    'site:x.com/ "Solana" "community manager"',
+    'site:x.com/ "Solana" "looking for moderators"',
+    'site:x.com/ "Solana" "new project" -airdrop',
 ]
 TERMS = {
     "pre-launch": ["pre-launch", "prelaunch", "launching soon", "coming soon", "before launch", "token launch", "fair launch"],
@@ -48,15 +50,25 @@ def dateval(value):
         try: return datetime.fromisoformat(value.replace("Z", "+00:00")).astimezone(timezone.utc)
         except Exception: return None
 
-def get(url, params=None):
-    try:
-        r = S.get(url, params=params, timeout=18)
-        if r.status_code == 429:
-            print("Rate limited:", url); return None
-        r.raise_for_status()
-        return r
-    except requests.RequestException as e:
-        print("Request failed:", e); return None
+def get(url, params=None, headers=None):
+    for attempt in range(3):
+        try:
+            r = S.get(url, params=params, headers=headers, timeout=20)
+            if r.status_code == 429:
+                wait = 2 ** attempt
+                print(f"Rate limited by {url}; retrying in {wait}s")
+                time.sleep(wait)
+                continue
+            if r.status_code in (401, 403):
+                print(f"Access denied ({r.status_code}) by {r.url}")
+                return None
+            r.raise_for_status()
+            return r
+        except requests.RequestException as e:
+            print(f"Request failed (attempt {attempt + 1}/3): {e}")
+            if attempt < 2:
+                time.sleep(1 + attempt)
+    return None
 
 def score(text, source, published):
     t = text.lower()
@@ -76,7 +88,7 @@ def score(text, source, published):
         elif age <= timedelta(days=7): points += 4; why.append("Published within 7 days")
     if source == "X search index": points += 8
     elif source == "Bluesky": points += 4
-    elif source == "GitHub": points += 5
+    elif source == "GitHub": points += 10
     if any(x in t for x in NOISE): points -= 18; why.append("Promotional/noise penalty")
     return max(0, min(100, points)), why
 
@@ -90,11 +102,15 @@ def x_handle(url, text):
 def bing_x():
     results = []
     for q in QUERIES:
-        r = get("https://www.bing.com/search", {"q": q, "format": "rss"})
+        r = get("https://www.bing.com/search", {"q": q, "format": "rss"},
+                headers={"Accept": "application/rss+xml, application/xml;q=0.9, */*;q=0.8"})
         if not r: continue
         try:
             root = ET.fromstring(r.text)
-            for item in root.findall(".//item"):
+            items = root.findall(".//item")
+            if not items:
+                print("Bing RSS returned no items for query:", q)
+            for item in items:
                 title = re.sub("<[^>]+>", " ", item.findtext("title", "")).strip()
                 url = (item.findtext("link", "") or "").strip()
                 desc = re.sub("<[^>]+>", " ", item.findtext("description", "")).strip()
@@ -116,39 +132,63 @@ def bing_x():
 
 def bluesky():
     results = []
-    endpoint = "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts"
-    for q in ['"building on Solana"', '"Solana" "launching soon"', '"Solana project" "coming soon"', '"community manager" Solana']:
-        r = get(endpoint, {"q": q, "limit": 30, "sort": "latest"})
-        if not r: continue
+    queries = ['"building on Solana"', '"Solana" "launching soon"',
+               '"Solana project" "coming soon"', '"community manager" Solana']
+    endpoints = [
+        "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts",
+        "https://bsky.social/xrpc/app.bsky.feed.searchPosts",
+    ]
+    blocked = set()
+    for q in queries:
+        response = None
+        for endpoint in endpoints:
+            if endpoint in blocked:
+                continue
+            response = get(endpoint, {"q": q, "limit": 30, "sort": "latest"},
+                           headers={"Accept": "application/json"})
+            if response:
+                break
+            blocked.add(endpoint)
+        if not response:
+            continue
         try:
-            for post in r.json().get("posts", []):
+            for post in response.json().get("posts", []):
                 rec, author = post.get("record", {}), post.get("author", {})
                 text = rec.get("text", "")
                 created = dateval(rec.get("createdAt"))
-                if created and created < NOW() - timedelta(days=LOOKBACK): continue
+                if created and created < NOW() - timedelta(days=LOOKBACK):
+                    continue
                 points, why = score(text, "Bluesky", created)
-                if points < MIN_SCORE: continue
+                if points < MIN_SCORE:
+                    continue
                 handle = author.get("handle")
                 uri = post.get("uri", "")
                 rkey = uri.rsplit("/", 1)[-1]
                 url = f"https://bsky.app/profile/{handle}/post/{rkey}" if handle else ""
                 results.append({
-                    "source": "Bluesky", "handle": "@" + handle if handle else None, "url": url,
-                    "title": text[:250], "evidence": text[:500],
+                    "source": "Bluesky", "handle": "@" + handle if handle else None,
+                    "url": url, "title": text[:250], "evidence": text[:500],
                     "published_at": created.isoformat() if created else None,
                     "followers": author.get("followersCount"),
-                    "engagement": {k: post.get(k) for k in ["likeCount","repostCount","replyCount"]},
+                    "engagement": {k: post.get(k) for k in ["likeCount", "repostCount", "replyCount"]},
                     "score": points, "reasons": why,
                     "verification": "Bluesky account, not confirmed as an X account or project founder."
                 })
-        except (ValueError, TypeError): print("Bluesky response parse error")
+        except (ValueError, TypeError, AttributeError) as e:
+            print("Bluesky response parse error:", e)
         time.sleep(.5)
+    if not results and blocked:
+        print("Bluesky search unavailable from this runner; continuing with other sources.")
     return results
 
 def github_solana():
     results = []
     since = (NOW() - timedelta(days=LOOKBACK)).strftime("%Y-%m-%d")
-    for q in [f"solana created:>={since} stars:0..20", f"solana blockchain created:>={since} stars:0..20"]:
+    for q in [
+        f"solana created:>={since} stars:0..50",
+        f"solana blockchain created:>={since} stars:0..50",
+        f"solana in:readme created:>={since} stars:0..50",
+    ]:
         try:
             r = S.get("https://api.github.com/search/repositories",
                       params={"q": q, "sort": "created", "order": "desc", "per_page": 25},
@@ -161,6 +201,13 @@ def github_solana():
                 created = dateval(repo.get("created_at"))
                 text = (repo.get("full_name","") + " " + (repo.get("description") or "") + " Solana")
                 points, why = score(text, "GitHub", created)
+                if created and NOW() - created <= timedelta(days=14):
+                    points += 5
+                    why.append("Recently created public repository")
+                if repo.get("stargazers_count", 0) <= 5:
+                    points += 3
+                    why.append("Low-star repository; early visibility may be limited")
+                points = min(100, points)
                 if points < MIN_SCORE: continue
                 owner = (repo.get("owner") or {}).get("login")
                 results.append({
@@ -177,15 +224,15 @@ def github_solana():
     return results
 
 def alert(lead):
-    reasons = "\n".join("• " + x for x in lead["reasons"][:5])
+    reasons = "\n".join("â¢ " + x for x in lead["reasons"][:5])
     msg = (
-        "🥷 MYSTERIOUS EARLY RADAR — SOLANA LEAD\n\n"
-        f"🎯 Score: {lead['score']}/100\\n👤 Account/owner: {lead.get('handle') or 'Unknown'}\\n"
-        f"🔎 Source: {lead['source']}\\n📝 Signal: {lead['title']}\\n"
-        f"👥 Followers: {lead.get('followers') if lead.get('followers') is not None else 'Unavailable'}\\n"
-        f"📊 Engagement: {lead.get('engagement') or 'Unavailable'}\\n"
-        f"🕒 Published: {lead.get('published_at') or 'Unknown'}\\n\\n"
-        f"Why flagged:\\n{reasons}\\n\\n🔗 {lead.get('url')}\\n\\n⚠️ {lead['verification']}"
+        "ð¥· MYSTERIOUS EARLY RADAR â SOLANA LEAD\n\n"
+        f"ð¯ Score: {lead['score']}/100\nð¤ Account/owner: {lead.get('handle') or 'Unknown'}\n"
+        f"ð Source: {lead['source']}\nð Signal: {lead['title']}\n"
+        f"ð¥ Followers: {lead.get('followers') if lead.get('followers') is not None else 'Unavailable'}\n"
+        f"ð Engagement: {lead.get('engagement') or 'Unavailable'}\n"
+        f"ð Published: {lead.get('published_at') or 'Unknown'}\n\n"
+        f"Why flagged:\n{reasons}\n\nð {lead.get('url')}\n\nâ ï¸ {lead['verification']}"
     )
     if not BOT or not CHAT:
         print(msg); return
@@ -196,7 +243,7 @@ def alert(lead):
     except requests.RequestException as e: print("Telegram delivery failed:", e)
 
 def main():
-    print("Mysterious Early Radar — Solana developer discovery")
+    print("Mysterious Early Radar â Solana developer discovery")
     seen, history = load(SEEN, {}), load(LEADS, [])
     if not isinstance(seen, dict): seen = {}
     if not isinstance(history, list): history = []
@@ -213,17 +260,22 @@ def main():
             unique[item["id"]] = item
     ranked = sorted(unique.values(), key=lambda x:x["score"], reverse=True)
     fresh = [x for x in ranked if x["id"] not in seen]
-    for item in fresh:
+    for index, item in enumerate(fresh):
         item["first_seen_at"] = NOW().isoformat()
         item["pipeline_status"] = "DISCOVERED"
-        if len([x for x in fresh[:fresh.index(item)+1]]) <= MAX_ALERTS:
+        if index < MAX_ALERTS:
             alert(item)
         seen[item["id"]] = {"url":item.get("url"),"source":item["source"],
                             "first_seen_at":item["first_seen_at"],"score":item["score"]}
     history.extend(fresh)
     save(SEEN, dict(list(seen.items())[-15000:]))
     save(LEADS, history[-2000:])
+    by_source = {}
+    for item in ranked:
+        by_source[item["source"]] = by_source.get(item["source"], 0) + 1
+    print("Ranked candidates by source:", by_source)
     print("New leads:", len(fresh), "| alerts attempted:", min(len(fresh), MAX_ALERTS))
+    print("Reminder: repository owners and Bluesky accounts are prospects to verify, not confirmed project founders.")
 
 if __name__ == "__main__":
     main()
