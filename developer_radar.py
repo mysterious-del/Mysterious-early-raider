@@ -230,7 +230,11 @@ def github_solana():
         time.sleep(1.2)
 
     for repo in collected.values():
-        name = repo.get("full_name", "")
+    url = repo.get("html_url", "")
+    if not url:
+        continue
+
+    name = repo.get("full_name", "")
         description = repo.get("description") or ""
         topics = " ".join(repo.get("topics") or [])
         combined = f"{name} {description} {topics}".lower()
