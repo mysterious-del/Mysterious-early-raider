@@ -232,7 +232,7 @@ def github_solana():
     for repo in collected.values():
         url = repo.get("html_url", "")
         if not url:
-        continue
+            continue
 
     name = repo.get("full_name", "")
         description = repo.get("description") or ""
