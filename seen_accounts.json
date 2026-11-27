@@ -589,42 +589,48 @@
     "source": "GitHub",
     "first_seen_at": "2026-11-24T15:58:02.359530+00:00",
     "score": 64,
-    "delivery_state": "PENDING"
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-27T12:58:23.665045+00:00"
   },
   "58c87d3fd9a1fa67327290d2": {
     "url": "https://github.com/wafermap/wafermap-cli",
     "source": "GitHub",
     "first_seen_at": "2026-11-24T15:58:02.359530+00:00",
     "score": 64,
-    "delivery_state": "PENDING"
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-27T12:58:23.793488+00:00"
   },
   "caa2ac6ab12a6506b8686b21": {
     "url": "https://github.com/wafermap/wafermap-cli",
     "source": "GitHub",
     "first_seen_at": "2026-11-24T15:58:02.359530+00:00",
     "score": 64,
-    "delivery_state": "PENDING"
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-27T12:58:23.935266+00:00"
   },
   "818ac07d5b42c978c928a065": {
     "url": "https://github.com/wafermap/wafermap-cli",
     "source": "GitHub",
     "first_seen_at": "2026-11-24T15:58:02.359530+00:00",
     "score": 64,
-    "delivery_state": "PENDING"
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-27T12:58:24.079127+00:00"
   },
   "a29b6487f11275c785a40390": {
     "url": "https://github.com/wafermap/wafermap-cli",
     "source": "GitHub",
     "first_seen_at": "2026-11-24T15:58:02.359530+00:00",
     "score": 64,
-    "delivery_state": "PENDING"
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-27T12:58:24.213606+00:00"
   },
   "0f0f7b7959f2802c08ec3a76": {
     "url": "https://github.com/wafermap/wafermap-cli",
     "source": "GitHub",
     "first_seen_at": "2026-11-24T15:58:02.359530+00:00",
     "score": 64,
-    "delivery_state": "PENDING"
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-27T12:58:24.367997+00:00"
   },
   "765b6847d999c7232996ac5a": {
     "url": "https://github.com/wafermap/wafermap-cli",
@@ -816,6 +822,162 @@
     "source": "GitHub",
     "first_seen_at": "2026-11-24T20:53:10.534437+00:00",
     "score": 56,
+    "delivery_state": "PENDING"
+  },
+  "b365318d9c1a8f7e15c6ac7c": {
+    "url": "https://github.com/berasari/fairpass",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
+    "score": 72,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-27T12:58:23.388713+00:00"
+  },
+  "e9a59ae8247408a6bc5eceb3": {
+    "url": "https://github.com/defibuilderpizza/fuel-integrations",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
+    "score": 68,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-27T12:58:23.538489+00:00"
+  },
+  "7ac7a239a8612708182a0705": {
+    "url": "https://github.com/itsxwang/cash-register",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
+    "score": 64,
+    "delivery_state": "PENDING"
+  },
+  "a524fa4989ac1522338d7496": {
+    "url": "https://github.com/dianenelson33/gmgn-bullx-photon-copytrade-bot-2026",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
+    "score": 62,
+    "delivery_state": "PENDING"
+  },
+  "f8522c3ed694f19090f04c53": {
+    "url": "https://github.com/PhiBao/skill-circuit",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "602a677a8643d7148af27b96": {
+    "url": "https://github.com/FoundationStoneAlgorithms/TokenWork",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "9409b0194df1ce56c61ced4a": {
+    "url": "https://github.com/dizel3d/solana-twotap-vault",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "ed7359b46938193f7e3686a6": {
+    "url": "https://github.com/ETIM-PAUL/lineup",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "9bed1369fbe3ba8a2bb67a9c": {
+    "url": "https://github.com/abaadi931/sol-desk",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "44683a62d8ca160ed72077f0": {
+    "url": "https://github.com/LSUDOKO/ClawRush",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "d9414f76f82420f0a7041c69": {
+    "url": "https://github.com/judejones410-hue/sotto",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "871c73b60f3f3b25b63dad8a": {
+    "url": "https://github.com/yangjina-kim/sol-hourly-paper-trader",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "52e040310036593120394847": {
+    "url": "https://github.com/Prashant-thakur77/ringside",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "61405f0ce479aacf1c18acd2": {
+    "url": "https://github.com/Housofalex/leash",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "e625c1b8f26ac47b32ca97a2": {
+    "url": "https://github.com/dren712/tipoff",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "a3a684a5ca089be89bb93b0c": {
+    "url": "https://github.com/PhoenixAB88/pulsar-network",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "931a541d2783c512114c2e81": {
+    "url": "https://github.com/arnabbhowmik07/Ghost",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
+    "score": 58,
+    "delivery_state": "PENDING"
+  },
+  "c6b8bf06e289dce887c93564": {
+    "url": "https://github.com/adarshapadhan/padhan-paper-desk",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
+    "score": 56,
+    "delivery_state": "PENDING"
+  },
+  "4fed6a9c08899268c525fea8": {
+    "url": "https://github.com/bambini-tech/digitaldon-public",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
+    "score": 56,
+    "delivery_state": "PENDING"
+  },
+  "848257a1264bb56166e0c0e5": {
+    "url": "https://github.com/thisyearnofear/pir8",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
+    "score": 56,
+    "delivery_state": "PENDING"
+  },
+  "bbd88d8fe3b258711efc1672": {
+    "url": "https://github.com/dfinity/oisy-wallet",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
+    "score": 54,
+    "delivery_state": "PENDING"
+  },
+  "e321fdd7f801918942c7df1d": {
+    "url": "https://github.com/0xNyk/0xNyk",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
+    "score": 54,
     "delivery_state": "PENDING"
   }
 }
