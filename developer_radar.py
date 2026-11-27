@@ -234,7 +234,7 @@ def github_solana():
         if not url:
             continue
 
-    name = repo.get("full_name", "")
+            name = repo.get("full_name", "")
         description = repo.get("description") or ""
         topics = " ".join(repo.get("topics") or [])
         combined = f"{name} {description} {topics}".lower()
