@@ -287,7 +287,7 @@ def github_solana():
     return results
 
 def alert(lead):
-reasons = "\n".join("- " + x for x in lead.get("reasons", []))
+    reasons = "\n".join("- " + x for x in lead.get("reasons", []))
 
 msg = (
     "MYSTERIOUS EARLY RADAR - SOLANA LEAD\n\n"
