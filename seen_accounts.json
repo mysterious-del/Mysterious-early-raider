@@ -845,21 +845,24 @@
     "source": "GitHub",
     "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
     "score": 64,
-    "delivery_state": "PENDING"
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-27T14:12:45.912941+00:00"
   },
   "a524fa4989ac1522338d7496": {
     "url": "https://github.com/dianenelson33/gmgn-bullx-photon-copytrade-bot-2026",
     "source": "GitHub",
     "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
     "score": 62,
-    "delivery_state": "PENDING"
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-27T14:12:46.590390+00:00"
   },
   "f8522c3ed694f19090f04c53": {
     "url": "https://github.com/PhiBao/skill-circuit",
     "source": "GitHub",
     "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
     "score": 60,
-    "delivery_state": "PENDING"
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-27T14:12:47.031118+00:00"
   },
   "602a677a8643d7148af27b96": {
     "url": "https://github.com/FoundationStoneAlgorithms/TokenWork",
@@ -978,6 +981,109 @@
     "source": "GitHub",
     "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
     "score": 54,
+    "delivery_state": "PENDING"
+  },
+  "4998ea66dd5e9f9f94e93f6e": {
+    "url": "https://github.com/marcusantonius88/health-factor-monitor",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T14:12:44.813880+00:00",
+    "score": 72,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-27T14:12:45.424822+00:00"
+  },
+  "87e13607b58cf0f69fb27e3c": {
+    "url": "https://github.com/jenzylove/steady",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T14:12:44.813880+00:00",
+    "score": 68,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-27T14:12:45.653837+00:00"
+  },
+  "3d8f1d5b48effe80e7e18cdf": {
+    "url": "https://github.com/Fashich/Groundgraph",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T14:12:44.813880+00:00",
+    "score": 64,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-27T14:12:46.171169+00:00"
+  },
+  "30fcf7cc1cfdb9875773d0f2": {
+    "url": "https://github.com/macmac08082002/vektorscan-mcp",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T14:12:44.813880+00:00",
+    "score": 64,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-27T14:12:46.382771+00:00"
+  },
+  "6ebd1d8eec16a51b340fb36c": {
+    "url": "https://github.com/ShinjukuStaition/shinjuku-shield",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T14:12:44.813880+00:00",
+    "score": 62,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-27T14:12:46.800928+00:00"
+  },
+  "6a40df223bafd5919fd245c0": {
+    "url": "https://github.com/twotap-vault/solana-twotap-vault",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T14:12:44.813880+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "046ae2d14592240c0bb9c1db": {
+    "url": "https://github.com/Kaksie-codes/bidazk-solana-escrow",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T14:12:44.813880+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "ede2dda7c689c0c5fe1de83a": {
+    "url": "https://github.com/Team-YinYang/Solo-X",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T14:12:44.813880+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "7f6c05b58e306cf971561f9c": {
+    "url": "https://github.com/Bharath-K-Shetty/flint-hummingbot-connector",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T14:12:44.813880+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "fbac0268287952d6fc9d05ee": {
+    "url": "https://github.com/b-bhu/jhandi-munda",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T14:12:44.813880+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "1091a20466e78e7d1d3a3638": {
+    "url": "https://github.com/litleSDK/launchreel",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T14:12:44.813880+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "9b1e40934bd2974e416a5a5b": {
+    "url": "https://github.com/lailaahsaniyah-debug/TraceFarm",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T14:12:44.813880+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "82e91ebfdf2590593bfb9a26": {
+    "url": "https://github.com/vet402/vet402",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T14:12:44.813880+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "a4a2d465c55e9fc0b889df1a": {
+    "url": "https://x.com/solana",
+    "source": "X search index",
+    "first_seen_at": "2026-11-27T14:12:44.813880+00:00",
+    "score": 40,
     "delivery_state": "PENDING"
   }
 }
