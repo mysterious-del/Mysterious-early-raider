@@ -347,25 +347,24 @@ def main():
     ranked = sorted(unique.values(), key=lambda x: x["score"], reverse=True)
     fresh = [x for x in ranked if x["id"] not in seen]
     now_text = NOW().isoformat()
-    history_by_id = {x.get("id"): x for x in history if isinstance(x, dict) and x.get("id")}
-history_by_id = {x.get("id"): x for x in history if isinstance(x, dict) and x.get("id")}
+        history_by_id = {x.get("id"): x for x in history if isinstance(x, dict) and x.get("id")}
 
-# Paste the new filter block here
-history_by_id = {
-    key: item
-    for key, item in history_by_id.items()
-    if not (
-        item.get("source") == "GitHub"
-        and item.get("delivery_state") == "PENDING"
-        and (
-            not item.get("owner_url")
-            or item.get("url", "").rstrip("/")
-            != f"https://github.com/{item.get('title', '')}".rstrip("/")
+    # Remove outdated pending GitHub alerts with incorrect links.
+    history_by_id = {
+        key: item
+        for key, item in history_by_id.items()
+        if not (
+            item.get("source") == "GitHub"
+            and item.get("delivery_state") == "PENDING"
+            and (
+                not item.get("owner_url")
+                or item.get("url", "").rstrip("/")
+                != f"https://github.com/{item.get('title', '')}".rstrip("/")
+            )
         )
-    )
-}
+    }
 
-for item in fresh:
+    for item in fresh:
         item["first_seen_at"] = now_text
         item["pipeline_status"] = "PENDING_ALERT"
         item["delivery_state"] = "PENDING"
