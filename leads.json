@@ -2465,8 +2465,9 @@
     "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
     "id": "602a677a8643d7148af27b96",
     "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
-    "pipeline_status": "PENDING_ALERT",
-    "delivery_state": "PENDING"
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-27T18:56:04.889527+00:00"
   },
   {
     "source": "GitHub",
@@ -2493,8 +2494,9 @@
     "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
     "id": "9409b0194df1ce56c61ced4a",
     "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
-    "pipeline_status": "PENDING_ALERT",
-    "delivery_state": "PENDING"
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-27T18:56:05.018488+00:00"
   },
   {
     "source": "GitHub",
@@ -2521,8 +2523,156 @@
     "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
     "id": "ed7359b46938193f7e3686a6",
     "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
-    "pipeline_status": "PENDING_ALERT",
-    "delivery_state": "PENDING"
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-27T18:56:05.198008+00:00"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@helasnoussi",
+    "owner_url": "https://github.com/helasnoussi",
+    "url": "https://github.com/helasnoussi/SolWatch",
+    "title": "helasnoussi/SolWatch",
+    "evidence": "AI agent tracking Solana protocol announcements, delivering curated voice alerts with verifiable on-chain proof.",
+    "published_at": "2026-11-27T18:52:10+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 68,
+    "reasons": [
+      "Solana relevance",
+      "project: protocol",
+      "Published within 24 hours",
+      "Product/build signals: protocol",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "b68d2a6d6b038582a427bf5a",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-27T18:56:04.029213+00:00"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@maziofweb3",
+    "owner_url": "https://github.com/maziofweb3",
+    "url": "https://github.com/maziofweb3/solbyte",
+    "title": "maziofweb3/solbyte",
+    "evidence": "Autonomous AI Trading Protocol and Live Streamer Arena on Solana",
+    "published_at": "2026-11-27T18:18:21+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 68,
+    "reasons": [
+      "Solana relevance",
+      "project: protocol",
+      "Published within 24 hours",
+      "Product/build signals: protocol",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "3beef82b5ad6654ba3c12b71",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-27T18:56:04.176622+00:00"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@rebelchain",
+    "owner_url": "https://github.com/rebelchain",
+    "url": "https://github.com/rebelchain/percaya",
+    "title": "rebelchain/percaya",
+    "evidence": "Native Android dApp for Solana Seeker: pooled crypto calls with one shared entry, one rule-driven exit, and Seeker Genesis reputation. No free shilling.",
+    "published_at": "2026-11-27T18:31:17+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 64,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: dapp, app",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "18dcb7ed50ec455b47d0962f",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-27T18:56:04.429143+00:00"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@fps-act5-lab",
+    "owner_url": "https://github.com/fps-act5-lab",
+    "url": "https://github.com/fps-act5-lab/solana-objective-gates-mcp",
+    "title": "fps-act5-lab/solana-objective-gates-mcp",
+    "evidence": "Read-only Solana token structure, DEX flow anomaly, and market timing telemetry via Streamable HTTP MCP (Free, Zero Auth).",
+    "published_at": "2026-11-27T18:25:33+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 64,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: defi, dex",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "6212fddab452534c48d81795",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-27T18:56:04.591098+00:00"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@Psybre",
+    "owner_url": "https://github.com/Psybre",
+    "url": "https://github.com/Psybre/tab-solana",
+    "title": "Psybre/tab-solana",
+    "evidence": "Custody-free prepaid payments for events on Solana. Pay with a QR even with no signal, stalls get paid directly, and leftover balance returns automatically. Built for Dev3pack 2026.",
+    "published_at": "2026-11-27T18:17:04+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 64,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: payments, payment",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "9687fe8b0d4c07121ae32f1b",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-27T18:56:04.753253+00:00"
   },
   {
     "source": "GitHub",
@@ -3147,6 +3297,332 @@
     "verification": "Indexed public X result. Confirm profile/post manually.",
     "id": "a4a2d465c55e9fc0b889df1a",
     "first_seen_at": "2026-11-27T14:12:44.813880+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@bendrikoff",
+    "owner_url": "https://github.com/bendrikoff",
+    "url": "https://github.com/bendrikoff/overdraw-solana-blitz",
+    "title": "bendrikoff/overdraw-solana-blitz",
+    "evidence": "Overdraw is a two-player card duel on Solana Devnet with MagicBlock VRF, SOL stakes and collectible cards. Play at https://halwa-games.lol/",
+    "published_at": "2026-11-27T18:40:20+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 60,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: game",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "22c81392108ed6158ede8a9e",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@TrustlessMike",
+    "owner_url": "https://github.com/TrustlessMike",
+    "url": "https://github.com/TrustlessMike/turgalium",
+    "title": "TrustlessMike/turgalium",
+    "evidence": "Zero-fee open-source 30-chain DeFi & dust migrator to Solana (MIT) — 1-click DeFi extraction, EIP-5792/7702 batching, Circle CCTP V2 Fast Transfer, and Claude MCP / ChatGPT plugins",
+    "published_at": "2026-11-27T18:30:18+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 60,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: defi",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "6fa02ed9ea20721668def941",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@imDev2023",
+    "owner_url": "https://github.com/imDev2023",
+    "url": "https://github.com/imDev2023/testing-pipeline",
+    "title": "imDev2023/testing-pipeline",
+    "evidence": "The internal home of Aviary: a terminal and on-chain products built on Pipeline, a permissionless router for experimental Solana markets.",
+    "published_at": "2026-11-27T18:21:57+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 60,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: product",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "fed2d428270831e5db9dda6c",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@agent402-dev",
+    "owner_url": "https://github.com/agent402-dev",
+    "url": "https://github.com/agent402-dev/agent402-toolkit",
+    "title": "agent402-dev/agent402-toolkit",
+    "evidence": "Open-source x402 toolkit: seller helpers, a buyer MCP wallet with spend limits (Solana + Base), and bonded jobs on Solana.",
+    "published_at": "2026-11-27T18:16:49+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 60,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: wallet",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "f130941e24d2144c1080bff5",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@MarketWhaleApp",
+    "owner_url": "https://github.com/MarketWhaleApp",
+    "url": "https://github.com/MarketWhaleApp/reclaim-cli",
+    "title": "MarketWhaleApp/reclaim-cli",
+    "evidence": "Open-source CLI for reclaim.mwh.app that analyzes Solana wallets and executes batch reclaim transactions locally.",
+    "published_at": "2026-11-27T18:42:10+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 2,
+      "forks": 0
+    },
+    "score": 60,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: app, wallet",
+      "Repository updated within 3 days",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "1f1c8be1e484d1a76204f0ff",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@andreolf",
+    "owner_url": "https://github.com/andreolf",
+    "url": "https://github.com/andreolf/solbeat",
+    "title": "andreolf/solbeat",
+    "evidence": "The heartbeat terminal for the Solana network — zero-key, auto-updating ecosystem report & dashboard",
+    "published_at": "2026-11-27T18:35:51+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 1,
+      "forks": 0
+    },
+    "score": 60,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: defi, dashboard",
+      "Repository updated within 3 days",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "de31a4670fff6c6833c231eb",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@b4chain",
+    "owner_url": "https://github.com/b4chain",
+    "url": "https://github.com/b4chain/b4chain",
+    "title": "b4chain/b4chain",
+    "evidence": "Blockchain Developer — Solidity, Anchor/Rust, AI agents on-chain, Cloud",
+    "published_at": "2026-11-27T18:54:08+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 56,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: defi",
+      "Repository updated within 3 days",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "153b407b2e6e97ee7d21b60f",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@Solizardking",
+    "owner_url": "https://github.com/Solizardking",
+    "url": "https://github.com/Solizardking/OpenClawd-agent-kit",
+    "title": "Solizardking/OpenClawd-agent-kit",
+    "evidence": "A Rust toolkit for building agents that operate inside the Solana Virtual Machine (SVM) and across EVM rails. It packages Solana transaction helpers, wallet-scoped signing, a streaming reasoning loop, rig-core tool macros, and an optional HTTP service into one crate.",
+    "published_at": "2026-11-27T18:53:01+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 56,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: wallet",
+      "Repository updated within 3 days",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "165d38b7317e617895749129",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@raaruofficial",
+    "owner_url": "https://github.com/raaruofficial",
+    "url": "https://github.com/raaruofficial/ore-kingdom",
+    "title": "raaruofficial/ore-kingdom",
+    "evidence": "Ore Kingdom — the miners' club: capped 1,000-member forum for the Seeker · raaru.app",
+    "published_at": "2026-11-27T18:55:53+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 56,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: app",
+      "Repository updated within 3 days",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "6e4f38521a27cd67064d6fad",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@Townsvilledh",
+    "owner_url": "https://github.com/Townsvilledh",
+    "url": "https://github.com/Townsvilledh/fluid-wallet",
+    "title": "Townsvilledh/fluid-wallet",
+    "evidence": "Free, open-source, non-custodial web wallet (PWA). One seed phrase for Bitcoin, Lightning, Ethereum and other EVM chains, Solana, Sui, TON, Algorand and Bitcoin Cash, with built-in cross-chain swaps. No KYC.",
+    "published_at": "2026-11-27T18:33:32+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 6
+    },
+    "score": 56,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: wallet",
+      "Repository updated within 3 days",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "8d19438e3baf9ad1c33b1f99",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@romankurnovskii",
+    "owner_url": "https://github.com/romankurnovskii",
+    "url": "https://github.com/romankurnovskii/etemaro",
+    "title": "romankurnovskii/etemaro",
+    "evidence": "Auto dlmm Meteora bot system",
+    "published_at": "2026-11-27T18:42:23+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 31,
+      "forks": 25
+    },
+    "score": 54,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: defi",
+      "Repository updated within 3 days"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "20b640b841682ebd7e29ae08",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@stakemap-sol",
+    "owner_url": "https://github.com/stakemap-sol",
+    "url": "https://github.com/stakemap-sol/Solana-Stake-Pools-Research",
+    "title": "stakemap-sol/Solana-Stake-Pools-Research",
+    "evidence": "Open dataset behind StakeMap - whose stake is where on Solana. Registry of stake pools and delegation programs, epoch snapshots since July 2025, JSON API docs, notes on the delegation rules of each pool.",
+    "published_at": "2026-11-27T18:38:41+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 16,
+      "forks": 11
+    },
+    "score": 54,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: staking",
+      "Repository updated within 3 days"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "ad5d87b6bd5481b3f763a1a3",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
     "pipeline_status": "PENDING_ALERT",
     "delivery_state": "PENDING"
   }

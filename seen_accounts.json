@@ -869,21 +869,24 @@
     "source": "GitHub",
     "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
     "score": 60,
-    "delivery_state": "PENDING"
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-27T18:56:04.889527+00:00"
   },
   "9409b0194df1ce56c61ced4a": {
     "url": "https://github.com/dizel3d/solana-twotap-vault",
     "source": "GitHub",
     "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
     "score": 60,
-    "delivery_state": "PENDING"
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-27T18:56:05.018488+00:00"
   },
   "ed7359b46938193f7e3686a6": {
     "url": "https://github.com/ETIM-PAUL/lineup",
     "source": "GitHub",
     "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
     "score": 60,
-    "delivery_state": "PENDING"
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-27T18:56:05.198008+00:00"
   },
   "9bed1369fbe3ba8a2bb67a9c": {
     "url": "https://github.com/abaadi931/sol-desk",
@@ -1084,6 +1087,130 @@
     "source": "X search index",
     "first_seen_at": "2026-11-27T14:12:44.813880+00:00",
     "score": 40,
+    "delivery_state": "PENDING"
+  },
+  "b68d2a6d6b038582a427bf5a": {
+    "url": "https://github.com/helasnoussi/SolWatch",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "score": 68,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-27T18:56:04.029213+00:00"
+  },
+  "3beef82b5ad6654ba3c12b71": {
+    "url": "https://github.com/maziofweb3/solbyte",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "score": 68,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-27T18:56:04.176622+00:00"
+  },
+  "18dcb7ed50ec455b47d0962f": {
+    "url": "https://github.com/rebelchain/percaya",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "score": 64,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-27T18:56:04.429143+00:00"
+  },
+  "6212fddab452534c48d81795": {
+    "url": "https://github.com/fps-act5-lab/solana-objective-gates-mcp",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "score": 64,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-27T18:56:04.591098+00:00"
+  },
+  "9687fe8b0d4c07121ae32f1b": {
+    "url": "https://github.com/Psybre/tab-solana",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "score": 64,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-27T18:56:04.753253+00:00"
+  },
+  "22c81392108ed6158ede8a9e": {
+    "url": "https://github.com/bendrikoff/overdraw-solana-blitz",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "6fa02ed9ea20721668def941": {
+    "url": "https://github.com/TrustlessMike/turgalium",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "fed2d428270831e5db9dda6c": {
+    "url": "https://github.com/imDev2023/testing-pipeline",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "f130941e24d2144c1080bff5": {
+    "url": "https://github.com/agent402-dev/agent402-toolkit",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "1f1c8be1e484d1a76204f0ff": {
+    "url": "https://github.com/MarketWhaleApp/reclaim-cli",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "de31a4670fff6c6833c231eb": {
+    "url": "https://github.com/andreolf/solbeat",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "153b407b2e6e97ee7d21b60f": {
+    "url": "https://github.com/b4chain/b4chain",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "score": 56,
+    "delivery_state": "PENDING"
+  },
+  "165d38b7317e617895749129": {
+    "url": "https://github.com/Solizardking/OpenClawd-agent-kit",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "score": 56,
+    "delivery_state": "PENDING"
+  },
+  "6e4f38521a27cd67064d6fad": {
+    "url": "https://github.com/raaruofficial/ore-kingdom",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "score": 56,
+    "delivery_state": "PENDING"
+  },
+  "8d19438e3baf9ad1c33b1f99": {
+    "url": "https://github.com/Townsvilledh/fluid-wallet",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "score": 56,
+    "delivery_state": "PENDING"
+  },
+  "20b640b841682ebd7e29ae08": {
+    "url": "https://github.com/romankurnovskii/etemaro",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "score": 54,
+    "delivery_state": "PENDING"
+  },
+  "ad5d87b6bd5481b3f763a1a3": {
+    "url": "https://github.com/stakemap-sol/Solana-Stake-Pools-Research",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "score": 54,
     "delivery_state": "PENDING"
   }
 }
