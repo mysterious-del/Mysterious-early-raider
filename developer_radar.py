@@ -347,7 +347,7 @@ def main():
     ranked = sorted(unique.values(), key=lambda x: x["score"], reverse=True)
     fresh = [x for x in ranked if x["id"] not in seen]
     now_text = NOW().isoformat()
-        history_by_id = {x.get("id"): x for x in history if isinstance(x, dict) and x.get("id")}
+    history_by_id = {x.get("id"): x for x in history if isinstance(x, dict) and x.get("id")}
 
     # Remove outdated pending GitHub alerts with incorrect links.
     history_by_id = {
