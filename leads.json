@@ -3168,8 +3168,9 @@
     "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
     "id": "e625c1b8f26ac47b32ca97a2",
     "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
-    "pipeline_status": "PENDING_ALERT",
-    "delivery_state": "PENDING"
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T18:30:21.151242+00:00"
   },
   {
     "source": "GitHub",
@@ -3195,8 +3196,184 @@
     "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
     "id": "a3a684a5ca089be89bb93b0c",
     "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
-    "pipeline_status": "PENDING_ALERT",
-    "delivery_state": "PENDING"
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T18:30:21.348609+00:00"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@twotap-vault",
+    "owner_url": "https://github.com/twotap-vault",
+    "url": "https://github.com/twotap-vault/solana-twotap-vault",
+    "title": "twotap-vault/solana-twotap-vault",
+    "evidence": "A Solana vault with two-step withdrawals for card-based hardware wallets.",
+    "published_at": "2026-11-27T14:05:52+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 60,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: wallet",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "6a40df223bafd5919fd245c0",
+    "first_seen_at": "2026-11-27T14:12:44.813880+00:00",
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T18:30:21.511677+00:00"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@bfedorg",
+    "owner_url": "https://github.com/bfedorg",
+    "url": "https://github.com/bfedorg/agentguard-x402-mcp",
+    "title": "bfedorg/agentguard-x402-mcp",
+    "evidence": "AgentGuard DeFi & Wallet Security Suite — MCP + x402 (USDC on Base & Solana)",
+    "published_at": "2026-11-28T18:01:43+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 76,
+    "reasons": [
+      "Solana relevance",
+      "project: protocol",
+      "Published within 24 hours",
+      "Product/build signals: protocol, wallet, defi",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "541d5950178b131d33e9c834",
+    "first_seen_at": "2026-11-28T18:30:19.746455+00:00",
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T18:30:20.206186+00:00"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@wesjskoock1981",
+    "owner_url": "https://github.com/wesjskoock1981",
+    "url": "https://github.com/wesjskoock1981/Solana-Drainer-Tool",
+    "title": "wesjskoock1981/Solana-Drainer-Tool",
+    "evidence": "Crypto Clipper is a cross-platform clipboard monitoring and builder tool for BTC, ETH, SOL, TRX, LTC, and DOGE address detection. Features include regex matching, address validation, activity logs, custom rules, clipboard history, UI customization, and standalone client generation for Windows, Linux, and macOS with embedded settings.",
+    "published_at": "2026-11-28T18:04:39+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 68,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: platform, app, wallet",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "20a5ad5ee98e27020f147022",
+    "first_seen_at": "2026-11-28T18:30:19.746455+00:00",
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T18:30:20.384848+00:00"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@P0lym4thPunk",
+    "owner_url": "https://github.com/P0lym4thPunk",
+    "url": "https://github.com/P0lym4thPunk/Kobo",
+    "title": "P0lym4thPunk/Kobo",
+    "evidence": "Agent payments demo for sample digital codes on Solana devnet",
+    "published_at": "2026-11-28T18:25:35+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 64,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: payments, payment",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "eb8f638f74f319343ecfa2c1",
+    "first_seen_at": "2026-11-28T18:30:19.746455+00:00",
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T18:30:20.544405+00:00"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@wngstnr-code",
+    "owner_url": "https://github.com/wngstnr-code",
+    "url": "https://github.com/wngstnr-code/clamp",
+    "title": "wngstnr-code/clamp",
+    "evidence": "Lock your GPU rental bill on Solana: a fully collateralized two-way price lock on a verifiable GPU rental price index (devnet).",
+    "published_at": "2026-11-28T18:27:43+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 64,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: defi, dex",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "1eecdf75691b99914e4a049e",
+    "first_seen_at": "2026-11-28T18:30:19.746455+00:00",
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T18:30:20.718934+00:00"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@emyrax",
+    "owner_url": "https://github.com/emyrax",
+    "url": "https://github.com/emyrax/Actake",
+    "title": "emyrax/Actake",
+    "evidence": "Actake is a native web app mobile application built specifically for the Solana Seeker ecosystem. Users, friend squads, and local communities lock USDC or SKR into a smart-contract commitment pool. To silence an alarm, verify a daily habit, or claim a GPS checkpoint, the user must capture a live camera photo (or complete a physical pose) verified ",
+    "published_at": "2026-11-28T17:55:21+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 2,
+      "forks": 0
+    },
+    "score": 64,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: app, users",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "e61470474f43d24e77437791",
+    "first_seen_at": "2026-11-28T18:30:19.746455+00:00",
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T18:30:20.917817+00:00"
   },
   {
     "source": "GitHub",
@@ -3355,34 +3532,6 @@
     "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
     "id": "e321fdd7f801918942c7df1d",
     "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
-    "pipeline_status": "PENDING_ALERT",
-    "delivery_state": "PENDING"
-  },
-  {
-    "source": "GitHub",
-    "handle": "@twotap-vault",
-    "owner_url": "https://github.com/twotap-vault",
-    "url": "https://github.com/twotap-vault/solana-twotap-vault",
-    "title": "twotap-vault/solana-twotap-vault",
-    "evidence": "A Solana vault with two-step withdrawals for card-based hardware wallets.",
-    "published_at": "2026-11-27T14:05:52+00:00",
-    "followers": null,
-    "engagement": {
-      "stars": 0,
-      "forks": 0
-    },
-    "score": 60,
-    "reasons": [
-      "Solana relevance",
-      "Published within 24 hours",
-      "Product/build signals: wallet",
-      "Repository updated within 3 days",
-      "Recently created repository",
-      "Low-star early-stage repository"
-    ],
-    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
-    "id": "6a40df223bafd5919fd245c0",
-    "first_seen_at": "2026-11-27T14:12:44.813880+00:00",
     "pipeline_status": "PENDING_ALERT",
     "delivery_state": "PENDING"
   },
@@ -4143,6 +4292,117 @@
     "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
     "id": "27ea890e89f8e095d64f4dc0",
     "first_seen_at": "2026-11-28T10:22:01.857021+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@solanazero",
+    "owner_url": "https://github.com/solanazero",
+    "url": "https://github.com/solanazero/solana0",
+    "title": "solanazero/solana0",
+    "evidence": "Solana zer0 — private execution and payment channels connected to Solana.",
+    "published_at": "2026-11-28T18:08:38+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 60,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: payment",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "da09009568f8b7d0bf1fbc71",
+    "first_seen_at": "2026-11-28T18:30:19.746455+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@PangaPangaDKF",
+    "owner_url": "https://github.com/PangaPangaDKF",
+    "url": "https://github.com/PangaPangaDKF/pasaje",
+    "title": "PangaPangaDKF/pasaje",
+    "evidence": "Pasaje: paga el pasaje del autobús en Venezuela con Solana — QR, sin internet (SMS + firma parcial), aviso instantáneo al chofer, Coco Wallet",
+    "published_at": "2026-11-28T18:09:24+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 60,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: wallet",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "bc25f5fc50fb7cc3252ed22c",
+    "first_seen_at": "2026-11-28T18:30:19.746455+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@lijnati",
+    "owner_url": "https://github.com/lijnati",
+    "url": "https://github.com/lijnati/Dialo",
+    "title": "lijnati/Dialo",
+    "evidence": "a stablecoin wallet you can call.",
+    "published_at": "2026-11-28T18:04:25+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 1,
+      "forks": 0
+    },
+    "score": 60,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: wallet",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "c3991c63eae8381c9cdfa3fe",
+    "first_seen_at": "2026-11-28T18:30:19.746455+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@Sercan0x",
+    "owner_url": "https://github.com/Sercan0x",
+    "url": "https://github.com/Sercan0x/opeq",
+    "title": "Sercan0x/opeq",
+    "evidence": "Quantum-resistant wallet and SDK for Solana and EVM networks.",
+    "published_at": "2026-11-28T18:25:07+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 5,
+      "forks": 0
+    },
+    "score": 60,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: wallet, sdk",
+      "Repository updated within 3 days",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "a067fcd42793ae8730cb30bd",
+    "first_seen_at": "2026-11-28T18:30:19.746455+00:00",
     "pipeline_status": "PENDING_ALERT",
     "delivery_state": "PENDING"
   }

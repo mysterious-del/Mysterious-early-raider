@@ -941,14 +941,16 @@
     "source": "GitHub",
     "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
     "score": 60,
-    "delivery_state": "PENDING"
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T18:30:21.151242+00:00"
   },
   "a3a684a5ca089be89bb93b0c": {
     "url": "https://github.com/PhoenixAB88/pulsar-network",
     "source": "GitHub",
     "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
     "score": 60,
-    "delivery_state": "PENDING"
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T18:30:21.348609+00:00"
   },
   "931a541d2783c512114c2e81": {
     "url": "https://github.com/arnabbhowmik07/Ghost",
@@ -1037,7 +1039,8 @@
     "source": "GitHub",
     "first_seen_at": "2026-11-27T14:12:44.813880+00:00",
     "score": 60,
-    "delivery_state": "PENDING"
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T18:30:21.511677+00:00"
   },
   "046ae2d14592240c0bb9c1db": {
     "url": "https://github.com/Kaksie-codes/bidazk-solana-escrow",
@@ -1353,6 +1356,74 @@
     "source": "GitHub",
     "first_seen_at": "2026-11-28T10:22:01.857021+00:00",
     "score": 54,
+    "delivery_state": "PENDING"
+  },
+  "541d5950178b131d33e9c834": {
+    "url": "https://github.com/bfedorg/agentguard-x402-mcp",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-28T18:30:19.746455+00:00",
+    "score": 76,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T18:30:20.206186+00:00"
+  },
+  "20a5ad5ee98e27020f147022": {
+    "url": "https://github.com/wesjskoock1981/Solana-Drainer-Tool",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-28T18:30:19.746455+00:00",
+    "score": 68,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T18:30:20.384848+00:00"
+  },
+  "eb8f638f74f319343ecfa2c1": {
+    "url": "https://github.com/P0lym4thPunk/Kobo",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-28T18:30:19.746455+00:00",
+    "score": 64,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T18:30:20.544405+00:00"
+  },
+  "1eecdf75691b99914e4a049e": {
+    "url": "https://github.com/wngstnr-code/clamp",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-28T18:30:19.746455+00:00",
+    "score": 64,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T18:30:20.718934+00:00"
+  },
+  "e61470474f43d24e77437791": {
+    "url": "https://github.com/emyrax/Actake",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-28T18:30:19.746455+00:00",
+    "score": 64,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T18:30:20.917817+00:00"
+  },
+  "da09009568f8b7d0bf1fbc71": {
+    "url": "https://github.com/solanazero/solana0",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-28T18:30:19.746455+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "bc25f5fc50fb7cc3252ed22c": {
+    "url": "https://github.com/PangaPangaDKF/pasaje",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-28T18:30:19.746455+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "c3991c63eae8381c9cdfa3fe": {
+    "url": "https://github.com/lijnati/Dialo",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-28T18:30:19.746455+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "a067fcd42793ae8730cb30bd": {
+    "url": "https://github.com/Sercan0x/opeq",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-28T18:30:19.746455+00:00",
+    "score": 60,
     "delivery_state": "PENDING"
   }
 }
