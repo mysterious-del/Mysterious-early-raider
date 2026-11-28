@@ -2933,8 +2933,9 @@
     "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
     "id": "d9414f76f82420f0a7041c69",
     "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
-    "pipeline_status": "PENDING_ALERT",
-    "delivery_state": "PENDING"
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T10:22:02.984009+00:00"
   },
   {
     "source": "GitHub",
@@ -2961,8 +2962,9 @@
     "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
     "id": "871c73b60f3f3b25b63dad8a",
     "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
-    "pipeline_status": "PENDING_ALERT",
-    "delivery_state": "PENDING"
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T10:22:03.244332+00:00"
   },
   {
     "source": "GitHub",
@@ -2989,8 +2991,9 @@
     "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
     "id": "52e040310036593120394847",
     "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
-    "pipeline_status": "PENDING_ALERT",
-    "delivery_state": "PENDING"
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T10:22:03.484744+00:00"
   },
   {
     "source": "GitHub",
@@ -3017,8 +3020,128 @@
     "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
     "id": "61405f0ce479aacf1c18acd2",
     "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
-    "pipeline_status": "PENDING_ALERT",
-    "delivery_state": "PENDING"
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T10:22:03.631730+00:00"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@clytjpgemini",
+    "owner_url": "https://github.com/clytjpgemini",
+    "url": "https://github.com/clytjpgemini/agentkit-x402",
+    "title": "clytjpgemini/agentkit-x402",
+    "evidence": "Zero-dependency Cloudflare Worker x402 v2 pay-per-request edge API for AI agents (Base + Solana USDC)",
+    "published_at": "2026-11-28T09:31:21+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 76,
+    "reasons": [
+      "Solana relevance",
+      "project: protocol",
+      "Published within 24 hours",
+      "Product/build signals: protocol, payments, payment",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "e7a4b296c0afc1e59ad00233",
+    "first_seen_at": "2026-11-28T10:22:01.857021+00:00",
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T10:22:02.286243+00:00"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@Ashutosh0x",
+    "owner_url": "https://github.com/Ashutosh0x",
+    "url": "https://github.com/Ashutosh0x/mobilecloud-platform",
+    "title": "Ashutosh0x/mobilecloud-platform",
+    "evidence": "Autonomous Smartphone Edge Cloud, Tri-Modal Terminal Gateway, and Institutional Proof-of-Reserve Protocol",
+    "published_at": "2026-11-28T09:30:08+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 72,
+    "reasons": [
+      "Solana relevance",
+      "project: protocol",
+      "Published within 24 hours",
+      "Product/build signals: protocol, platform",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "d422e7d522555f42f741f8ab",
+    "first_seen_at": "2026-11-28T10:22:01.857021+00:00",
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T10:22:02.463851+00:00"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@xstacy3",
+    "owner_url": "https://github.com/xstacy3",
+    "url": "https://github.com/xstacy3/Roe-protocol",
+    "title": "xstacy3/Roe-protocol",
+    "evidence": "Decentralized educational content licensing and automated creator revenue sharing powered by Solana and The Roe Vault",
+    "published_at": "2026-11-28T10:13:38+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 68,
+    "reasons": [
+      "Solana relevance",
+      "project: protocol",
+      "Published within 24 hours",
+      "Product/build signals: protocol",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "2f062234c78c9fe2334b0cad",
+    "first_seen_at": "2026-11-28T10:22:01.857021+00:00",
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T10:22:02.616282+00:00"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@VicewireLabs",
+    "owner_url": "https://github.com/VicewireLabs",
+    "url": "https://github.com/VicewireLabs/vicewire",
+    "title": "VicewireLabs/vicewire",
+    "evidence": "Solana devnet wallet pairing, merchant checkout and replay-safe mission reward tests for a game companion.",
+    "published_at": "2026-11-28T10:07:40+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 64,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: wallet, game",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "9d9c82aee263a2b097be0950",
+    "first_seen_at": "2026-11-28T10:22:01.857021+00:00",
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T10:22:02.806392+00:00"
   },
   {
     "source": "GitHub",
@@ -3938,6 +4061,88 @@
     "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
     "id": "6f0be3af1f36efabf7e3d8d9",
     "first_seen_at": "2026-11-28T01:57:06.662429+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@patrick-steve",
+    "owner_url": "https://github.com/patrick-steve",
+    "url": "https://github.com/patrick-steve/talos",
+    "title": "patrick-steve/talos",
+    "evidence": "Backup USDC for Hyperliquid perps, kept in your Solana wallet",
+    "published_at": "2026-11-28T10:18:21+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 60,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: wallet",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "95a3633265935b82212e803c",
+    "first_seen_at": "2026-11-28T10:22:01.857021+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@Tejanadh",
+    "owner_url": "https://github.com/Tejanadh",
+    "url": "https://github.com/Tejanadh/ciphra",
+    "title": "Tejanadh/ciphra",
+    "evidence": "Institutional zero-knowledge B2B payroll, anti-correlation batching & selective tax audit receipts on Solana Privacy Rings.",
+    "published_at": "2026-11-28T10:19:08+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 60,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: defi",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "3c64f5caf475199990699dc0",
+    "first_seen_at": "2026-11-28T10:22:01.857021+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@Phat1911",
+    "owner_url": "https://github.com/Phat1911",
+    "url": "https://github.com/Phat1911/Tributary",
+    "title": "Phat1911/Tributary",
+    "evidence": "Self-hosted AI key governance: your team shares one AI key, everyone gets their own (per-member keys, quotas, leak detection, append-only audit), and spare credits can earn, settled on Solana. Free, source-available (FSL-1.1-ALv2).",
+    "published_at": "2026-11-28T10:16:11+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 8,
+      "forks": 0
+    },
+    "score": 54,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: app",
+      "Repository updated within 3 days"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "27ea890e89f8e095d64f4dc0",
+    "first_seen_at": "2026-11-28T10:22:01.857021+00:00",
     "pipeline_status": "PENDING_ALERT",
     "delivery_state": "PENDING"
   }

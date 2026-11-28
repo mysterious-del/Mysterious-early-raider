@@ -909,28 +909,32 @@
     "source": "GitHub",
     "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
     "score": 60,
-    "delivery_state": "PENDING"
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T10:22:02.984009+00:00"
   },
   "871c73b60f3f3b25b63dad8a": {
     "url": "https://github.com/yangjina-kim/sol-hourly-paper-trader",
     "source": "GitHub",
     "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
     "score": 60,
-    "delivery_state": "PENDING"
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T10:22:03.244332+00:00"
   },
   "52e040310036593120394847": {
     "url": "https://github.com/Prashant-thakur77/ringside",
     "source": "GitHub",
     "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
     "score": 60,
-    "delivery_state": "PENDING"
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T10:22:03.484744+00:00"
   },
   "61405f0ce479aacf1c18acd2": {
     "url": "https://github.com/Housofalex/leash",
     "source": "GitHub",
     "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
     "score": 60,
-    "delivery_state": "PENDING"
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T10:22:03.631730+00:00"
   },
   "e625c1b8f26ac47b32ca97a2": {
     "url": "https://github.com/dren712/tipoff",
@@ -1296,6 +1300,59 @@
     "source": "GitHub",
     "first_seen_at": "2026-11-28T01:57:06.662429+00:00",
     "score": 56,
+    "delivery_state": "PENDING"
+  },
+  "e7a4b296c0afc1e59ad00233": {
+    "url": "https://github.com/clytjpgemini/agentkit-x402",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-28T10:22:01.857021+00:00",
+    "score": 76,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T10:22:02.286243+00:00"
+  },
+  "d422e7d522555f42f741f8ab": {
+    "url": "https://github.com/Ashutosh0x/mobilecloud-platform",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-28T10:22:01.857021+00:00",
+    "score": 72,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T10:22:02.463851+00:00"
+  },
+  "2f062234c78c9fe2334b0cad": {
+    "url": "https://github.com/xstacy3/Roe-protocol",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-28T10:22:01.857021+00:00",
+    "score": 68,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T10:22:02.616282+00:00"
+  },
+  "9d9c82aee263a2b097be0950": {
+    "url": "https://github.com/VicewireLabs/vicewire",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-28T10:22:01.857021+00:00",
+    "score": 64,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T10:22:02.806392+00:00"
+  },
+  "95a3633265935b82212e803c": {
+    "url": "https://github.com/patrick-steve/talos",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-28T10:22:01.857021+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "3c64f5caf475199990699dc0": {
+    "url": "https://github.com/Tejanadh/ciphra",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-28T10:22:01.857021+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "27ea890e89f8e095d64f4dc0": {
+    "url": "https://github.com/Phat1911/Tributary",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-28T10:22:01.857021+00:00",
+    "score": 54,
     "delivery_state": "PENDING"
   }
 }
