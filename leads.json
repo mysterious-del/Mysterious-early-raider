@@ -2699,8 +2699,9 @@
     "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
     "id": "9bed1369fbe3ba8a2bb67a9c",
     "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
-    "pipeline_status": "PENDING_ALERT",
-    "delivery_state": "PENDING"
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T01:57:08.347524+00:00"
   },
   {
     "source": "GitHub",
@@ -2727,8 +2728,185 @@
     "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
     "id": "44683a62d8ca160ed72077f0",
     "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
-    "pipeline_status": "PENDING_ALERT",
-    "delivery_state": "PENDING"
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T01:57:08.530110+00:00"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@glitch3x",
+    "owner_url": "https://github.com/glitch3x",
+    "url": "https://github.com/glitch3x/verify-",
+    "title": "glitch3x/verify-",
+    "evidence": "A decentralized identity and reputation protocol on Solana. Verify-ID leverages ZK-proofs and encryption to provide secure, self-sovereign identity for dApps, enabling sybil-resistance and on-chain…",
+    "published_at": "2026-11-28T01:31:54+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 76,
+    "reasons": [
+      "Solana relevance",
+      "project: protocol",
+      "Published within 24 hours",
+      "Product/build signals: dapp, protocol, app",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "b019e3161a81822d045cb322",
+    "first_seen_at": "2026-11-28T01:57:06.662429+00:00",
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T01:57:07.188165+00:00"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@JacobEscoto",
+    "owner_url": "https://github.com/JacobEscoto",
+    "url": "https://github.com/JacobEscoto/kredowork",
+    "title": "JacobEscoto/kredowork",
+    "evidence": "An open-source Solana protocol for decentralized micro-bounties with quorum reviews and bonded disputes.",
+    "published_at": "2026-11-28T01:13:42+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 72,
+    "reasons": [
+      "Solana relevance",
+      "project: protocol",
+      "Published within 24 hours",
+      "Product/build signals: protocol, infrastructure",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "68e0d44c881e0da5891506d0",
+    "first_seen_at": "2026-11-28T01:57:06.662429+00:00",
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T01:57:07.368793+00:00"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@WPPlugins",
+    "owner_url": "https://github.com/WPPlugins",
+    "url": "https://github.com/WPPlugins/intents-checkout-crypto-payments-for-woocommerce",
+    "title": "WPPlugins/intents-checkout-crypto-payments-for-woocommerce",
+    "evidence": "Accept crypto from Bitcoin, Ethereum, Solana, Tron and more. Get paid in a stablecoin, BTC, ETH or SOL, straight to your own wallet. Non-custodial.",
+    "published_at": "2026-11-28T00:59:14+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 68,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: wallet, payments, payment",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "6e5dd1434de52d48c679732f",
+    "first_seen_at": "2026-11-28T01:57:06.662429+00:00",
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T01:57:07.551026+00:00"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@COMMENTZRUS",
+    "owner_url": "https://github.com/COMMENTZRUS",
+    "url": "https://github.com/COMMENTZRUS/fair-trade-data-protocol",
+    "title": "COMMENTZRUS/fair-trade-data-protocol",
+    "evidence": "Fair Trade Data Protocol (FTDP): Open-source Storage Layer Security (SLS), defradb.rs Zanzibar ACP Gateway, Dual-Chain EVM+Solana MultiSplitter Data Unions, Comment Protocol & fairtradedata.org Portal",
+    "published_at": "2026-11-28T00:52:51+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 68,
+    "reasons": [
+      "Solana relevance",
+      "project: protocol",
+      "Published within 24 hours",
+      "Product/build signals: protocol",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "40abfeb2bae5e2a0e20e3050",
+    "first_seen_at": "2026-11-28T01:57:06.662429+00:00",
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T01:57:07.760594+00:00"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@lovgolf",
+    "owner_url": "https://github.com/lovgolf",
+    "url": "https://github.com/lovgolf/solana-rugcheck-toolkit",
+    "title": "lovgolf/solana-rugcheck-toolkit",
+    "evidence": "Read-only Python tool that scores a Solana token for scam signs (linked wallets, creator stake, top holders, wash-trading) using public APIs",
+    "published_at": "2026-11-28T01:53:18+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 64,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: wallet, dex",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "81f6998f531a2106783122d8",
+    "first_seen_at": "2026-11-28T01:57:06.662429+00:00",
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T01:57:07.992491+00:00"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@apexwukong23-lgtm",
+    "owner_url": "https://github.com/apexwukong23-lgtm",
+    "url": "https://github.com/apexwukong23-lgtm/blockrazor-docs",
+    "title": "apexwukong23-lgtm/blockrazor-docs",
+    "evidence": "BlockRazor Docs: English Guide to Solana, BNB Smart Chain, and Ethereum Transaction Infrastructure",
+    "published_at": "2026-11-28T00:49:09+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 58,
+      "forks": 0
+    },
+    "score": 62,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: wallet, infrastructure",
+      "Repository updated within 3 days",
+      "Recently created repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "2f7e9965f5c2e609b32e820c",
+    "first_seen_at": "2026-11-28T01:57:06.662429+00:00",
+    "pipeline_status": "ALERTED",
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T01:57:08.171871+00:00"
   },
   {
     "source": "GitHub",
@@ -3623,6 +3801,143 @@
     "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
     "id": "ad5d87b6bd5481b3f763a1a3",
     "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@fabien-pierret",
+    "owner_url": "https://github.com/fabien-pierret",
+    "url": "https://github.com/fabien-pierret/rugradar-solana",
+    "title": "fabien-pierret/rugradar-solana",
+    "evidence": "RugRadar / Solana SIPS_infinity Forensics — Transfer-Free Coordinated Pack Detector (Lean 4.36.0, 45 theorems, 0 sorry, MIT)",
+    "published_at": "2026-11-28T01:50:07+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 60,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: defi",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "a370810e7c1b968d27cca239",
+    "first_seen_at": "2026-11-28T01:57:06.662429+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@andresouzalima1993",
+    "owner_url": "https://github.com/andresouzalima1993",
+    "url": "https://github.com/andresouzalima1993/meme-desk-sim",
+    "title": "andresouzalima1993/meme-desk-sim",
+    "evidence": "Paper-only Solana memecoin desk simulation (no wallets, no keys, no orders)",
+    "published_at": "2026-11-28T01:53:07+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 0,
+      "forks": 0
+    },
+    "score": 60,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: wallet",
+      "Repository updated within 3 days",
+      "Recently created repository",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "7c624d9ff20a73f0fbd262db",
+    "first_seen_at": "2026-11-28T01:57:06.662429+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@easytrend",
+    "owner_url": "https://github.com/easytrend",
+    "url": "https://github.com/easytrend/fiatwallet",
+    "title": "easytrend/fiatwallet",
+    "evidence": "FiatWallet is an onchain P2P platform that lets anyone buy and sell stablecoins — no KYC needed, powered by Solana.",
+    "published_at": "2026-11-28T01:44:50+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 1,
+      "forks": 2
+    },
+    "score": 60,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: platform, wallet",
+      "Repository updated within 3 days",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "8c68203588b6f0612e0de650",
+    "first_seen_at": "2026-11-28T01:57:06.662429+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@tigarcia",
+    "owner_url": "https://github.com/tigarcia",
+    "url": "https://github.com/tigarcia/validator-version-monitor",
+    "title": "tigarcia/validator-version-monitor",
+    "evidence": "A tool for tracking solana validator versions on the mainnet-beta cluster",
+    "published_at": "2026-11-28T01:09:04+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 2,
+      "forks": 2
+    },
+    "score": 60,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: mainnet, beta",
+      "Repository updated within 3 days",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "f38c91ac96850803c13c4e3c",
+    "first_seen_at": "2026-11-28T01:57:06.662429+00:00",
+    "pipeline_status": "PENDING_ALERT",
+    "delivery_state": "PENDING"
+  },
+  {
+    "source": "GitHub",
+    "handle": "@superpios",
+    "owner_url": "https://github.com/superpios",
+    "url": "https://github.com/superpios/node-scorecard",
+    "title": "superpios/node-scorecard",
+    "evidence": "Network intelligence & historical diagnostics for Sentinel dVPN nodes. Reliability scores, official SLA test results, lease tracking, \"where to host\" advisor — no backend, fully static.",
+    "published_at": "2026-11-28T01:14:48+00:00",
+    "followers": null,
+    "engagement": {
+      "stars": 4,
+      "forks": 0
+    },
+    "score": 56,
+    "reasons": [
+      "Solana relevance",
+      "Published within 24 hours",
+      "Product/build signals: payment",
+      "Repository updated within 3 days",
+      "Low-star early-stage repository"
+    ],
+    "verification": "Potential Solana product repository. Owner is not confirmed as founder; check README, commits and profile before outreach.",
+    "id": "6f0be3af1f36efabf7e3d8d9",
+    "first_seen_at": "2026-11-28T01:57:06.662429+00:00",
     "pipeline_status": "PENDING_ALERT",
     "delivery_state": "PENDING"
   }

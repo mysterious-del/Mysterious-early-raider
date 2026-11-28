@@ -893,14 +893,16 @@
     "source": "GitHub",
     "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
     "score": 60,
-    "delivery_state": "PENDING"
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T01:57:08.347524+00:00"
   },
   "44683a62d8ca160ed72077f0": {
     "url": "https://github.com/LSUDOKO/ClawRush",
     "source": "GitHub",
     "first_seen_at": "2026-11-27T12:58:23.066315+00:00",
     "score": 60,
-    "delivery_state": "PENDING"
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T01:57:08.530110+00:00"
   },
   "d9414f76f82420f0a7041c69": {
     "url": "https://github.com/judejones410-hue/sotto",
@@ -1211,6 +1213,89 @@
     "source": "GitHub",
     "first_seen_at": "2026-11-27T18:56:03.658231+00:00",
     "score": 54,
+    "delivery_state": "PENDING"
+  },
+  "b019e3161a81822d045cb322": {
+    "url": "https://github.com/glitch3x/verify-",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-28T01:57:06.662429+00:00",
+    "score": 76,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T01:57:07.188165+00:00"
+  },
+  "68e0d44c881e0da5891506d0": {
+    "url": "https://github.com/JacobEscoto/kredowork",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-28T01:57:06.662429+00:00",
+    "score": 72,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T01:57:07.368793+00:00"
+  },
+  "6e5dd1434de52d48c679732f": {
+    "url": "https://github.com/WPPlugins/intents-checkout-crypto-payments-for-woocommerce",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-28T01:57:06.662429+00:00",
+    "score": 68,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T01:57:07.551026+00:00"
+  },
+  "40abfeb2bae5e2a0e20e3050": {
+    "url": "https://github.com/COMMENTZRUS/fair-trade-data-protocol",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-28T01:57:06.662429+00:00",
+    "score": 68,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T01:57:07.760594+00:00"
+  },
+  "81f6998f531a2106783122d8": {
+    "url": "https://github.com/lovgolf/solana-rugcheck-toolkit",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-28T01:57:06.662429+00:00",
+    "score": 64,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T01:57:07.992491+00:00"
+  },
+  "2f7e9965f5c2e609b32e820c": {
+    "url": "https://github.com/apexwukong23-lgtm/blockrazor-docs",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-28T01:57:06.662429+00:00",
+    "score": 62,
+    "delivery_state": "SENT",
+    "alerted_at": "2026-11-28T01:57:08.171871+00:00"
+  },
+  "a370810e7c1b968d27cca239": {
+    "url": "https://github.com/fabien-pierret/rugradar-solana",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-28T01:57:06.662429+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "7c624d9ff20a73f0fbd262db": {
+    "url": "https://github.com/andresouzalima1993/meme-desk-sim",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-28T01:57:06.662429+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "8c68203588b6f0612e0de650": {
+    "url": "https://github.com/easytrend/fiatwallet",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-28T01:57:06.662429+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "f38c91ac96850803c13c4e3c": {
+    "url": "https://github.com/tigarcia/validator-version-monitor",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-28T01:57:06.662429+00:00",
+    "score": 60,
+    "delivery_state": "PENDING"
+  },
+  "6f0be3af1f36efabf7e3d8d9": {
+    "url": "https://github.com/superpios/node-scorecard",
+    "source": "GitHub",
+    "first_seen_at": "2026-11-28T01:57:06.662429+00:00",
+    "score": 56,
     "delivery_state": "PENDING"
   }
 }
